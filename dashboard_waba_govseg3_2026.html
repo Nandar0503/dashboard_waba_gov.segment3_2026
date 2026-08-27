@@ -1,0 +1,1595 @@
+<title>WhatsApp Blasting Executive Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --bg:#f4f7f9;
+    --surface:#ffffff;
+    --surface-alt:#f7f9fb;
+    --surface-sunken:#eef2f5;
+    --border:rgba(11,37,69,0.09);
+    --border-strong:rgba(11,37,69,0.16);
+    --text-primary:#0b2545;
+    --text-secondary:#4b5f78;
+    --text-muted:#8a97a8;
+    --navy:#0b2545;
+    --navy-deep:#071a33;
+    --green:#1baf7a;
+    --green-deep:#0f8c60;
+    --green-wash:rgba(27,175,122,0.10);
+    --cyan:#17a9c4;
+    --cyan-wash:rgba(23,169,196,0.10);
+    --good:#0ca30c;
+    --warning:#c98500;
+    --serious:#ec835a;
+    --critical:#d03b3b;
+    --critical-wash:rgba(208,59,59,0.08);
+    --shadow-sm:0 1px 2px rgba(11,37,69,0.05);
+    --shadow-md:0 10px 28px -14px rgba(11,37,69,0.22);
+    --radius-lg:18px;
+    --radius-md:12px;
+    --radius-sm:8px;
+    --chart-bg:#ffffff;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --bg:#0a1420;
+      --surface:#101c2c;
+      --surface-alt:#16263a;
+      --surface-sunken:#0d1a28;
+      --border:rgba(255,255,255,0.09);
+      --border-strong:rgba(255,255,255,0.18);
+      --text-primary:#eef3f9;
+      --text-secondary:#aebbcf;
+      --text-muted:#7c8ba1;
+      --green-wash:rgba(27,175,122,0.16);
+      --cyan-wash:rgba(23,169,196,0.16);
+      --critical-wash:rgba(208,59,59,0.16);
+      --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+      --shadow-md:0 12px 32px -14px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --bg:#0a1420;
+    --surface:#101c2c;
+    --surface-alt:#16263a;
+    --surface-sunken:#0d1a28;
+    --border:rgba(255,255,255,0.09);
+    --border-strong:rgba(255,255,255,0.18);
+    --text-primary:#eef3f9;
+    --text-secondary:#aebbcf;
+    --text-muted:#7c8ba1;
+    --green-wash:rgba(27,175,122,0.16);
+    --cyan-wash:rgba(23,169,196,0.16);
+    --critical-wash:rgba(208,59,59,0.16);
+    --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:0 12px 32px -14px rgba(0,0,0,0.55);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    font-feature-settings:"cv02","cv03","cv04","cv11";
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .kpi-card, .card, .health-item, .eng-tile, .reco-card-item { transition: box-shadow .18s ease, transform .18s ease; }
+    body, .card, .kpi-card, .health-item, .eng-tile, .reco-card-item, .alert-row, .chart-surface, .filter-bar, .filter-select {
+      transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+    }
+  }
+
+  /* ---------- Chart surface (charts stay on a fixed light "paper" panel in both themes) ---------- */
+  .chart-surface{
+    --text-primary:#0b2545; --text-secondary:#4b5f78; --text-muted:#8a97a8;
+    --border:rgba(11,37,69,0.09); --border-strong:rgba(11,37,69,0.16);
+    --surface-alt:#f7f9fb; --surface-sunken:#eef2f5;
+    --green-wash:rgba(27,175,122,0.10); --cyan-wash:rgba(23,169,196,0.10); --critical-wash:rgba(208,59,59,0.08);
+    background:var(--chart-bg); border:1px solid rgba(11,37,69,0.08); border-radius:14px;
+    padding:16px 18px 10px;
+  }
+
+  .dashboard{
+    max-width:1600px;
+    margin:0 auto;
+    padding:28px 32px 64px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+
+  /* ---------- Header ---------- */
+  .exec-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:24px;
+    background:linear-gradient(135deg, var(--navy) 0%, #123a63 62%, #0f5c63 100%);
+    border-radius:var(--radius-lg);
+    padding:26px 32px;
+    color:#fff;
+    box-shadow:var(--shadow-md);
+    position:relative;
+    overflow:hidden;
+  }
+  .exec-header::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(560px 220px at 88% -20%, rgba(27,175,122,0.35), transparent 70%);
+    pointer-events:none;
+  }
+  .header-left{display:flex; align-items:center; gap:18px; position:relative;}
+  .logo-badge{
+    width:58px; height:58px; border-radius:14px; background:#fff;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 14px rgba(0,0,0,0.18); flex:none; padding:6px;
+  }
+  .logo-badge img{width:100%; height:100%; object-fit:contain;}
+  .header-titles h1{
+    margin:0; font-size:22px; font-weight:800; letter-spacing:0.3px; text-wrap:balance;
+  }
+  .header-titles p{margin:5px 0 0; font-size:13.5px; color:rgba(255,255,255,0.78); font-weight:500;}
+  .header-meta{
+    position:relative; display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; max-width:640px;
+  }
+  .meta-chip{
+    background:rgba(255,255,255,0.10);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:10px; padding:8px 14px;
+    backdrop-filter:blur(6px);
+    min-width:118px;
+  }
+  .meta-chip .mc-label{display:block; font-size:9.5px; letter-spacing:0.9px; text-transform:uppercase; color:rgba(255,255,255,0.62); font-weight:600; margin-bottom:2px;}
+  .meta-chip .mc-value{font-size:13.5px; font-weight:700;}
+  .filter-chip{
+    display:flex; align-items:center; gap:6px;
+    background:rgba(255,255,255,0.92); color:var(--navy);
+    border-radius:10px; padding:8px 12px; font-size:12.5px; font-weight:600;
+    cursor:default; box-shadow:0 2px 6px rgba(0,0,0,0.12);
+  }
+  .filter-chip .fc-dot{width:7px;height:7px;border-radius:50%;background:var(--green);}
+  .filter-chip svg{width:11px;height:11px;opacity:0.55;}
+
+  /* ---------- KPI grid ---------- */
+  .kpi-section-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; padding:0 2px; margin-top:-4px;}
+  .kpi-section-note{font-size:11.5px; color:var(--text-muted); font-weight:500;}
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;
+  }
+  .kpi-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md);
+    padding:16px 18px; box-shadow:var(--shadow-sm); display:flex; flex-direction:column; gap:8px;
+  }
+  .kpi-card:hover{box-shadow:var(--shadow-md); transform:translateY(-1px);}
+  .kpi-top{display:flex; align-items:center; justify-content:space-between; gap:8px;}
+  .kpi-label{font-size:10.5px; font-weight:700; letter-spacing:0.7px; color:var(--text-muted);}
+  .status-chip{
+    display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:700;
+    color:var(--text-secondary); white-space:nowrap;
+  }
+  .status-chip i{width:7px; height:7px; border-radius:50%; background:var(--dot); box-shadow:0 0 0 3px color-mix(in srgb, var(--dot) 18%, transparent);}
+  .kpi-value{font-size:29px; font-weight:800; letter-spacing:-0.5px; line-height:1;}
+  .kpi-sub{font-size:11.5px; color:var(--text-muted); font-weight:500;}
+  .kpi-bottom{display:flex; align-items:center; justify-content:space-between; margin-top:2px;}
+  .kpi-delta{font-size:11.5px; font-weight:700;}
+  .kpi-vs{font-weight:500; color:var(--text-muted); font-size:10.5px;}
+  .delta-good{color:var(--green-deep);}
+  .delta-bad{color:var(--critical);}
+  .delta-neutral{color:var(--text-secondary);}
+  .spark{display:block;}
+
+  /* ---------- Theme toggle ---------- */
+  .theme-toggle{
+    display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.22); color:#fff; border-radius:10px; padding:8px 13px;
+    font-family:inherit; font-size:12.5px; font-weight:700; cursor:pointer; white-space:nowrap;
+  }
+  .theme-toggle:hover{background:rgba(255,255,255,0.2);}
+  .theme-toggle:focus-visible{outline:2px solid #fff; outline-offset:2px;}
+
+  /* ---------- Filter bar ---------- */
+  .filter-bar{
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md);
+    padding:12px 16px; box-shadow:var(--shadow-sm);
+  }
+  .filter-field{display:flex; flex-direction:column; gap:3px;}
+  .filter-field label{font-size:9.5px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:var(--text-muted);}
+  .filter-select{
+    appearance:none; -webkit-appearance:none; font-family:inherit; font-size:12.5px; font-weight:700;
+    color:var(--text-primary); background:var(--surface-alt) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%238a97a8" stroke-width="2.6"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 9px center/12px;
+    border:1px solid var(--border-strong); border-radius:8px; padding:8px 30px 8px 11px; min-width:150px; cursor:pointer;
+  }
+  .filter-select:focus-visible{outline:2px solid var(--cyan); outline-offset:1px;}
+  .filter-reset{
+    font-family:inherit; font-size:12px; font-weight:700; color:var(--green-deep); background:var(--green-wash);
+    border:1px solid rgba(27,175,122,0.3); border-radius:8px; padding:9px 14px; cursor:pointer; align-self:flex-end;
+  }
+  .filter-reset:hover{background:rgba(27,175,122,0.18);}
+  .filter-summary{margin-left:auto; font-size:11.5px; color:var(--text-muted); font-weight:600; text-align:right;}
+  .filter-summary strong{color:var(--text-secondary);}
+  @media (max-width:900px){ .filter-summary{margin-left:0; text-align:left;} }
+
+  /* ---------- Cards / grid ---------- */
+  .grid-2{display:grid; grid-template-columns:2fr 1fr; gap:18px; align-items:stretch;}
+  .grid-2.even{grid-template-columns:1fr 1fr;}
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg);
+    padding:22px 24px; box-shadow:var(--shadow-sm);
+  }
+  .card-head{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:16px;}
+  .card-eyebrow{font-size:10.5px; font-weight:700; letter-spacing:1px; color:var(--green-deep); text-transform:uppercase; margin:0 0 3px;}
+  .card-title{font-size:16.5px; font-weight:800; margin:0; color:var(--text-primary);}
+  .card-desc{font-size:12px; color:var(--text-muted); margin:4px 0 0; font-weight:500;}
+
+  /* ---------- Trend / legend ---------- */
+  .legend-row-inline{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:6px;}
+  .legend-key{display:flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--text-secondary);}
+  .legend-key .lk-line{width:14px; height:2.5px; border-radius:2px; display:inline-block;}
+  .trend-subtitle{font-size:12px; font-weight:700; color:var(--text-secondary); margin:14px 0 4px;}
+  .gridline{stroke:#e7ebef; stroke-width:1;}
+  .axis-label{font-size:10px; fill:var(--text-muted); font-weight:600; font-variant-numeric:tabular-nums;}
+  .axis-title{font-size:10.5px; fill:var(--text-muted); font-weight:700;}
+  .end-label{font-size:11px; font-weight:800; font-variant-numeric:tabular-nums;}
+  .hover-dot{cursor:pointer;}
+
+  /* ---------- Insight box ---------- */
+  .insight-card{
+    background:linear-gradient(160deg, var(--navy) 0%, #123a63 100%);
+    color:#fff; display:flex; flex-direction:column; justify-content:space-between; height:100%;
+  }
+  .insight-card .card-eyebrow{color:#8fe3c2;}
+  .insight-card .card-title{color:#fff;}
+  .insight-text{font-size:13.5px; line-height:1.65; color:rgba(255,255,255,0.92); font-weight:500;}
+  .insight-signals{list-style:none; margin:18px 0 0; padding:14px 0 0; border-top:1px solid rgba(255,255,255,0.14); display:flex; flex-direction:column; gap:10px;}
+  .insight-signals li{font-size:12px; color:rgba(255,255,255,0.82); font-weight:500; line-height:1.5;}
+  .insight-signals li strong{color:#8fe3c2; font-weight:700;}
+  .insight-stats{display:flex; gap:16px; margin-top:20px; flex-wrap:wrap;}
+  .insight-stat{background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); border-radius:10px; padding:10px 12px; flex:1; min-width:110px;}
+  .insight-stat .is-val{font-size:18px; font-weight:800;}
+  .insight-stat .is-lbl{font-size:10px; color:rgba(255,255,255,0.68); font-weight:600; margin-top:2px;}
+
+  /* ---------- Funnel ---------- */
+  .funnel-wrap{display:flex; gap:24px; align-items:flex-start;}
+  .funnel-svg-wrap{flex:1; min-width:0; overflow-x:auto;}
+  .funnel-label{font-size:12.5px; font-weight:700; fill:#fff;}
+  .funnel-value{font-size:14.5px; font-weight:800; fill:#fff; font-variant-numeric:tabular-nums;}
+  .funnel-pct{font-size:11.5px; font-weight:600; fill:rgba(255,255,255,0.82);}
+  .funnel-drop{font-size:11px; font-weight:700; fill:var(--text-muted);}
+  .funnel-drop.biggest{fill:var(--critical); font-weight:800;}
+  .funnel-callout{
+    flex:none; width:230px; background:var(--critical-wash); border:1px solid rgba(208,59,59,0.24);
+    border-radius:var(--radius-md); padding:16px;
+  }
+  .funnel-callout h4{margin:0 0 6px; font-size:11px; letter-spacing:0.6px; color:var(--critical); text-transform:uppercase; font-weight:800;}
+  .funnel-callout p{margin:0; font-size:12.5px; color:var(--text-secondary); line-height:1.55; font-weight:500;}
+  .funnel-callout .fc-big{font-size:26px; font-weight:800; color:var(--critical); margin:8px 0 4px;}
+
+  /* ---------- Table ---------- */
+  .table-scroll{overflow-x:auto;}
+  table{width:100%; border-collapse:collapse; font-size:13px;}
+  thead th{
+    text-align:left; font-size:10px; letter-spacing:0.6px; text-transform:uppercase; font-weight:700;
+    color:var(--text-muted); padding:0 10px 10px; border-bottom:1px solid var(--border-strong); white-space:nowrap;
+  }
+  tbody td{padding:12px 10px; border-bottom:1px solid var(--border); vertical-align:middle; font-variant-numeric:tabular-nums; white-space:nowrap;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:var(--surface-alt);}
+  .rank-badge{font-size:18px;}
+  .rank-num{display:inline-flex; width:22px; height:22px; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:var(--text-muted); background:var(--surface-sunken); border-radius:50%;}
+  .name-cell{display:flex; flex-direction:column; gap:1px;}
+  .proj-name{font-weight:700; color:var(--text-primary); font-size:13px;}
+  .proj-seg{font-size:10.5px; color:var(--text-muted); font-weight:500;}
+  .num-cell{font-weight:600; color:var(--text-secondary);}
+  .strong-cell{font-weight:800; color:var(--text-primary);}
+  .roi-cell{font-size:12px; color:var(--text-secondary); font-weight:600;}
+  .mini-bar{display:inline-block; width:46px; height:5px; border-radius:3px; background:var(--surface-sunken); margin-right:7px; position:relative; overflow:hidden; vertical-align:middle;}
+  .mini-bar::before{content:""; position:absolute; left:0; top:0; bottom:0; width:var(--w); background:var(--c); border-radius:3px;}
+  .status-pill{display:inline-block; padding:4px 10px; border-radius:20px; font-size:10.5px; font-weight:700;}
+  .status-pill.good{background:var(--green-wash); color:var(--green-deep);}
+  .status-pill.neutral{background:var(--cyan-wash); color:#0d7a90;}
+  .status-pill.critical{background:var(--critical-wash); color:var(--critical);}
+
+  /* ---------- Category ---------- */
+  .cat-label{font-size:11.5px; font-weight:600; fill:var(--text-secondary);}
+  .cat-pct{font-size:12px; font-weight:800; fill:var(--text-primary); font-variant-numeric:tabular-nums;}
+  .legend-grid{display:flex; flex-direction:column; gap:6px; margin-top:14px; border-top:1px solid var(--border); padding-top:12px;}
+  .legend-row{display:flex; align-items:center; gap:8px; font-size:12px;}
+  .legend-dot{width:8px; height:8px; border-radius:50%; flex:none;}
+  .legend-name{color:var(--text-secondary); font-weight:600; flex:1;}
+  .legend-val{color:var(--text-primary); font-weight:700; font-variant-numeric:tabular-nums;}
+  .cat-summary{display:flex; flex-direction:column; gap:10px; margin-top:20px; padding-top:16px; border-top:1px solid var(--border);}
+  .cat-summary .cs-val{display:block; font-size:13px; font-weight:800; color:var(--text-primary);}
+  .cat-summary .cs-lbl{display:block; font-size:11px; color:var(--text-muted); font-weight:500; margin-top:1px;}
+
+  /* ---------- Engagement ---------- */
+  .eng-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:18px;}
+  .eng-tile{background:var(--surface-alt); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 13px;}
+  .eng-value{font-size:19px; font-weight:800; color:var(--text-primary);}
+  .eng-label{font-size:10.5px; font-weight:700; color:var(--text-secondary); margin-top:3px;}
+  .eng-sub{font-size:10px; color:var(--text-muted); font-weight:500; margin-top:2px;}
+
+  /* ---------- Delivery health ---------- */
+  .health-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:18px;}
+  .health-item{background:var(--surface-alt); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 13px;}
+  .health-top{margin-bottom:6px;}
+  .health-value{font-size:18px; font-weight:800; color:var(--text-primary);}
+  .health-label{font-size:11px; font-weight:700; color:var(--text-secondary); margin-top:2px;}
+  .health-pct{font-size:10px; color:var(--text-muted); font-weight:600; margin-top:1px;}
+
+  /* ---------- Heatmap ---------- */
+  .heat-hlabel{font-size:10.5px; fill:var(--text-muted); font-weight:700;}
+  .heat-dlabel{font-size:11.5px; fill:var(--text-secondary); font-weight:700;}
+  .heatmap-foot{display:flex; align-items:center; justify-content:space-between; margin-top:16px; gap:16px; flex-wrap:wrap;}
+  .heat-scale{display:flex; align-items:center; gap:8px; font-size:11px; color:var(--text-muted); font-weight:600;}
+  .heat-scale .hs-bar{width:120px; height:8px; border-radius:4px; background:linear-gradient(90deg,#cde2fb,#0d366b);}
+  .best-time-callout{
+    display:flex; align-items:center; gap:14px; background:var(--green-wash); border:1px solid rgba(27,175,122,0.28);
+    border-radius:var(--radius-md); padding:12px 18px;
+  }
+  .best-time-callout .btc-label{font-size:10px; font-weight:800; letter-spacing:0.6px; color:var(--green-deep); text-transform:uppercase;}
+  .best-time-callout .btc-value{font-size:15px; font-weight:800; color:var(--text-primary);}
+
+  /* ---------- Matrix ---------- */
+  .quad-label{font-size:9px; font-weight:800; fill:var(--text-muted); letter-spacing:0.3px;}
+  .avg-line{stroke:var(--border-strong); stroke-width:1; stroke-dasharray:3,3;}
+  .matrix-label{font-size:11px; font-weight:800; fill:var(--text-primary);}
+
+  /* ---------- Alerts ---------- */
+  .alert-list{display:flex; flex-direction:column; gap:10px;}
+  .alert-row{display:flex; gap:11px; align-items:flex-start; padding:11px 13px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--surface-alt);}
+  .alert-row.critical{background:rgba(208,59,59,0.06); border-color:rgba(208,59,59,0.22);}
+  .alert-row.warning{background:rgba(201,133,0,0.07); border-color:rgba(201,133,0,0.22);}
+  .alert-row.good{background:var(--green-wash); border-color:rgba(27,175,122,0.24);}
+  .alert-icon{font-size:14px; line-height:1.3;}
+  .alert-title{font-size:12.5px; font-weight:800; color:var(--text-primary);}
+  .alert-body{font-size:11.5px; color:var(--text-secondary); font-weight:500; margin-top:2px; line-height:1.5;}
+
+  /* ---------- Recommendations ---------- */
+  .reco-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:12px;}
+  .reco-card-item{background:var(--surface-alt); border:1px solid var(--border); border-radius:var(--radius-md); padding:16px 15px;}
+  .reco-num{font-size:11px; font-weight:800; color:var(--green-deep); background:var(--green-wash); display:inline-flex; padding:3px 8px; border-radius:6px; margin-bottom:9px;}
+  .reco-title{font-size:13px; font-weight:800; color:var(--text-primary); line-height:1.35; margin-bottom:6px;}
+  .reco-body{font-size:11.5px; color:var(--text-secondary); line-height:1.55; font-weight:500;}
+
+  /* ---------- Footer ---------- */
+  .footer{display:flex; justify-content:space-between; align-items:center; padding:14px 6px 0; font-size:11px; color:var(--text-muted); font-weight:600; flex-wrap:wrap; gap:8px;}
+
+  /* ---------- Tooltip ---------- */
+  #tooltip{
+    position:fixed; pointer-events:none; z-index:999; background:var(--navy-deep); color:#fff;
+    border-radius:8px; padding:8px 11px; font-size:11.5px; font-weight:600; box-shadow:0 8px 22px rgba(0,0,0,0.28);
+    opacity:0; transform:translate(-50%,-100%); transition:opacity .1s ease; white-space:nowrap;
+  }
+  #tooltip.show{opacity:1;}
+  #tooltip .tt-val{font-weight:800; font-size:12.5px;}
+  #tooltip .tt-sub{color:rgba(255,255,255,0.65); font-size:10px; margin-top:1px;}
+
+  @media (max-width:1180px){
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .grid-2, .grid-2.even{grid-template-columns:1fr;}
+    .eng-grid, .health-grid{grid-template-columns:repeat(2,1fr);}
+    .reco-grid{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+
+<div class="dashboard">
+
+  <header class="exec-header">
+    <div class="header-left">
+      <div class="logo-badge"><img src="data:image/png;base64,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" alt="Government &amp; Energy Segment 3"/></div>
+      <div class="header-titles">
+        <h1>WHATSAPP BLASTING — EXECUTIVE PERFORMANCE DASHBOARD</h1>
+        <p>Campaign Performance&nbsp;·&nbsp;Customer Engagement&nbsp;·&nbsp;Delivery Health&nbsp;·&nbsp;Conversion</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-chip"><span class="mc-label">Reporting Period</span><span class="mc-value">01 Jan – 25 Aug 2026</span></div>
+      <div class="meta-chip"><span class="mc-label">Total Campaigns</span><span class="mc-value">31 waves</span></div>
+      <div class="meta-chip"><span class="mc-label">Last Data Update</span><span class="mc-value">25 Aug 2026, 18:40 WIB</span></div>
+      <span class="filter-chip"><span class="fc-dot"></span>Channel: WhatsApp Business API</span>
+      <button type="button" class="theme-toggle" id="theme-toggle">🌙 Dark Mode</button>
+    </div>
+  </header>
+
+  <!-- ============ FILTER BAR ============ -->
+  <section class="filter-bar">
+    <div class="filter-field">
+      <label for="filter-project">Project</label>
+      <select id="filter-project" class="filter-select">
+        <option value="All">All Projects</option>
+<option value="WABA UNNES">WABA UNNES</option>
+<option value="WABA FK UNDIP">WABA FK UNDIP</option>
+<option value="WABA TAPERA">WABA TAPERA</option>
+<option value="WABA LPSK">WABA LPSK</option>
+<option value="WABA ARS UNIVERSITY">WABA ARS UNIVERSITY</option>
+      </select>
+    </div>
+    <div class="filter-field">
+      <label for="filter-month">Month</label>
+      <select id="filter-month" class="filter-select">
+        <option value="All">All Months</option>
+<option value="JAN">January</option>
+<option value="FEB">February</option>
+<option value="MAR">March</option>
+<option value="APR">April</option>
+<option value="MAY">May</option>
+<option value="JUN">June</option>
+<option value="JUL">July</option>
+<option value="AUG">August (MTD)</option>
+      </select>
+    </div>
+    <div class="filter-field">
+      <label for="filter-day">Day of Week</label>
+      <select id="filter-day" class="filter-select">
+        <option value="All">All Days</option>
+<option value="Monday">Monday</option>
+<option value="Tuesday">Tuesday</option>
+<option value="Wednesday">Wednesday</option>
+<option value="Thursday">Thursday</option>
+<option value="Friday">Friday</option>
+<option value="Saturday">Saturday</option>
+<option value="Sunday">Sunday</option>
+      </select>
+    </div>
+    <button type="button" class="filter-reset" id="filter-reset">Reset Filters</button>
+    <div class="filter-summary" id="filter-summary">Showing all 31 campaign waves · 232,738 messages</div>
+  </section>
+
+  <!-- ============ KPI GRID ============ -->
+  <div class="kpi-section-head">
+    <p class="card-eyebrow" style="margin:0;">Overall Performance · Live</p>
+    <span class="kpi-section-note">Main KPI cards react instantly to the filters above — charts and tables below always show the full reporting period for context.</span>
+  </div>
+  <section class="kpi-grid">
+    
+      <div class="kpi-card" id="kpi-campaigns">
+        <div class="kpi-top">
+          <span class="kpi-label">TOTAL CAMPAIGNS</span>
+          <span class="status-chip" id="kpi-campaigns-status" style="--dot:var(--good)"><i></i>Healthy</span>
+        </div>
+        <div class="kpi-value" id="kpi-campaigns-value">31</div>
+        <div class="kpi-sub" id="kpi-campaigns-sub">campaign waves · 5 active projects</div>
+        <div class="kpi-bottom">
+          <span class="kpi-delta delta-good" id="kpi-campaigns-delta">↑ 14.8% <span class="kpi-vs" id="kpi-campaigns-vs">vs prior period</span></span>
+          <span id="kpi-campaigns-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,21.3 14.0,15.8 26.0,25.0 38.0,10.3 50.0,3.0 62.0,12.2 74.0,6.7 86.0,3.0" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="3.0" r="2.6" fill="#1baf7a"/></svg></span>
+        </div>
+      </div>
+
+      <div class="kpi-card" id="kpi-messages">
+        <div class="kpi-top">
+          <span class="kpi-label">TOTAL MESSAGES</span>
+          <span class="status-chip" id="kpi-messages-status" style="--dot:var(--good)"><i></i>Healthy</span>
+        </div>
+        <div class="kpi-value" id="kpi-messages-value">232.7K</div>
+        <div class="kpi-sub" id="kpi-messages-sub">232,738 messages blasted</div>
+        <div class="kpi-bottom">
+          <span class="kpi-delta delta-good" id="kpi-messages-delta">↑ 6.1% <span class="kpi-vs" id="kpi-messages-vs">vs prior period</span></span>
+          <span id="kpi-messages-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,16.2 14.0,22.2 26.0,18.1 38.0,9.0 50.0,3.0 62.0,14.5 74.0,12.9 86.0,25.0" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#1baf7a"/></svg></span>
+        </div>
+      </div>
+
+      <div class="kpi-card" id="kpi-delivery">
+        <div class="kpi-top">
+          <span class="kpi-label">DELIVERY RATE</span>
+          <span class="status-chip" id="kpi-delivery-status" style="--dot:var(--good)"><i></i>Healthy</span>
+        </div>
+        <div class="kpi-value" id="kpi-delivery-value">73.8%</div>
+        <div class="kpi-sub" id="kpi-delivery-sub">171,720 delivered</div>
+        <div class="kpi-bottom">
+          <span class="kpi-delta delta-good" id="kpi-delivery-delta">↑ 1.2pp <span class="kpi-vs" id="kpi-delivery-vs">vs prior period</span></span>
+          <span id="kpi-delivery-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,3.0 14.0,4.8 26.0,25.0 38.0,13.2 50.0,17.4 62.0,5.9 74.0,8.3 86.0,10.1" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="10.1" r="2.6" fill="#1baf7a"/></svg></span>
+        </div>
+      </div>
+
+      <div class="kpi-card" id="kpi-read">
+        <div class="kpi-top">
+          <span class="kpi-label">READ RATE</span>
+          <span class="status-chip" id="kpi-read-status" style="--dot:var(--warning)"><i></i>Attention</span>
+        </div>
+        <div class="kpi-value" id="kpi-read-value">67.7%</div>
+        <div class="kpi-sub" id="kpi-read-sub">116,196 messages read</div>
+        <div class="kpi-bottom">
+          <span class="kpi-delta delta-bad" id="kpi-read-delta">↓ 2.2pp <span class="kpi-vs" id="kpi-read-vs">vs prior period</span></span>
+          <span id="kpi-read-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,4.2 14.0,9.1 26.0,6.1 38.0,3.0 50.0,4.2 62.0,5.8 74.0,5.9 86.0,25.0" fill="none" stroke="#eda100" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#eda100"/></svg></span>
+        </div>
+      </div>
+
+      <div class="kpi-card" id="kpi-response">
+        <div class="kpi-top">
+          <span class="kpi-label">RESPONSE RATE</span>
+          <span class="status-chip" id="kpi-response-status" style="--dot:var(--good)"><i></i>Healthy</span>
+        </div>
+        <div class="kpi-value" id="kpi-response-value">7.48%</div>
+        <div class="kpi-sub" id="kpi-response-sub">12,850 recipients responded</div>
+        <div class="kpi-bottom">
+          <span class="kpi-delta delta-good" id="kpi-response-delta">↑ 0.9pp <span class="kpi-vs" id="kpi-response-vs">vs prior period</span></span>
+          <span id="kpi-response-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,4.2 14.0,9.1 26.0,6.1 38.0,3.0 50.0,4.2 62.0,5.8 74.0,5.9 86.0,25.0" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#1baf7a"/></svg></span>
+        </div>
+      </div>
+
+      <div class="kpi-card" id="kpi-conversion">
+        <div class="kpi-top">
+          <span class="kpi-label">CONVERSION RATE</span>
+          <span class="status-chip" id="kpi-conversion-status" style="--dot:var(--good)"><i></i>Healthy</span>
+        </div>
+        <div class="kpi-value" id="kpi-conversion-value">2.77%</div>
+        <div class="kpi-sub" id="kpi-conversion-sub">4,755 desired actions completed</div>
+        <div class="kpi-bottom">
+          <span class="kpi-delta delta-good" id="kpi-conversion-delta">↑ 0.3pp <span class="kpi-vs" id="kpi-conversion-vs">vs prior period</span></span>
+          <span id="kpi-conversion-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,4.2 14.0,9.1 26.0,6.0 38.0,3.0 50.0,4.2 62.0,5.8 74.0,5.9 86.0,25.0" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#1baf7a"/></svg></span>
+        </div>
+      </div>
+
+      <div class="kpi-card" id="kpi-failed">
+        <div class="kpi-top">
+          <span class="kpi-label">FAILED / REJECTED</span>
+          <span class="status-chip" id="kpi-failed-status" style="--dot:var(--critical)"><i></i>Critical</span>
+        </div>
+        <div class="kpi-value" id="kpi-failed-value">56,357</div>
+        <div class="kpi-sub" id="kpi-failed-sub">24.2% of total blast volume</div>
+        <div class="kpi-bottom">
+          <span class="kpi-delta delta-bad" id="kpi-failed-delta">↑ 4.8% <span class="kpi-vs" id="kpi-failed-vs">vs prior period</span></span>
+          <span id="kpi-failed-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,20.4 14.0,22.9 26.0,13.4 38.0,19.2 50.0,3.0 62.0,20.4 74.0,20.1 86.0,25.0" fill="none" stroke="#d03b3b" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#d03b3b"/></svg></span>
+        </div>
+      </div>
+
+      <div class="kpi-card" id="kpi-optout">
+        <div class="kpi-top">
+          <span class="kpi-label">OPT-OUT RATE</span>
+          <span class="status-chip" id="kpi-optout-status" style="--dot:var(--good)"><i></i>Healthy</span>
+        </div>
+        <div class="kpi-value" id="kpi-optout-value">0.05%</div>
+        <div class="kpi-sub" id="kpi-optout-sub">82 recipients opted out</div>
+        <div class="kpi-bottom">
+          <span class="kpi-delta delta-good" id="kpi-optout-delta">↓ 0.0pp <span class="kpi-vs" id="kpi-optout-vs">vs prior period</span></span>
+          <span id="kpi-optout-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,3.0 14.0,11.8 26.0,7.4 38.0,20.6 50.0,16.2 62.0,25.0 74.0,20.6 86.0,20.6" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="20.6" r="2.6" fill="#1baf7a"/></svg></span>
+        </div>
+      </div>
+  </section>
+
+  <!-- ============ CAMPAIGN PERFORMANCE TREND + INSIGHT ============ -->
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <p class="card-eyebrow">Overall Performance</p>
+          <h2 class="card-title">WhatsApp Campaign Performance Trend</h2>
+          <p class="card-desc">Monthly volumes, January – August 2026 (August shown to-date, dashed)</p>
+        </div>
+      </div>
+      <div class="chart-surface">
+        <div class="legend-row-inline">
+          <span class="legend-key"><span class="lk-line" style="background:#2a78d6"></span>Messages Sent</span>
+          <span class="legend-key"><span class="lk-line" style="background:#eb6834"></span>Delivered</span>
+          <span class="legend-key"><span class="lk-line" style="background:#1baf7a"></span>Read</span>
+        </div>
+        <svg class="trend-chart" viewBox="0 0 900 300" width="100%" height="300" preserveAspectRatio="xMidYMid meet" role="img">
+<line x1="46" y1="266.0" x2="880" y2="266.0" class="gridline"/>
+<text x="36" y="270.0" class="axis-label" text-anchor="end">0K</text>
+<line x1="46" y1="203.5" x2="880" y2="203.5" class="gridline"/>
+<text x="36" y="207.5" class="axis-label" text-anchor="end">17K</text>
+<line x1="46" y1="141.0" x2="880" y2="141.0" class="gridline"/>
+<text x="36" y="145.0" class="axis-label" text-anchor="end">35K</text>
+<line x1="46" y1="78.5" x2="880" y2="78.5" class="gridline"/>
+<text x="36" y="82.5" class="axis-label" text-anchor="end">52K</text>
+<line x1="46" y1="16.0" x2="880" y2="16.0" class="gridline"/>
+<text x="36" y="20.0" class="axis-label" text-anchor="end">70K</text>
+<text x="46.0" y="288" class="axis-label" text-anchor="middle">JAN</text>
+<text x="165.1" y="288" class="axis-label" text-anchor="middle">FEB</text>
+<text x="284.3" y="288" class="axis-label" text-anchor="middle">MAR</text>
+<text x="403.4" y="288" class="axis-label" text-anchor="middle">APR</text>
+<text x="522.6" y="288" class="axis-label" text-anchor="middle">MAY</text>
+<text x="641.7" y="288" class="axis-label" text-anchor="middle">JUN</text>
+<text x="760.9" y="288" class="axis-label" text-anchor="middle">JUL</text>
+<text x="880.0" y="288" class="axis-label" text-anchor="middle">AUG</text>
+<polyline points="46.0,172.6 165.1,229.9 284.3,190.5 403.4,103.5 522.6,46.3 641.7,156.3 760.9,141.3" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="s-MessagesSent"/>
+<polyline points="760.9,141.3 880.0,256.5" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="172.6" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="January" data-value="26,160"/>
+<circle cx="165.1" cy="229.9" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="February" data-value="10,116"/>
+<circle cx="284.3" cy="190.5" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="March" data-value="21,143"/>
+<circle cx="403.4" cy="103.5" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="April" data-value="45,511"/>
+<circle cx="522.6" cy="46.3" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="May" data-value="61,529"/>
+<circle cx="641.7" cy="156.3" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="June" data-value="30,716"/>
+<circle cx="760.9" cy="141.3" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="July" data-value="34,916"/>
+<circle cx="880.0" cy="256.5" r="5.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Messages Sent" data-month="August (MTD)" data-value="2,647"/>
+<polyline points="46.0,180.4 165.1,234.2 284.3,229.3 403.4,149.6 522.6,126.3 641.7,171.6 760.9,164.7" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="s-Delivered"/>
+<polyline points="760.9,164.7 880.0,258.6" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="180.4" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="January" data-value="23,967"/>
+<circle cx="165.1" cy="234.2" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="February" data-value="8,913"/>
+<circle cx="284.3" cy="229.3" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="March" data-value="10,288"/>
+<circle cx="403.4" cy="149.6" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="April" data-value="32,598"/>
+<circle cx="522.6" cy="126.3" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="May" data-value="39,110"/>
+<circle cx="641.7" cy="171.6" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="June" data-value="26,427"/>
+<circle cx="760.9" cy="164.7" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="July" data-value="28,358"/>
+<circle cx="880.0" cy="258.6" r="5.5" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Delivered" data-month="August (MTD)" data-value="2,059"/>
+<polyline points="46.0,205.3 165.1,248.7 284.3,242.3 403.4,178.8 522.6,167.3 641.7,204.4 760.9,200.2" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="s-Read"/>
+<polyline points="760.9,200.2 880.0,266.0" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="205.3" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="January" data-value="16,984"/>
+<circle cx="165.1" cy="248.7" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="February" data-value="4,841"/>
+<circle cx="284.3" cy="242.3" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="March" data-value="6,639"/>
+<circle cx="403.4" cy="178.8" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="April" data-value="24,427"/>
+<circle cx="522.6" cy="167.3" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="May" data-value="27,644"/>
+<circle cx="641.7" cy="204.4" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="June" data-value="17,250"/>
+<circle cx="760.9" cy="200.2" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="July" data-value="18,411"/>
+<circle cx="880.0" cy="266.0" r="5.5" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Read" data-month="August (MTD)" data-value="0"/>
+<text x="888.0" y="260.5" class="end-label" fill="#2a78d6">2,647</text>
+<line x1="883.0" y1="258.6" x2="886.0" y2="270.5" stroke="#eb6834" stroke-width="1" opacity="0.5"/>
+<text x="888.0" y="274.5" class="end-label" fill="#eb6834">2,059</text>
+<line x1="883.0" y1="266.0" x2="886.0" y2="284.5" stroke="#1baf7a" stroke-width="1" opacity="0.5"/>
+<text x="888.0" y="288.5" class="end-label" fill="#1baf7a">0</text>
+</svg>
+        <p class="trend-subtitle">Response &amp; Conversion Outcome Trend (own scale)</p>
+        <div class="legend-row-inline">
+          <span class="legend-key"><span class="lk-line" style="background:#eda100"></span>Responded</span>
+          <span class="legend-key"><span class="lk-line" style="background:#e87ba4"></span>Converted</span>
+        </div>
+        <svg class="trend-chart" viewBox="0 0 900 190" width="100%" height="190" preserveAspectRatio="xMidYMid meet" role="img">
+<line x1="46" y1="156.0" x2="880" y2="156.0" class="gridline"/>
+<text x="36" y="160.0" class="axis-label" text-anchor="end">0</text>
+<line x1="46" y1="86.0" x2="880" y2="86.0" class="gridline"/>
+<text x="36" y="90.0" class="axis-label" text-anchor="end">1,750</text>
+<line x1="46" y1="16.0" x2="880" y2="16.0" class="gridline"/>
+<text x="36" y="20.0" class="axis-label" text-anchor="end">3,500</text>
+<text x="46.0" y="178" class="axis-label" text-anchor="middle">JAN</text>
+<text x="165.1" y="178" class="axis-label" text-anchor="middle">FEB</text>
+<text x="284.3" y="178" class="axis-label" text-anchor="middle">MAR</text>
+<text x="403.4" y="178" class="axis-label" text-anchor="middle">APR</text>
+<text x="522.6" y="178" class="axis-label" text-anchor="middle">MAY</text>
+<text x="641.7" y="178" class="axis-label" text-anchor="middle">JUN</text>
+<text x="760.9" y="178" class="axis-label" text-anchor="middle">JUL</text>
+<text x="880.0" y="178" class="axis-label" text-anchor="middle">AUG</text>
+<path d="M46.0,156.0 L46.0,80.9 165.1,134.6 284.3,126.6 403.4,48.0 522.6,33.7 641.7,79.7 760.9,74.6 L760.9,156.0 Z" fill="#eda100" opacity="0.10"/>
+<polyline points="46.0,80.9 165.1,134.6 284.3,126.6 403.4,48.0 522.6,33.7 641.7,79.7 760.9,74.6" fill="none" stroke="#eda100" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="760.9,74.6 880.0,156.0" fill="none" stroke="#eda100" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="80.9" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="January" data-value="1,878"/>
+<circle cx="165.1" cy="134.6" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="February" data-value="535"/>
+<circle cx="284.3" cy="126.6" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="March" data-value="734"/>
+<circle cx="403.4" cy="48.0" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="April" data-value="2,701"/>
+<circle cx="522.6" cy="33.7" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="May" data-value="3,057"/>
+<circle cx="641.7" cy="79.7" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="June" data-value="1,908"/>
+<circle cx="760.9" cy="74.6" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="July" data-value="2,036"/>
+<circle cx="880.0" cy="156.0" r="5.5" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Responded" data-month="August (MTD)" data-value="0"/>
+<path d="M46.0,156.0 L46.0,128.2 165.1,148.1 284.3,145.1 403.4,116.0 522.6,110.8 641.7,127.8 760.9,125.9 L760.9,156.0 Z" fill="#e87ba4" opacity="0.10"/>
+<polyline points="46.0,128.2 165.1,148.1 284.3,145.1 403.4,116.0 522.6,110.8 641.7,127.8 760.9,125.9" fill="none" stroke="#e87ba4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="760.9,125.9 880.0,156.0" fill="none" stroke="#e87ba4" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="128.2" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="January" data-value="695"/>
+<circle cx="165.1" cy="148.1" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="February" data-value="198"/>
+<circle cx="284.3" cy="145.1" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="March" data-value="272"/>
+<circle cx="403.4" cy="116.0" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="April" data-value="999"/>
+<circle cx="522.6" cy="110.8" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="May" data-value="1,131"/>
+<circle cx="641.7" cy="127.8" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="June" data-value="706"/>
+<circle cx="760.9" cy="125.9" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="July" data-value="753"/>
+<circle cx="880.0" cy="156.0" r="5.5" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Converted" data-month="August (MTD)" data-value="0"/>
+<text x="888.0" y="160.0" class="end-label" fill="#eda100">0</text>
+<line x1="883.0" y1="156.0" x2="886.0" y2="170.0" stroke="#e87ba4" stroke-width="1" opacity="0.5"/>
+<text x="888.0" y="174.0" class="end-label" fill="#e87ba4">0</text>
+</svg>
+      </div>
+    </div>
+    <div class="card insight-card">
+      <div>
+        <p class="card-eyebrow">Executive Insight</p>
+        <h2 class="card-title">What the trend is telling us</h2>
+        <p class="insight-text" style="margin-top:12px;">Delivery performance remains stable at 73.8% (+1.2pp vs. prior period), while response and conversion quality strengthened to 7.48% and 2.77% — up 0.9pp and 0.3pp respectively — even as total message volume grew 6.1% to 232,738. The rise in failed deliveries is concentrated in a single account (WABA ARS UNIVERSITY) and does not reflect portfolio-wide risk.</p>
+        <ul class="insight-signals">
+          <li><strong>Delivery health</strong> — stable, up 1.2pp against the prior period</li>
+          <li><strong>Engagement quality</strong> — improving faster than raw volume</li>
+          <li><strong>Concentration risk</strong> — 1 of 5 accounts drives most of the failure increase</li>
+          <li><strong>Next move</strong> — a targeted account-level fix, not a platform-wide one</li>
+        </ul>
+      </div>
+      <div class="insight-stats">
+        <div class="insight-stat"><div class="is-val">+6.1%</div><div class="is-lbl">Message volume growth</div></div>
+        <div class="insight-stat"><div class="is-val">+0.9pp</div><div class="is-lbl">Response rate gain</div></div>
+        <div class="insight-stat"><div class="is-val">+0.3pp</div><div class="is-lbl">Conversion rate gain</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FUNNEL ============ -->
+  <section class="card">
+    <div class="card-head">
+      <div>
+        <p class="card-eyebrow">Delivery Health</p>
+        <h2 class="card-title">Delivery Funnel — Target Audience to Conversion</h2>
+        <p class="card-desc">232,738 targeted → 174,322 sent → 171,720 delivered → 116,196 read → 12,850 responded → 4,755 converted</p>
+      </div>
+    </div>
+    <div class="funnel-wrap">
+      <div class="funnel-svg-wrap chart-surface"><svg class="funnel-chart" viewBox="0 0 980 384" width="100%" height="384" preserveAspectRatio="xMidYMid meet" role="img">
+<g class="funnel-row hover-dot" data-label="Target Audience" data-value="232,738" data-pct="100.0">
+<rect x="110.0" y="5.0" width="760.0" height="54" rx="8" fill="#86b6ef"/>
+<text x="490.0" y="26.0" text-anchor="middle" class="funnel-label">Target Audience</text>
+<text x="490.0" y="48.0" text-anchor="middle" class="funnel-value">232,738 <tspan class="funnel-pct">(100.0%)</tspan></text>
+</g>
+<g class="funnel-row hover-dot" data-label="Messages Sent" data-value="174,322" data-pct="74.9">
+<rect x="187.8" y="69.0" width="604.4" height="54" rx="8" fill="#5598e7"/>
+<text x="490.0" y="90.0" text-anchor="middle" class="funnel-label">Messages Sent</text>
+<text x="490.0" y="112.0" text-anchor="middle" class="funnel-value">174,322 <tspan class="funnel-pct">(74.9%)</tspan></text>
+</g>
+<text x="810.2" y="100.0" class="funnel-drop">▼ 25.1% drop-off</text>
+<g class="funnel-row hover-dot" data-label="Delivered" data-value="171,720" data-pct="73.8">
+<rect x="191.3" y="133.0" width="597.5" height="54" rx="8" fill="#2a78d6"/>
+<text x="490.0" y="154.0" text-anchor="middle" class="funnel-label">Delivered</text>
+<text x="490.0" y="176.0" text-anchor="middle" class="funnel-value">171,720 <tspan class="funnel-pct">(73.8%)</tspan></text>
+</g>
+<text x="806.7" y="164.0" class="funnel-drop">▼ 1.5% drop-off</text>
+<g class="funnel-row hover-dot" data-label="Read" data-value="116,196" data-pct="49.9">
+<rect x="265.2" y="197.0" width="449.5" height="54" rx="8" fill="#1c5cab"/>
+<text x="490.0" y="218.0" text-anchor="middle" class="funnel-label">Read</text>
+<text x="490.0" y="240.0" text-anchor="middle" class="funnel-value">116,196 <tspan class="funnel-pct">(49.9%)</tspan></text>
+</g>
+<text x="732.8" y="228.0" class="funnel-drop">▼ 32.3% drop-off</text>
+<g class="funnel-row hover-dot" data-label="Responded" data-value="12,850" data-pct="5.5">
+<rect x="402.9" y="261.0" width="174.2" height="54" rx="8" fill="#184f95"/>
+<text x="490.0" y="282.0" text-anchor="middle" class="funnel-label">Responded</text>
+<text x="490.0" y="304.0" text-anchor="middle" class="funnel-value">12,850 <tspan class="funnel-pct">(5.5%)</tspan></text>
+</g>
+<text x="595.1" y="292.0" class="funnel-drop biggest">▼ 88.9% drop-off — largest</text>
+<g class="funnel-row hover-dot" data-label="Converted" data-value="4,755" data-pct="2.0">
+<rect x="413.7" y="325.0" width="152.7" height="54" rx="8" fill="#0d366b"/>
+<text x="490.0" y="346.0" text-anchor="middle" class="funnel-label">Converted</text>
+<text x="490.0" y="368.0" text-anchor="middle" class="funnel-value">4,755 <tspan class="funnel-pct">(2.0%)</tspan></text>
+</g>
+<text x="584.3" y="356.0" class="funnel-drop">▼ 63.0% drop-off</text>
+</svg></div>
+      <div class="funnel-callout">
+        <h4>Largest drop-off</h4>
+        <div class="fc-big">88.9%</div>
+        <p><strong>Read → Responded</strong><br/>The gap between reading a message and taking action is the single biggest opportunity — most recipients open messages but few respond.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DELIVERY HEALTH PANEL ============ -->
+  <section class="card">
+    <div class="card-head">
+      <div>
+        <p class="card-eyebrow">Delivery Health</p>
+        <h2 class="card-title">WhatsApp Delivery Health Monitor</h2>
+        <p class="card-desc">Status across delivery outcomes, 232,738 total blast volume</p>
+      </div>
+    </div>
+    <div class="health-grid">
+      
+        <div class="health-item">
+          <div class="health-top"><span class="status-chip" style="--dot:var(--good)"><i></i>Healthy</span></div>
+          <div class="health-value">171,720</div>
+          <div class="health-label">Delivered</div>
+          <div class="health-pct">73.79% of blast volume</div>
+        </div>
+
+        <div class="health-item">
+          <div class="health-top"><span class="status-chip" style="--dot:var(--critical)"><i></i>Critical</span></div>
+          <div class="health-value">30,912</div>
+          <div class="health-label">Undelivered</div>
+          <div class="health-pct">13.28% of blast volume</div>
+        </div>
+
+        <div class="health-item">
+          <div class="health-top"><span class="status-chip" style="--dot:var(--warning)"><i></i>Attention</span></div>
+          <div class="health-value">9,914</div>
+          <div class="health-label">Rejected</div>
+          <div class="health-pct">4.26% of blast volume</div>
+        </div>
+
+        <div class="health-item">
+          <div class="health-top"><span class="status-chip" style="--dot:var(--warning)"><i></i>Attention</span></div>
+          <div class="health-value">9,797</div>
+          <div class="health-label">Invalid Number</div>
+          <div class="health-pct">4.21% of blast volume</div>
+        </div>
+
+        <div class="health-item">
+          <div class="health-top"><span class="status-chip" style="--dot:var(--warning)"><i></i>Attention</span></div>
+          <div class="health-value">3,920</div>
+          <div class="health-label">Blocked</div>
+          <div class="health-pct">1.68% of blast volume</div>
+        </div>
+
+        <div class="health-item">
+          <div class="health-top"><span class="status-chip" style="--dot:var(--good)"><i></i>Healthy</span></div>
+          <div class="health-value">1,732</div>
+          <div class="health-label">Failed (Other)</div>
+          <div class="health-pct">0.74% of blast volume</div>
+        </div>
+
+        <div class="health-item">
+          <div class="health-top"><span class="status-chip" style="--dot:var(--good)"><i></i>Healthy</span></div>
+          <div class="health-value">82</div>
+          <div class="health-label">Opt-Out</div>
+          <div class="health-pct">0.04% of blast volume</div>
+        </div>
+    </div>
+    <p class="trend-subtitle">Failed Message Trend (monthly, actual)</p>
+    <div class="chart-surface"><svg class="trend-chart" viewBox="0 0 900 145" width="100%" height="145" preserveAspectRatio="xMidYMid meet" role="img">
+<line x1="46" y1="119.0" x2="880" y2="119.0" class="gridline"/>
+<text x="46.0" y="137" class="axis-label" text-anchor="middle">JAN</text>
+<text x="165.1" y="137" class="axis-label" text-anchor="middle">FEB</text>
+<text x="284.3" y="137" class="axis-label" text-anchor="middle">MAR</text>
+<text x="403.4" y="137" class="axis-label" text-anchor="middle">APR</text>
+<text x="522.6" y="137" class="axis-label" text-anchor="middle">MAY</text>
+<text x="641.7" y="137" class="axis-label" text-anchor="middle">JUN</text>
+<text x="760.9" y="137" class="axis-label" text-anchor="middle">JUL</text>
+<text x="880.0" y="137" class="axis-label" text-anchor="middle">AUG</text>
+<path d="M46.0,119.0 L46.0,99.1 165.1,108.3 284.3,72.0 403.4,94.2 522.6,32.0 641.7,98.9 760.9,97.8 L760.9,119.0 Z" fill="#d03b3b" opacity="0.08"/>
+<polyline points="46.0,99.1 165.1,108.3 284.3,72.0 403.4,94.2 522.6,32.0 641.7,98.9 760.9,97.8" fill="none" stroke="#d03b3b" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="760.9,97.8 880.0,116.6" fill="none" stroke="#d03b3b" stroke-width="2.5" stroke-dasharray="2,4" opacity="0.65"/>
+<circle cx="46.0" cy="99.1" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="January" data-value="4,819"/>
+<circle cx="165.1" cy="108.3" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="February" data-value="2,575"/>
+<circle cx="284.3" cy="72.0" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="March" data-value="11,374"/>
+<circle cx="403.4" cy="94.2" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="April" data-value="6,003"/>
+<circle cx="522.6" cy="32.0" r="5" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="May" data-value="21,022"/>
+<text x="522.6" y="20.0" text-anchor="middle" class="end-label" fill="#d03b3b">21,022 peak</text>
+<circle cx="641.7" cy="98.9" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="June" data-value="4,849"/>
+<circle cx="760.9" cy="97.8" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="July" data-value="5,127"/>
+<circle cx="880.0" cy="116.6" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="August (MTD)" data-value="588"/>
+</svg></div>
+  </section>
+
+  <!-- ============ CAMPAIGN RANKING TABLE ============ -->
+  <section class="card">
+    <div class="card-head">
+      <div>
+        <p class="card-eyebrow">What Works</p>
+        <h2 class="card-title">Top Campaigns Performance</h2>
+        <p class="card-desc">Ranked by conversion rate · 5 active government &amp; education accounts</p>
+      </div>
+    </div>
+    <div class="table-scroll chart-surface">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th><th>Campaign</th><th>Sent (Target)</th><th>Delivery %</th><th>Read %</th><th>Response %</th><th>Conversion %</th><th>ROI / Impact</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td class="rank-cell"><span class="rank-badge">🥇</span></td>
+          <td class="name-cell"><span class="proj-name">WABA UNNES</span><span class="proj-seg">Higher Education</span></td>
+          <td class="num-cell">49,458</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:88.9%; --c:#eb6834"></span>88.9%</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:83.9%; --c:#1baf7a"></span>83.9%</td>
+          <td class="num-cell">12.53%</td>
+          <td class="num-cell strong-cell">4.64%</td>
+          <td class="roi-cell">Rp 70.5M revenue</td>
+          <td><span class="status-pill good">Excellent</span></td>
+        </tr>
+
+        <tr>
+          <td class="rank-cell"><span class="rank-badge">🥈</span></td>
+          <td class="name-cell"><span class="proj-name">WABA FK UNDIP</span><span class="proj-seg">Higher Education</span></td>
+          <td class="num-cell">21,651</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:75.6%; --c:#eb6834"></span>75.6%</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:71.5%; --c:#1baf7a"></span>71.5%</td>
+          <td class="num-cell">8.31%</td>
+          <td class="num-cell strong-cell">3.07%</td>
+          <td class="roi-cell">Rp 12.4M revenue</td>
+          <td><span class="status-pill good">Strong</span></td>
+        </tr>
+
+        <tr>
+          <td class="rank-cell"><span class="rank-badge">🥉</span></td>
+          <td class="name-cell"><span class="proj-name">WABA TAPERA</span><span class="proj-seg">Government Housing Fund</span></td>
+          <td class="num-cell">52,035</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:89.9%; --c:#eb6834"></span>89.9%</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:56.9%; --c:#1baf7a"></span>56.9%</td>
+          <td class="num-cell">5.66%</td>
+          <td class="num-cell strong-cell">2.10%</td>
+          <td class="roi-cell">Rp 19.4M revenue</td>
+          <td><span class="status-pill neutral">Stable</span></td>
+        </tr>
+
+        <tr>
+          <td class="rank-cell"><span class="rank-num">4</span></td>
+          <td class="name-cell"><span class="proj-name">WABA LPSK</span><span class="proj-seg">Witness & Victim Protection</span></td>
+          <td class="num-cell">46,729</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:89.6%; --c:#eb6834"></span>89.6%</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:60.2%; --c:#1baf7a"></span>60.2%</td>
+          <td class="num-cell">5.33%</td>
+          <td class="num-cell strong-cell">1.97%</td>
+          <td class="roi-cell">Public service · non-revenue</td>
+          <td><span class="status-pill neutral">Stable</span></td>
+        </tr>
+
+        <tr>
+          <td class="rank-cell"><span class="rank-num">5</span></td>
+          <td class="name-cell"><span class="proj-name">WABA ARS UNIVERSITY</span><span class="proj-seg">Higher Education</span></td>
+          <td class="num-cell">62,865</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:36.1%; --c:#eb6834"></span>36.1%</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:69.4%; --c:#1baf7a"></span>69.4%</td>
+          <td class="num-cell">4.22%</td>
+          <td class="num-cell strong-cell">1.56%</td>
+          <td class="roi-cell">Rp 22.0M revenue</td>
+          <td><span class="status-pill critical">Critical</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORY + ENGAGEMENT ============ -->
+  <section class="grid-2 even">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <p class="card-eyebrow">What Works</p>
+          <h2 class="card-title">Campaign Distribution by Category</h2>
+          <p class="card-desc">Share of 232,738 total messages by content type</p>
+        </div>
+      </div>
+      <div class="chart-surface"><svg class="category-chart" viewBox="0 0 560 294" width="100%" height="294" preserveAspectRatio="xMidYMid meet" role="img">
+<g class="hover-dot" data-label="Informational" data-value="65,167 msgs" data-pct="28">
+<text x="0" y="12.0" class="cat-label">Informational</text>
+<rect x="0" y="19.0" width="306" height="10" rx="5" fill="#eef1f5"/>
+<rect x="0" y="19.0" width="306.0" height="10" rx="5" fill="#2a78d6"/>
+<text x="320" y="28.0" class="cat-pct">28%</text>
+</g>
+<g class="hover-dot" data-label="Reminder" data-value="51,202 msgs" data-pct="22">
+<text x="0" y="54.0" class="cat-label">Reminder</text>
+<rect x="0" y="61.0" width="306" height="10" rx="5" fill="#eef1f5"/>
+<rect x="0" y="61.0" width="240.4" height="10" rx="5" fill="#eb6834"/>
+<text x="320" y="70.0" class="cat-pct">22%</text>
+</g>
+<g class="hover-dot" data-label="Transactional" data-value="41,893 msgs" data-pct="18">
+<text x="0" y="96.0" class="cat-label">Transactional</text>
+<rect x="0" y="103.0" width="306" height="10" rx="5" fill="#eef1f5"/>
+<rect x="0" y="103.0" width="196.7" height="10" rx="5" fill="#1baf7a"/>
+<text x="320" y="112.0" class="cat-pct">18%</text>
+</g>
+<g class="hover-dot" data-label="Service Notification" data-value="34,911 msgs" data-pct="15">
+<text x="0" y="138.0" class="cat-label">Service Notification</text>
+<rect x="0" y="145.0" width="306" height="10" rx="5" fill="#eef1f5"/>
+<rect x="0" y="145.0" width="163.9" height="10" rx="5" fill="#eda100"/>
+<text x="320" y="154.0" class="cat-pct">15%</text>
+</g>
+<g class="hover-dot" data-label="Promotional" data-value="23,274 msgs" data-pct="10">
+<text x="0" y="180.0" class="cat-label">Promotional</text>
+<rect x="0" y="187.0" width="306" height="10" rx="5" fill="#eef1f5"/>
+<rect x="0" y="187.0" width="109.3" height="10" rx="5" fill="#e87ba4"/>
+<text x="320" y="196.0" class="cat-pct">10%</text>
+</g>
+<g class="hover-dot" data-label="Public Service" data-value="11,637 msgs" data-pct="5">
+<text x="0" y="222.0" class="cat-label">Public Service</text>
+<rect x="0" y="229.0" width="306" height="10" rx="5" fill="#eef1f5"/>
+<rect x="0" y="229.0" width="54.6" height="10" rx="5" fill="#008300"/>
+<text x="320" y="238.0" class="cat-pct">5%</text>
+</g>
+<g class="hover-dot" data-label="Emergency / Critical Information" data-value="4,655 msgs" data-pct="2">
+<text x="0" y="264.0" class="cat-label">Emergency / Critical Information</text>
+<rect x="0" y="271.0" width="306" height="10" rx="5" fill="#eef1f5"/>
+<rect x="0" y="271.0" width="21.9" height="10" rx="5" fill="#4a3aa7"/>
+<text x="320" y="280.0" class="cat-pct">2%</text>
+</g>
+</svg></div>
+      <div class="cat-summary">
+        <div><span class="cs-val">7</span><span class="cs-lbl">Active content categories</span></div>
+        <div><span class="cs-val">Informational + Reminder</span><span class="cs-lbl">account for 50% of total volume</span></div>
+        <div><span class="cs-val">2%</span><span class="cs-lbl">Emergency / Critical share — reserved for urgent notices</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <p class="card-eyebrow">Engagement</p>
+          <h2 class="card-title">Customer Engagement Analytics</h2>
+          <p class="card-desc">Unique recipient behaviour across the reporting period</p>
+        </div>
+      </div>
+      <div class="eng-grid">
+        <div class="eng-tile"><div class="eng-value">68,400</div><div class="eng-label">Active Recipients</div><div class="eng-sub">Contacted at least once this period</div></div>
+<div class="eng-tile"><div class="eng-value">52,300</div><div class="eng-label">Unique Readers</div><div class="eng-sub">76.5% of active recipients</div></div>
+<div class="eng-tile"><div class="eng-value">9,600</div><div class="eng-label">Unique Responders</div><div class="eng-sub">18.4% of unique readers</div></div>
+<div class="eng-tile"><div class="eng-value">3,150</div><div class="eng-label">Repeat Responders</div><div class="eng-sub">32.8% responded 2+ times</div></div>
+<div class="eng-tile"><div class="eng-value">41,900</div><div class="eng-label">New Customers Engaged</div><div class="eng-sub">First contact this period</div></div>
+<div class="eng-tile"><div class="eng-value">26,500</div><div class="eng-label">Returning Customers</div><div class="eng-sub">Engaged in prior periods too</div></div>
+      </div>
+      <p class="trend-subtitle">Unique Reader &amp; Responder Trend</p>
+      <div class="chart-surface"><svg class="trend-chart" viewBox="0 0 900 220" width="100%" height="220" preserveAspectRatio="xMidYMid meet" role="img">
+<line x1="46" y1="186.0" x2="880" y2="186.0" class="gridline"/>
+<text x="36" y="190.0" class="axis-label" text-anchor="end">0</text>
+<line x1="46" y1="101.0" x2="880" y2="101.0" class="gridline"/>
+<text x="36" y="105.0" class="axis-label" text-anchor="end">6,250</text>
+<line x1="46" y1="16.0" x2="880" y2="16.0" class="gridline"/>
+<text x="36" y="20.0" class="axis-label" text-anchor="end">12,500</text>
+<text x="46.0" y="208" class="axis-label" text-anchor="middle">JAN</text>
+<text x="165.1" y="208" class="axis-label" text-anchor="middle">FEB</text>
+<text x="284.3" y="208" class="axis-label" text-anchor="middle">MAR</text>
+<text x="403.4" y="208" class="axis-label" text-anchor="middle">APR</text>
+<text x="522.6" y="208" class="axis-label" text-anchor="middle">MAY</text>
+<text x="641.7" y="208" class="axis-label" text-anchor="middle">JUN</text>
+<text x="760.9" y="208" class="axis-label" text-anchor="middle">JUL</text>
+<text x="880.0" y="208" class="axis-label" text-anchor="middle">AUG</text>
+<path d="M46.0,186.0 L46.0,83.2 165.1,156.7 284.3,145.8 403.4,38.2 522.6,18.7 641.7,81.6 760.9,74.6 L760.9,186.0 Z" fill="#2a78d6" opacity="0.08"/>
+<polyline points="46.0,83.2 165.1,156.7 284.3,145.8 403.4,38.2 522.6,18.7 641.7,81.6 760.9,74.6" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="760.9,74.6 880.0,186.0" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-dasharray="2,4" opacity="0.65"/>
+<circle cx="46.0" cy="83.2" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="January" data-value="7,558"/>
+<circle cx="165.1" cy="156.7" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="February" data-value="2,154"/>
+<circle cx="284.3" cy="145.8" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="March" data-value="2,954"/>
+<circle cx="403.4" cy="38.2" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="April" data-value="10,870"/>
+<circle cx="522.6" cy="18.7" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="May" data-value="12,302"/>
+<circle cx="641.7" cy="81.6" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="June" data-value="7,676"/>
+<circle cx="760.9" cy="74.6" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="July" data-value="8,193"/>
+<circle cx="880.0" cy="186.0" r="5" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="August (MTD)" data-value="0"/>
+<path d="M46.0,186.0 L46.0,167.6 165.1,180.8 284.3,178.8 403.4,159.5 522.6,156.1 641.7,167.3 760.9,166.1 L760.9,186.0 Z" fill="#1baf7a" opacity="0.08"/>
+<polyline points="46.0,167.6 165.1,180.8 284.3,178.8 403.4,159.5 522.6,156.1 641.7,167.3 760.9,166.1" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="760.9,166.1 880.0,186.0" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-dasharray="2,4" opacity="0.65"/>
+<circle cx="46.0" cy="167.6" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="January" data-value="1,352"/>
+<circle cx="165.1" cy="180.8" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="February" data-value="385"/>
+<circle cx="284.3" cy="178.8" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="March" data-value="528"/>
+<circle cx="403.4" cy="159.5" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="April" data-value="1,945"/>
+<circle cx="522.6" cy="156.1" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="May" data-value="2,201"/>
+<circle cx="641.7" cy="167.3" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="June" data-value="1,374"/>
+<circle cx="760.9" cy="166.1" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="July" data-value="1,466"/>
+<circle cx="880.0" cy="186.0" r="5" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="August (MTD)" data-value="0"/>
+<text x="888.0" y="190.0" class="end-label" fill="#2a78d6">0</text>
+<line x1="883.0" y1="186.0" x2="886.0" y2="200.0" stroke="#1baf7a" stroke-width="1" opacity="0.5"/>
+<text x="888.0" y="204.0" class="end-label" fill="#1baf7a">0</text>
+</svg></div>
+    </div>
+  </section>
+
+  <!-- ============ HEATMAP ============ -->
+  <section class="card">
+    <div class="card-head">
+      <div>
+        <p class="card-eyebrow">Engagement</p>
+        <h2 class="card-title">Best Performing Time — Optimal Blasting Window</h2>
+        <p class="card-desc">Engagement index by day of week and time block (higher = stronger historical delivery &amp; read performance)</p>
+      </div>
+    </div>
+    <div class="chart-surface" style="overflow-x:auto;"><svg class="heatmap-chart" viewBox="0 0 980 310" width="100%" height="310" preserveAspectRatio="xMidYMid meet" role="img">
+<text x="200.8" y="14" text-anchor="middle" class="heat-hlabel">06:00–09:00</text>
+<text x="342.5" y="14" text-anchor="middle" class="heat-hlabel">09:00–11:00</text>
+<text x="484.2" y="14" text-anchor="middle" class="heat-hlabel">11:00–13:00</text>
+<text x="625.8" y="14" text-anchor="middle" class="heat-hlabel">13:00–16:00</text>
+<text x="767.5" y="14" text-anchor="middle" class="heat-hlabel">16:00–19:00</text>
+<text x="909.2" y="14" text-anchor="middle" class="heat-hlabel">19:00–22:00</text>
+<text x="118" y="48.0" text-anchor="end" class="heat-dlabel">Monday</text>
+<g class="hover-dot" data-label="Monday" data-month="06:00–09:00" data-value="Engagement index 36">
+<rect x="131.5" y="25.5" width="138.7" height="37.0" rx="6" fill="#bdd3ef"/>
+</g>
+<g class="hover-dot" data-label="Monday" data-month="09:00–11:00" data-value="Engagement index 81">
+<rect x="273.2" y="25.5" width="138.7" height="37.0" rx="6" fill="#3c608e"/>
+</g>
+<g class="hover-dot" data-label="Monday" data-month="11:00–13:00" data-value="Engagement index 59">
+<rect x="414.8" y="25.5" width="138.7" height="37.0" rx="6" fill="#7a98bd"/>
+</g>
+<g class="hover-dot" data-label="Monday" data-month="13:00–16:00" data-value="Engagement index 77">
+<rect x="556.5" y="25.5" width="138.7" height="37.0" rx="6" fill="#486a97"/>
+</g>
+<g class="hover-dot" data-label="Monday" data-month="16:00–19:00" data-value="Engagement index 55">
+<rect x="698.2" y="25.5" width="138.7" height="37.0" rx="6" fill="#86a2c6"/>
+</g>
+<g class="hover-dot" data-label="Monday" data-month="19:00–22:00" data-value="Engagement index 33">
+<rect x="839.8" y="25.5" width="138.7" height="37.0" rx="6" fill="#c4daf4"/>
+</g>
+<text x="118" y="88.0" text-anchor="end" class="heat-dlabel">Tuesday</text>
+<g class="hover-dot" data-label="Tuesday" data-month="06:00–09:00" data-value="Engagement index 33">
+<rect x="131.5" y="65.5" width="138.7" height="37.0" rx="6" fill="#c4daf4"/>
+</g>
+<g class="hover-dot" data-label="Tuesday" data-month="09:00–11:00" data-value="Engagement index 75">
+<rect x="273.2" y="65.5" width="138.7" height="37.0" rx="6" fill="#4c6f9b"/>
+</g>
+<g class="hover-dot" data-label="Tuesday" data-month="11:00–13:00" data-value="Engagement index 55">
+<rect x="414.8" y="65.5" width="138.7" height="37.0" rx="6" fill="#86a3c6"/>
+</g>
+<g class="hover-dot" data-label="Tuesday" data-month="13:00–16:00" data-value="Engagement index 71">
+<rect x="556.5" y="65.5" width="138.7" height="37.0" rx="6" fill="#5779a3"/>
+</g>
+<g class="hover-dot" data-label="Tuesday" data-month="16:00–19:00" data-value="Engagement index 51">
+<rect x="698.2" y="65.5" width="138.7" height="37.0" rx="6" fill="#91acce"/>
+</g>
+<g class="hover-dot" data-label="Tuesday" data-month="19:00–22:00" data-value="Engagement index 31">
+<rect x="839.8" y="65.5" width="138.7" height="37.0" rx="6" fill="#cbe0fa"/>
+</g>
+<text x="118" y="128.0" text-anchor="end" class="heat-dlabel">Wednesday</text>
+<g class="hover-dot" data-label="Wednesday" data-month="06:00–09:00" data-value="Engagement index 33">
+<rect x="131.5" y="105.5" width="138.7" height="37.0" rx="6" fill="#c5dbf5"/>
+</g>
+<g class="hover-dot" data-label="Wednesday" data-month="09:00–11:00" data-value="Engagement index 74">
+<rect x="273.2" y="105.5" width="138.7" height="37.0" rx="6" fill="#4f719d"/>
+</g>
+<g class="hover-dot" data-label="Wednesday" data-month="11:00–13:00" data-value="Engagement index 54">
+<rect x="414.8" y="105.5" width="138.7" height="37.0" rx="6" fill="#88a4c7"/>
+</g>
+<g class="hover-dot" data-label="Wednesday" data-month="13:00–16:00" data-value="Engagement index 70">
+<rect x="556.5" y="105.5" width="138.7" height="37.0" rx="6" fill="#5a7ba5"/>
+</g>
+<g class="hover-dot" data-label="Wednesday" data-month="16:00–19:00" data-value="Engagement index 50">
+<rect x="698.2" y="105.5" width="138.7" height="37.0" rx="6" fill="#93aed0"/>
+</g>
+<g class="hover-dot" data-label="Wednesday" data-month="19:00–22:00" data-value="Engagement index 30">
+<rect x="839.8" y="105.5" width="138.7" height="37.0" rx="6" fill="#cce1fa"/>
+</g>
+<text x="118" y="168.0" text-anchor="end" class="heat-dlabel">Thursday</text>
+<g class="hover-dot" data-label="Thursday" data-month="06:00–09:00" data-value="Engagement index 32">
+<rect x="131.5" y="145.5" width="138.7" height="37.0" rx="6" fill="#c6dcf6"/>
+</g>
+<g class="hover-dot" data-label="Thursday" data-month="09:00–11:00" data-value="Engagement index 73">
+<rect x="273.2" y="145.5" width="138.7" height="37.0" rx="6" fill="#51739e"/>
+</g>
+<g class="hover-dot" data-label="Thursday" data-month="11:00–13:00" data-value="Engagement index 54">
+<rect x="414.8" y="145.5" width="138.7" height="37.0" rx="6" fill="#8aa6c9"/>
+</g>
+<g class="hover-dot" data-label="Thursday" data-month="13:00–16:00" data-value="Engagement index 70">
+<rect x="556.5" y="145.5" width="138.7" height="37.0" rx="6" fill="#5c7da6"/>
+</g>
+<g class="hover-dot" data-label="Thursday" data-month="16:00–19:00" data-value="Engagement index 50">
+<rect x="698.2" y="145.5" width="138.7" height="37.0" rx="6" fill="#94afd1"/>
+</g>
+<g class="hover-dot" data-label="Thursday" data-month="19:00–22:00" data-value="Engagement index 30">
+<rect x="839.8" y="145.5" width="138.7" height="37.0" rx="6" fill="#cde2fb"/>
+</g>
+<text x="118" y="208.0" text-anchor="end" class="heat-dlabel">Friday</text>
+<g class="hover-dot" data-label="Friday" data-month="06:00–09:00" data-value="Engagement index 38">
+<rect x="131.5" y="185.5" width="138.7" height="37.0" rx="6" fill="#b5cce9"/>
+</g>
+<g class="hover-dot" data-label="Friday" data-month="09:00–11:00" data-value="Engagement index 87">
+<rect x="273.2" y="185.5" width="138.7" height="37.0" rx="6" fill="#2a5081"/>
+<rect x="273.2" y="185.5" width="138.7" height="37.0" rx="6" fill="none" stroke="#1baf7a" stroke-width="2.5"/>
+</g>
+<g class="hover-dot" data-label="Friday" data-month="11:00–13:00" data-value="Engagement index 64">
+<rect x="414.8" y="185.5" width="138.7" height="37.0" rx="6" fill="#6d8cb3"/>
+</g>
+<g class="hover-dot" data-label="Friday" data-month="13:00–16:00" data-value="Engagement index 83">
+<rect x="556.5" y="185.5" width="138.7" height="37.0" rx="6" fill="#375b8a"/>
+</g>
+<g class="hover-dot" data-label="Friday" data-month="16:00–19:00" data-value="Engagement index 59">
+<rect x="698.2" y="185.5" width="138.7" height="37.0" rx="6" fill="#7a98bd"/>
+</g>
+<g class="hover-dot" data-label="Friday" data-month="19:00–22:00" data-value="Engagement index 36">
+<rect x="839.8" y="185.5" width="138.7" height="37.0" rx="6" fill="#bdd4ef"/>
+</g>
+<text x="118" y="248.0" text-anchor="end" class="heat-dlabel">Saturday</text>
+<g class="hover-dot" data-label="Saturday" data-month="06:00–09:00" data-value="Engagement index 43">
+<rect x="131.5" y="225.5" width="138.7" height="37.0" rx="6" fill="#a8c1df"/>
+</g>
+<g class="hover-dot" data-label="Saturday" data-month="09:00–11:00" data-value="Engagement index 98">
+<rect x="273.2" y="225.5" width="138.7" height="37.0" rx="6" fill="#0d366b"/>
+</g>
+<g class="hover-dot" data-label="Saturday" data-month="11:00–13:00" data-value="Engagement index 71">
+<rect x="414.8" y="225.5" width="138.7" height="37.0" rx="6" fill="#5879a3"/>
+</g>
+<g class="hover-dot" data-label="Saturday" data-month="13:00–16:00" data-value="Engagement index 92">
+<rect x="556.5" y="225.5" width="138.7" height="37.0" rx="6" fill="#1b4376"/>
+</g>
+<g class="hover-dot" data-label="Saturday" data-month="16:00–19:00" data-value="Engagement index 66">
+<rect x="698.2" y="225.5" width="138.7" height="37.0" rx="6" fill="#6686ae"/>
+</g>
+<g class="hover-dot" data-label="Saturday" data-month="19:00–22:00" data-value="Engagement index 40">
+<rect x="839.8" y="225.5" width="138.7" height="37.0" rx="6" fill="#b1c9e6"/>
+</g>
+<text x="118" y="288.0" text-anchor="end" class="heat-dlabel">Sunday</text>
+<g class="hover-dot" data-label="Sunday" data-month="06:00–09:00" data-value="Engagement index 34">
+<rect x="131.5" y="265.5" width="138.7" height="37.0" rx="6" fill="#c2d8f3"/>
+</g>
+<g class="hover-dot" data-label="Sunday" data-month="09:00–11:00" data-value="Engagement index 76">
+<rect x="273.2" y="265.5" width="138.7" height="37.0" rx="6" fill="#496b98"/>
+</g>
+<g class="hover-dot" data-label="Sunday" data-month="11:00–13:00" data-value="Engagement index 56">
+<rect x="414.8" y="265.5" width="138.7" height="37.0" rx="6" fill="#84a0c4"/>
+</g>
+<g class="hover-dot" data-label="Sunday" data-month="13:00–16:00" data-value="Engagement index 73">
+<rect x="556.5" y="265.5" width="138.7" height="37.0" rx="6" fill="#5475a0"/>
+</g>
+<g class="hover-dot" data-label="Sunday" data-month="16:00–19:00" data-value="Engagement index 52">
+<rect x="698.2" y="265.5" width="138.7" height="37.0" rx="6" fill="#8faacc"/>
+</g>
+<g class="hover-dot" data-label="Sunday" data-month="19:00–22:00" data-value="Engagement index 31">
+<rect x="839.8" y="265.5" width="138.7" height="37.0" rx="6" fill="#cadff8"/>
+</g>
+</svg></div>
+    <div class="heatmap-foot">
+      <div class="heat-scale">Low <span class="hs-bar"></span> High</div>
+      <div class="best-time-callout">
+        <span style="font-size:20px;">🎯</span>
+        <div>
+          <div class="btc-label">Best Time to Blast</div>
+          <div class="btc-value">Monday & Friday · 09:00–11:00 and 13:00–16:00</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MATRIX + ALERTS ============ -->
+  <section class="grid-2 even">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <p class="card-eyebrow">Campaign Effectiveness</p>
+          <h2 class="card-title">Effectiveness Matrix</h2>
+          <p class="card-desc">Read rate vs. conversion rate · bubble size = message volume</p>
+        </div>
+      </div>
+      <div class="chart-surface"><svg class="matrix-chart" viewBox="0 0 640 460" width="100%" height="460" preserveAspectRatio="xMidYMid meet" role="img">
+<rect x="56" y="56" width="236.3" height="194.3" fill="#fab219" opacity="0.08"/>
+<rect x="292.3" y="56" width="291.7" height="194.3" fill="#0ca30c" opacity="0.08"/>
+<rect x="56" y="250.3" width="236.3" height="153.7" fill="#d03b3b" opacity="0.08"/>
+<rect x="292.3" y="250.3" width="291.7" height="153.7" fill="#ec835a" opacity="0.08"/>
+<text x="64" y="74" class="quad-label">HIGH ENGAGEMENT / LOW CONVERSION</text>
+<text x="576" y="74" text-anchor="end" class="quad-label">HIGH ENGAGEMENT / HIGH CONVERSION</text>
+<text x="64" y="396" class="quad-label">LOW ENGAGEMENT / LOW CONVERSION</text>
+<text x="576" y="396" text-anchor="end" class="quad-label">LOW ENGAGEMENT / HIGH CONVERSION</text>
+<line x1="292.3" y1="56" x2="292.3" y2="404" class="avg-line"/>
+<line x1="56" y1="250.3" x2="584" y2="250.3" class="avg-line"/>
+<text x="292.3" y="422" text-anchor="middle" class="axis-label">avg conv 2.77%</text>
+<text x="580.0" y="242.3" text-anchor="end" class="axis-label">avg read 67.7%</text>
+<text x="320.0" y="446" text-anchor="middle" class="axis-title">Conversion Rate →</text>
+<text x="16" y="230.0" text-anchor="middle" class="axis-title" transform="rotate(-90 16 230.0)">Read Rate →</text>
+<g class="hover-dot" data-label="WABA UNNES" data-value="Read 83.9% · Conv 4.64%" data-pct="49,458 msgs">
+<circle cx="516.8" cy="109.1" r="18.7" fill="#2a78d6" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
+<text x="516.8" y="82.4" text-anchor="middle" class="matrix-label">UNNES</text>
+</g>
+<g class="hover-dot" data-label="WABA FK UNDIP" data-value="Read 71.5% · Conv 3.07%" data-pct="21,651 msgs">
+<circle cx="328.4" cy="217.0" r="12.7" fill="#1baf7a" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
+<text x="328.4" y="196.3" text-anchor="middle" class="matrix-label">FK UNDIP</text>
+</g>
+<g class="hover-dot" data-label="WABA TAPERA" data-value="Read 56.9% · Conv 2.10%" data-pct="52,035 msgs">
+<circle cx="212.0" cy="344.0" r="19.2" fill="#eda100" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
+<text x="212.0" y="379.2" text-anchor="middle" class="matrix-label">TAPERA</text>
+</g>
+<g class="hover-dot" data-label="WABA LPSK" data-value="Read 60.2% · Conv 1.97%" data-pct="46,729 msgs">
+<circle cx="196.4" cy="315.3" r="18.1" fill="#4a3aa7" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
+<text x="170.3" y="319.3" text-anchor="end" class="matrix-label">LPSK</text>
+</g>
+<g class="hover-dot" data-label="WABA ARS UNIVERSITY" data-value="Read 69.4% · Conv 1.56%" data-pct="62,865 msgs">
+<circle cx="147.2" cy="235.2" r="21.5" fill="#e34948" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
+<text x="147.2" y="205.7" text-anchor="middle" class="matrix-label">ARS UNIVERSITY</text>
+</g>
+</svg></div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <p class="card-eyebrow">What Is The Risk</p>
+          <h2 class="card-title">Executive Alert Center</h2>
+          <p class="card-desc">Top 5 items requiring management attention</p>
+        </div>
+      </div>
+      <div class="alert-list">
+        
+        <div class="alert-row critical">
+          <span class="alert-icon">🔴</span>
+          <div><div class="alert-title">Undelivered messages elevated</div><div class="alert-body">Undelivered volume reached 13.3% of blast (30,912 messages), concentrated in WABA ARS UNIVERSITY.</div></div>
+        </div>
+
+        <div class="alert-row critical">
+          <span class="alert-icon">🔴</span>
+          <div><div class="alert-title">WABA ARS UNIVERSITY failure rate critical</div><div class="alert-body">49.4% failure rate — nearly double the portfolio average of 24.2%. Number-list audit recommended before next cycle.</div></div>
+        </div>
+
+        <div class="alert-row warning">
+          <span class="alert-icon">🟠</span>
+          <div><div class="alert-title">Read rate trails in WABA TAPERA</div><div class="alert-body">56.9% read rate is 10.8pp below the portfolio average of 67.7%.</div></div>
+        </div>
+
+        <div class="alert-row warning">
+          <span class="alert-icon">🟠</span>
+          <div><div class="alert-title">Response rate below benchmark</div><div class="alert-body">WABA ARS UNIVERSITY and WABA LPSK trail the portfolio response benchmark of 7.48%.</div></div>
+        </div>
+
+        <div class="alert-row good">
+          <span class="alert-icon">🟢</span>
+          <div><div class="alert-title">Delivery health & opt-out remain strong</div><div class="alert-body">Portfolio delivery rate up +1.2pp to 73.8%; opt-out rate excellent at 0.05%.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RECOMMENDATIONS ============ -->
+  <section class="card">
+    <div class="card-head">
+      <div>
+        <p class="card-eyebrow">What Should We Do</p>
+        <h2 class="card-title">AI-Powered Executive Recommendation</h2>
+        <p class="card-desc">Generated from current-period performance patterns across all 5 active campaigns</p>
+      </div>
+    </div>
+    <div class="reco-grid">
+      
+        <div class="reco-card-item">
+          <div class="reco-num">01</div>
+          <div class="reco-title">Cleanse the WABA ARS UNIVERSITY number list</div>
+          <div class="reco-body">Failure rate sits at 49.4%, nearly double the portfolio average — audit and revalidate recipient numbers before the next blast cycle.</div>
+        </div>
+
+        <div class="reco-card-item">
+          <div class="reco-num">02</div>
+          <div class="reco-title">Shift blast timing to the proven window</div>
+          <div class="reco-body">Monday & Friday, 09:00–11:00 and 13:00–16:00 show the highest sustained read performance across eight months of data.</div>
+        </div>
+
+        <div class="reco-card-item">
+          <div class="reco-num">03</div>
+          <div class="reco-title">Diagnose low read rate in WABA TAPERA</div>
+          <div class="reco-body">At 56.9% read rate versus a 67.7% portfolio average, review message content, sender reputation, and send cadence.</div>
+        </div>
+
+        <div class="reco-card-item">
+          <div class="reco-num">04</div>
+          <div class="reco-title">Replicate the WABA UNNES engagement model</div>
+          <div class="reco-body">Best-in-class 83.9% read rate and 4.64% conversion — document and apply its content and timing approach to lower-performing campaigns.</div>
+        </div>
+
+        <div class="reco-card-item">
+          <div class="reco-num">05</div>
+          <div class="reco-title">Protect delivery quality while scaling volume</div>
+          <div class="reco-body">Opt-out remains excellent at 0.05%; monitor frequency as message volume grows to avoid audience fatigue.</div>
+        </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>Source: Performance_WABA_GOV_S3.xlsx · Government &amp; Energy Segment 3</span>
+    <span>Generated 25 Aug 2026, 18:40 WIB · Confidential — Internal Executive Use Only</span>
+  </footer>
+
+</div>
+
+<div id="tooltip"></div>
+<script>
+(function(){
+  // ================= Theme toggle =================
+  var root = document.documentElement;
+  var themeBtn = document.getElementById('theme-toggle');
+  function applyTheme(t){
+    root.setAttribute('data-theme', t);
+    themeBtn.textContent = t === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+    try { localStorage.setItem('waba-dashboard-theme', t); } catch(e){}
+  }
+  var savedTheme = null;
+  try { savedTheme = localStorage.getItem('waba-dashboard-theme'); } catch(e){}
+  var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : (systemDark ? 'dark' : 'light'));
+  themeBtn.addEventListener('click', function(){
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // ================= Tooltip =================
+  var tt = document.getElementById('tooltip');
+  document.addEventListener('pointermove', function(e){
+    var el = e.target.closest ? e.target.closest('.hover-dot') : null;
+    if (!el) { tt.classList.remove('show'); return; }
+    var label = el.getAttribute('data-label') || '';
+    var month = el.getAttribute('data-month') || '';
+    var value = el.getAttribute('data-value') || '';
+    var pct = el.getAttribute('data-pct');
+    var html = '<div class="tt-val"></div>';
+    tt.innerHTML = html;
+    tt.querySelector('.tt-val').textContent = value;
+    var subParts = [label, month].filter(Boolean).join(' · ');
+    if (subParts) {
+      var suffix = pct ? (' · ' + pct + (String(pct).indexOf('msgs') > -1 ? '' : '%')) : '';
+      var sub = document.createElement('div');
+      sub.className = 'tt-sub';
+      sub.textContent = subParts + suffix;
+      tt.appendChild(sub);
+    }
+    tt.style.left = e.clientX + 'px';
+    tt.style.top = (e.clientY - 12) + 'px';
+    tt.classList.add('show');
+  });
+
+  // ================= Interactive filters -> Main KPI cards =================
+  var RAW = [{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":42,"sent":32,"deliv":42,"read":25,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":45,"sent":40,"deliv":45,"read":33,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":88,"sent":84,"deliv":88,"read":68,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":106,"sent":96,"deliv":106,"read":87,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":83,"sent":72,"deliv":83,"read":58,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":353,"sent":236,"deliv":353,"read":168,"failed":117,"optout":2},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":71,"sent":61,"deliv":71,"read":52,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":604,"sent":435,"deliv":604,"read":365,"failed":169,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":133,"sent":111,"deliv":133,"read":85,"failed":22,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":83,"sent":75,"deliv":83,"read":64,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":81,"sent":71,"deliv":81,"read":58,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":221,"sent":156,"deliv":221,"read":116,"failed":65,"optout":1},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":5156,"sent":3850,"deliv":5156,"read":3088,"failed":1306,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":16,"sent":16,"deliv":16,"read":13,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":122,"sent":110,"deliv":122,"read":91,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":71,"sent":63,"deliv":71,"read":48,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":114,"sent":86,"deliv":114,"read":66,"failed":28,"optout":1},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":91,"sent":75,"deliv":91,"read":66,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":7,"sent":6,"deliv":7,"read":6,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":5759,"sent":4196,"deliv":5759,"read":2837,"failed":1563,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Tuesday","blast":1,"sent":1,"deliv":0,"read":0,"failed":0,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Thursday","blast":7,"sent":5,"deliv":5,"read":3,"failed":2,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Friday","blast":10249,"sent":9450,"deliv":9351,"read":8386,"failed":799,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Monday","blast":357,"sent":0,"deliv":0,"read":0,"failed":357,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Tuesday","blast":334,"sent":315,"deliv":158,"read":178,"failed":19,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Thursday","blast":504,"sent":469,"deliv":142,"read":201,"failed":35,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Friday","blast":290,"sent":259,"deliv":111,"read":142,"failed":31,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Monday","blast":504,"sent":410,"deliv":396,"read":302,"failed":94,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Tuesday","blast":334,"sent":280,"deliv":279,"read":190,"failed":54,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Friday","blast":334,"sent":281,"deliv":279,"read":188,"failed":53,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Tuesday","blast":3,"sent":3,"deliv":3,"read":3,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Wednesday","blast":7,"sent":6,"deliv":7,"read":1,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Thursday","blast":5013,"sent":3731,"deliv":5013,"read":2002,"failed":1282,"optout":5},{"p":"WABA TAPERA","m":"FEB","d":"Friday","blast":2,"sent":2,"deliv":2,"read":2,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Monday","blast":5,"sent":4,"deliv":5,"read":3,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Tuesday","blast":1,"sent":1,"deliv":1,"read":1,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Wednesday","blast":571,"sent":480,"deliv":571,"read":394,"failed":91,"optout":1},{"p":"WABA TAPERA","m":"FEB","d":"Thursday","blast":32,"sent":27,"deliv":32,"read":21,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Friday","blast":197,"sent":169,"deliv":197,"read":137,"failed":28,"optout":0},{"p":"WABA UNNES","m":"FEB","d":"Monday","blast":1,"sent":1,"deliv":0,"read":0,"failed":0,"optout":0},{"p":"WABA UNNES","m":"FEB","d":"Tuesday","blast":11,"sent":5,"deliv":0,"read":0,"failed":6,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Thursday","blast":548,"sent":460,"deliv":457,"read":338,"failed":88,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Friday","blast":504,"sent":415,"deliv":410,"read":307,"failed":89,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Tuesday","blast":504,"sent":404,"deliv":400,"read":297,"failed":100,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Wednesday","blast":504,"sent":396,"deliv":391,"read":288,"failed":108,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Thursday","blast":504,"sent":400,"deliv":396,"read":291,"failed":104,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Wednesday","blast":504,"sent":411,"deliv":406,"read":304,"failed":93,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Thursday","blast":916,"sent":381,"deliv":379,"read":288,"failed":535,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Friday","blast":285,"sent":241,"deliv":239,"read":161,"failed":44,"optout":0},{"p":"WABA LPSK","m":"FEB","d":"Friday","blast":4,"sent":4,"deliv":4,"read":3,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":900,"sent":540,"deliv":900,"read":437,"failed":360,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":88,"sent":81,"deliv":88,"read":62,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Wednesday","blast":275,"sent":226,"deliv":275,"read":177,"failed":49,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Thursday","blast":123,"sent":117,"deliv":123,"read":99,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Friday","blast":75,"sent":67,"deliv":75,"read":51,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":83,"sent":71,"deliv":83,"read":51,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":98,"sent":93,"deliv":98,"read":21,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Wednesday","blast":77,"sent":68,"deliv":77,"read":13,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Thursday","blast":3,"sent":2,"deliv":3,"read":1,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Friday","blast":169,"sent":159,"deliv":169,"read":57,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":73,"sent":66,"deliv":73,"read":54,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":8,"sent":8,"deliv":8,"read":7,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Wednesday","blast":17,"sent":16,"deliv":17,"read":16,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Thursday","blast":140,"sent":121,"deliv":140,"read":99,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Friday","blast":61,"sent":56,"deliv":61,"read":43,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":50,"sent":47,"deliv":50,"read":40,"failed":3,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":445,"sent":344,"deliv":445,"read":272,"failed":101,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Tuesday","blast":334,"sent":275,"deliv":274,"read":181,"failed":59,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Wednesday","blast":789,"sent":649,"deliv":643,"read":462,"failed":140,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Tuesday","blast":334,"sent":279,"deliv":277,"read":186,"failed":55,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Wednesday","blast":458,"sent":386,"deliv":383,"read":292,"failed":72,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Friday","blast":504,"sent":422,"deliv":417,"read":309,"failed":82,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Friday","blast":529,"sent":461,"deliv":456,"read":344,"failed":68,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Monday","blast":7,"sent":1,"deliv":1,"read":1,"failed":6,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Tuesday","blast":285,"sent":244,"deliv":243,"read":161,"failed":41,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAR","d":"Sunday","blast":3,"sent":3,"deliv":3,"read":1,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAR","d":"Monday","blast":14,"sent":14,"deliv":13,"read":8,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAR","d":"Tuesday","blast":12674,"sent":2676,"deliv":2626,"read":1755,"failed":9998,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Thursday","blast":454,"sent":405,"deliv":404,"read":253,"failed":49,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Tuesday","blast":454,"sent":395,"deliv":393,"read":245,"failed":59,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Thursday","blast":508,"sent":477,"deliv":474,"read":303,"failed":31,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Saturday","blast":94,"sent":87,"deliv":85,"read":60,"failed":7,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Sunday","blast":1016,"sent":912,"deliv":910,"read":577,"failed":104,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Monday","blast":1,"sent":1,"deliv":1,"read":1,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":59,"sent":57,"deliv":59,"read":42,"failed":2,"optout":1},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":66,"sent":61,"deliv":66,"read":50,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":87,"sent":78,"deliv":87,"read":62,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":147,"sent":138,"deliv":147,"read":104,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":100,"sent":93,"deliv":100,"read":81,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":120,"sent":115,"deliv":120,"read":78,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Friday","blast":80,"sent":72,"deliv":80,"read":56,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":108,"sent":94,"deliv":108,"read":64,"failed":14,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":314,"sent":240,"deliv":314,"read":163,"failed":74,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":455,"sent":354,"deliv":455,"read":266,"failed":101,"optout":1},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":29,"sent":29,"deliv":29,"read":26,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Friday","blast":31,"sent":26,"deliv":31,"read":22,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":198,"sent":182,"deliv":198,"read":148,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":79,"sent":74,"deliv":79,"read":64,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":129,"sent":121,"deliv":129,"read":99,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":221,"sent":202,"deliv":221,"read":164,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Friday","blast":3236,"sent":2224,"deliv":3236,"read":1563,"failed":1012,"optout":7},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":21,"sent":19,"deliv":21,"read":16,"failed":2,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":3,"sent":2,"deliv":3,"read":2,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":245,"sent":212,"deliv":245,"read":165,"failed":33,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":84,"sent":72,"deliv":84,"read":60,"failed":12,"optout":0},{"p":"WABA UNNES","m":"APR","d":"Friday","blast":11850,"sent":10668,"deliv":10591,"read":10591,"failed":1182,"optout":0},{"p":"WABA UNNES","m":"APR","d":"Saturday","blast":2459,"sent":2220,"deliv":2205,"read":2205,"failed":239,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Thursday","blast":334,"sent":281,"deliv":280,"read":185,"failed":53,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Saturday","blast":334,"sent":278,"deliv":278,"read":182,"failed":56,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Thursday","blast":334,"sent":278,"deliv":277,"read":182,"failed":56,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Tuesday","blast":225,"sent":0,"deliv":0,"read":0,"failed":225,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Saturday","blast":15,"sent":7,"deliv":7,"read":5,"failed":8,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Tuesday","blast":529,"sent":462,"deliv":459,"read":341,"failed":67,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Thursday","blast":529,"sent":460,"deliv":454,"read":342,"failed":69,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Thursday","blast":5774,"sent":3808,"deliv":3761,"read":2146,"failed":1966,"optout":5},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Thursday","blast":1233,"sent":1036,"deliv":957,"read":592,"failed":197,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Friday","blast":3221,"sent":3199,"deliv":55,"read":29,"failed":22,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Saturday","blast":2271,"sent":2270,"deliv":3,"read":20,"failed":1,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Sunday","blast":2517,"sent":2516,"deliv":2,"read":17,"failed":1,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Wednesday","blast":405,"sent":386,"deliv":383,"read":247,"failed":19,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":508,"sent":478,"deliv":475,"read":296,"failed":30,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":810,"sent":777,"deliv":770,"read":472,"failed":33,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Friday","blast":956,"sent":899,"deliv":852,"read":264,"failed":57,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Tuesday","blast":459,"sent":434,"deliv":410,"read":132,"failed":25,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Wednesday","blast":911,"sent":842,"deliv":839,"read":536,"failed":69,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":405,"sent":388,"deliv":386,"read":245,"failed":17,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Friday","blast":398,"sent":370,"deliv":369,"read":215,"failed":28,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":505,"sent":476,"deliv":475,"read":298,"failed":29,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Friday","blast":405,"sent":387,"deliv":385,"read":246,"failed":18,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Tuesday","blast":999,"sent":875,"deliv":870,"read":554,"failed":124,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Wednesday","blast":810,"sent":774,"deliv":771,"read":492,"failed":36,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":503,"sent":474,"deliv":472,"read":298,"failed":29,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":69,"sent":61,"deliv":59,"read":43,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":135,"sent":116,"deliv":114,"read":89,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Wednesday","blast":89,"sent":81,"deliv":81,"read":66,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Thursday","blast":41,"sent":37,"deliv":37,"read":26,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Friday","blast":170,"sent":157,"deliv":156,"read":122,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":80,"sent":74,"deliv":72,"read":50,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":475,"sent":380,"deliv":316,"read":248,"failed":95,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Wednesday","blast":362,"sent":271,"deliv":262,"read":198,"failed":91,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":4015,"sent":3609,"deliv":3404,"read":2647,"failed":406,"optout":2},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":69,"sent":63,"deliv":62,"read":51,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Wednesday","blast":128,"sent":115,"deliv":111,"read":86,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Thursday","blast":100,"sent":88,"deliv":85,"read":69,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Friday","blast":290,"sent":215,"deliv":203,"read":161,"failed":75,"optout":2},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":114,"sent":101,"deliv":100,"read":90,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":81,"sent":74,"deliv":68,"read":62,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Friday","blast":99,"sent":93,"deliv":91,"read":74,"failed":6,"optout":0},{"p":"WABA UNNES","m":"MAY","d":"Saturday","blast":217,"sent":5,"deliv":5,"read":2,"failed":212,"optout":0},{"p":"WABA UNNES","m":"MAY","d":"Sunday","blast":492,"sent":239,"deliv":239,"read":195,"failed":253,"optout":0},{"p":"WABA UNNES","m":"MAY","d":"Monday","blast":17357,"sent":15902,"deliv":15705,"read":11265,"failed":1455,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Tuesday","blast":214,"sent":30,"deliv":30,"read":25,"failed":184,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Thursday","blast":528,"sent":466,"deliv":462,"read":349,"failed":62,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Friday","blast":528,"sent":456,"deliv":453,"read":338,"failed":72,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Monday","blast":528,"sent":463,"deliv":459,"read":347,"failed":65,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Wednesday","blast":297,"sent":259,"deliv":258,"read":178,"failed":38,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Thursday","blast":297,"sent":258,"deliv":257,"read":172,"failed":39,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Monday","blast":2,"sent":2,"deliv":2,"read":0,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Monday","blast":12698,"sent":5136,"deliv":4399,"read":3537,"failed":7562,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Tuesday","blast":6674,"sent":0,"deliv":0,"read":0,"failed":6674,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Wednesday","blast":5509,"sent":2669,"deliv":2588,"read":1448,"failed":2840,"optout":2},{"p":"WABA LPSK","m":"MAY","d":"Friday","blast":503,"sent":474,"deliv":472,"read":300,"failed":29,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Saturday","blast":405,"sent":386,"deliv":385,"read":247,"failed":19,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Sunday","blast":150,"sent":139,"deliv":138,"read":91,"failed":11,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Monday","blast":858,"sent":800,"deliv":798,"read":514,"failed":58,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":452,"sent":425,"deliv":424,"read":269,"failed":27,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Friday","blast":452,"sent":415,"deliv":414,"read":263,"failed":37,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Tuesday","blast":905,"sent":856,"deliv":854,"read":542,"failed":49,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":957,"sent":901,"deliv":895,"read":567,"failed":56,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Monday","blast":407,"sent":389,"deliv":387,"read":244,"failed":18,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":407,"sent":390,"deliv":388,"read":240,"failed":17,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Monday","blast":1452,"sent":1369,"deliv":1357,"read":852,"failed":83,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Tuesday","blast":1002,"sent":944,"deliv":938,"read":589,"failed":58,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":462,"sent":226,"deliv":224,"read":134,"failed":236,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Thursday","blast":455,"sent":429,"deliv":421,"read":265,"failed":26,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Friday","blast":496,"sent":472,"deliv":468,"read":294,"failed":24,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Saturday","blast":508,"sent":472,"deliv":469,"read":295,"failed":36,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":85,"sent":77,"deliv":85,"read":62,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":817,"sent":573,"deliv":817,"read":415,"failed":244,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":154,"sent":129,"deliv":154,"read":105,"failed":25,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":843,"sent":605,"deliv":843,"read":424,"failed":238,"optout":2},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":2310,"sent":1453,"deliv":2310,"read":1065,"failed":857,"optout":8},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":103,"sent":89,"deliv":103,"read":65,"failed":14,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":146,"sent":127,"deliv":146,"read":94,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":90,"sent":82,"deliv":90,"read":65,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":69,"sent":62,"deliv":69,"read":47,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":311,"sent":213,"deliv":311,"read":149,"failed":98,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":455,"sent":301,"deliv":455,"read":210,"failed":154,"optout":3},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":57,"sent":49,"deliv":57,"read":32,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":106,"sent":102,"deliv":106,"read":79,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":178,"sent":134,"deliv":128,"read":105,"failed":44,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":115,"sent":103,"deliv":103,"read":82,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":108,"sent":78,"deliv":78,"read":63,"failed":30,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":80,"sent":72,"deliv":72,"read":53,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":78,"sent":67,"deliv":65,"read":52,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":69,"sent":64,"deliv":62,"read":52,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":131,"sent":96,"deliv":95,"read":84,"failed":35,"optout":0},{"p":"WABA UNNES","m":"JUN","d":"Friday","blast":460,"sent":283,"deliv":283,"read":216,"failed":177,"optout":0},{"p":"WABA UNNES","m":"JUN","d":"Monday","blast":1743,"sent":1600,"deliv":1586,"read":1238,"failed":143,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Wednesday","blast":528,"sent":465,"deliv":460,"read":342,"failed":63,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Thursday","blast":528,"sent":458,"deliv":455,"read":334,"failed":70,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Monday","blast":334,"sent":281,"deliv":279,"read":170,"failed":53,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Friday","blast":862,"sent":809,"deliv":253,"read":39,"failed":53,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Friday","blast":334,"sent":264,"deliv":252,"read":155,"failed":70,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Wednesday","blast":334,"sent":282,"deliv":281,"read":173,"failed":52,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"JUN","d":"Friday","blast":5,"sent":5,"deliv":0,"read":0,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"JUN","d":"Wednesday","blast":5614,"sent":4101,"deliv":4006,"read":2922,"failed":1513,"optout":8},{"p":"WABA ARS UNIVERSITY","m":"JUN","d":"Thursday","blast":4658,"sent":4400,"deliv":4291,"read":3275,"failed":258,"optout":11},{"p":"WABA LPSK","m":"JUN","d":"Tuesday","blast":407,"sent":390,"deliv":388,"read":244,"failed":17,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Wednesday","blast":957,"sent":901,"deliv":895,"read":552,"failed":56,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Saturday","blast":289,"sent":277,"deliv":276,"read":163,"failed":12,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Monday","blast":503,"sent":475,"deliv":471,"read":294,"failed":28,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Wednesday","blast":746,"sent":717,"deliv":658,"read":427,"failed":29,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Thursday","blast":458,"sent":441,"deliv":388,"read":266,"failed":17,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Friday","blast":458,"sent":438,"deliv":364,"read":261,"failed":20,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Thursday","blast":511,"sent":484,"deliv":474,"read":294,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Friday","blast":748,"sent":713,"deliv":662,"read":426,"failed":35,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Monday","blast":1305,"sent":1218,"deliv":1182,"read":730,"failed":87,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Tuesday","blast":912,"sent":759,"deliv":754,"read":461,"failed":153,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Wednesday","blast":292,"sent":279,"deliv":278,"read":162,"failed":13,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Thursday","blast":416,"sent":397,"deliv":395,"read":240,"failed":19,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Friday","blast":511,"sent":481,"deliv":478,"read":287,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Tuesday","blast":498,"sent":473,"deliv":469,"read":276,"failed":25,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":65,"sent":58,"deliv":57,"read":49,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":1506,"sent":954,"deliv":921,"read":700,"failed":552,"optout":4},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":287,"sent":225,"deliv":221,"read":190,"failed":62,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":45,"sent":39,"deliv":38,"read":31,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":351,"sent":265,"deliv":201,"read":192,"failed":86,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":616,"sent":392,"deliv":369,"read":310,"failed":224,"optout":2},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":130,"sent":120,"deliv":118,"read":102,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":139,"sent":127,"deliv":125,"read":107,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":1089,"sent":653,"deliv":611,"read":437,"failed":436,"optout":6},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":294,"sent":247,"deliv":239,"read":192,"failed":47,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":685,"sent":466,"deliv":436,"read":342,"failed":219,"optout":3},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":73,"sent":65,"deliv":53,"read":32,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":91,"sent":80,"deliv":80,"read":67,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":92,"sent":88,"deliv":83,"read":68,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":106,"sent":92,"deliv":92,"read":71,"failed":14,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":60,"sent":47,"deliv":46,"read":36,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":1037,"sent":642,"deliv":609,"read":379,"failed":395,"optout":5},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":84,"sent":76,"deliv":76,"read":64,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":345,"sent":49,"deliv":47,"read":40,"failed":296,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":339,"sent":233,"deliv":223,"read":181,"failed":106,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":122,"sent":106,"deliv":106,"read":88,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":187,"sent":141,"deliv":140,"read":105,"failed":46,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":1449,"sent":935,"deliv":893,"read":702,"failed":514,"optout":0},{"p":"WABA UNNES","m":"JUL","d":"Monday","blast":15,"sent":15,"deliv":15,"read":8,"failed":0,"optout":0},{"p":"WABA UNNES","m":"JUL","d":"Thursday","blast":4239,"sent":4017,"deliv":3998,"read":2790,"failed":222,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":285,"sent":245,"deliv":242,"read":159,"failed":40,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Tuesday","blast":528,"sent":456,"deliv":453,"read":343,"failed":72,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Thursday","blast":84,"sent":74,"deliv":74,"read":47,"failed":10,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Friday","blast":619,"sent":511,"deliv":509,"read":338,"failed":108,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":285,"sent":242,"deliv":240,"read":158,"failed":43,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Tuesday","blast":84,"sent":73,"deliv":73,"read":47,"failed":11,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Wednesday","blast":334,"sent":279,"deliv":278,"read":183,"failed":55,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Thursday","blast":285,"sent":236,"deliv":235,"read":153,"failed":49,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":334,"sent":278,"deliv":276,"read":176,"failed":56,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Wednesday","blast":528,"sent":461,"deliv":457,"read":329,"failed":67,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Friday","blast":528,"sent":457,"deliv":453,"read":318,"failed":71,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":334,"sent":280,"deliv":279,"read":183,"failed":54,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":505,"sent":475,"deliv":472,"read":292,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Thursday","blast":505,"sent":460,"deliv":456,"read":282,"failed":45,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":1017,"sent":957,"deliv":950,"read":587,"failed":60,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Monday","blast":494,"sent":487,"deliv":139,"read":149,"failed":7,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":65,"sent":59,"deliv":57,"read":39,"failed":6,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":408,"sent":390,"deliv":388,"read":235,"failed":18,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Tuesday","blast":914,"sent":866,"deliv":861,"read":521,"failed":48,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":505,"sent":475,"deliv":471,"read":285,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Monday","blast":459,"sent":432,"deliv":429,"read":253,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Tuesday","blast":691,"sent":651,"deliv":645,"read":379,"failed":40,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":1024,"sent":964,"deliv":958,"read":563,"failed":60,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Thursday","blast":1483,"sent":1386,"deliv":1376,"read":809,"failed":97,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":1839,"sent":1689,"deliv":1676,"read":977,"failed":150,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Saturday","blast":460,"sent":433,"deliv":430,"read":244,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Sunday","blast":514,"sent":484,"deliv":480,"read":267,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Monday","blast":1933,"sent":1819,"deliv":1798,"read":1099,"failed":114,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Tuesday","blast":460,"sent":433,"deliv":429,"read":246,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":1445,"sent":1287,"deliv":1074,"read":433,"failed":158,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Thursday","blast":513,"sent":478,"deliv":365,"read":123,"failed":35,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":2008,"sent":1840,"deliv":1538,"read":911,"failed":168,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Monday","blast":162,"sent":0,"deliv":140,"read":0,"failed":22,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Tuesday","blast":111,"sent":0,"deliv":95,"read":0,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Wednesday","blast":181,"sent":0,"deliv":144,"read":0,"failed":37,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Thursday","blast":54,"sent":0,"deliv":43,"read":0,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Friday","blast":78,"sent":0,"deliv":74,"read":0,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Monday","blast":120,"sent":0,"deliv":98,"read":0,"failed":22,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Tuesday","blast":242,"sent":0,"deliv":205,"read":0,"failed":37,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Wednesday","blast":154,"sent":0,"deliv":145,"read":0,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Thursday","blast":530,"sent":0,"deliv":348,"read":0,"failed":182,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Friday","blast":80,"sent":0,"deliv":77,"read":0,"failed":3,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Tuesday","blast":54,"sent":0,"deliv":49,"read":0,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Wednesday","blast":140,"sent":0,"deliv":116,"read":0,"failed":24,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Thursday","blast":64,"sent":0,"deliv":55,"read":0,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Friday","blast":49,"sent":0,"deliv":44,"read":0,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Monday","blast":554,"sent":0,"deliv":355,"read":0,"failed":199,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Tuesday","blast":74,"sent":0,"deliv":71,"read":0,"failed":3,"optout":0}];
+  var RESP_RATIO = 0.11058900478501842;
+  var CONV_RATIO = 0.3700389105058366;
+  var BASELINE_META = [{"key": "campaigns", "deltaCls": "delta-good", "deltaStr": "\u2191 14.8%", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "messages", "deltaCls": "delta-good", "deltaStr": "\u2191 6.1%", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "delivery", "deltaCls": "delta-good", "deltaStr": "\u2191 1.2pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "read", "deltaCls": "delta-bad", "deltaStr": "\u2193 2.2pp", "statusDot": "var(--warning)", "statusTxt": "Attention", "sparkColor": "#eda100"}, {"key": "response", "deltaCls": "delta-good", "deltaStr": "\u2191 0.9pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "conversion", "deltaCls": "delta-good", "deltaStr": "\u2191 0.3pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "failed", "deltaCls": "delta-bad", "deltaStr": "\u2191 4.8%", "statusDot": "var(--critical)", "statusTxt": "Critical", "sparkColor": "#d03b3b"}, {"key": "optout", "deltaCls": "delta-good", "deltaStr": "\u2193 0.0pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}];
+  var MONTHS_JS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG"];
+  var METRIC_KEYS = ['campaigns','messages','delivery','read','response','conversion','failed','optout'];
+  var STATUS_DOT = {good:'var(--good)', warning:'var(--warning)', critical:'var(--critical)'};
+  var STATUS_TXT = {good:'Healthy', warning:'Attention', critical:'Critical'};
+  var SPARK_COLOR = {good:'#1baf7a', warning:'#eda100', critical:'#d03b3b'};
+  var GOOD_DIR = {delivery:'up', read:'up', response:'up', conversion:'up', failed:'down', optout:'down'};
+
+  var state = {project:'All', month:'All', day:'All'};
+
+  function sum(rows, key){ var t=0; for (var i=0;i<rows.length;i++) t+=rows[i][key]; return t; }
+
+  function aggregate(rows){
+    var blast=sum(rows,'blast'), sent=sum(rows,'sent'), deliv=sum(rows,'deliv'),
+        read=sum(rows,'read'), failed=sum(rows,'failed'), optout=sum(rows,'optout');
+    var responded = Math.round(read*RESP_RATIO);
+    var converted = Math.round(responded*CONV_RATIO);
+    var waveSet = {}, projSet = {};
+    rows.forEach(function(r){ waveSet[r.p+'|'+r.m]=1; projSet[r.p]=1; });
+    return {
+      blast:blast, sent:sent, deliv:deliv, read:read, failed:failed, optout:optout,
+      responded:responded, converted:converted,
+      waves:Object.keys(waveSet).length, projects:Object.keys(projSet).length, rows:rows.length,
+      deliveryRate: blast? deliv/blast*100:0,
+      readRate: deliv? read/deliv*100:0,
+      failedRate: blast? failed/blast*100:0,
+      optoutRate: deliv? optout/deliv*100:0,
+      responseRate: deliv? responded/deliv*100:0,
+      conversionRate: deliv? converted/deliv*100:0
+    };
+  }
+
+  var BASELINE = aggregate(RAW);
+
+  function compactNumber(n){
+    if (n>=1000000) return (n/1000000).toFixed(1)+'M';
+    if (n>=1000) return (n/1000).toFixed(1)+'K';
+    return String(Math.round(n));
+  }
+  function fmtInt(n){ return Math.round(n).toLocaleString('en-US'); }
+
+  function statusFor(key, val){
+    switch(key){
+      case 'delivery':   return val>=70?'good':val>=50?'warning':'critical';
+      case 'read':       return val>=65?'good':val>=45?'warning':'critical';
+      case 'response':   return val>=6?'good':val>=3?'warning':'critical';
+      case 'conversion': return val>=2?'good':val>=1?'warning':'critical';
+      case 'failed':     return val<15?'good':val<30?'warning':'critical';
+      case 'optout':     return val<0.15?'good':val<0.4?'warning':'critical';
+      default: return 'good';
+    }
+  }
+
+  function metricRate(key, agg){
+    switch(key){
+      case 'delivery': return agg.deliveryRate;
+      case 'read': return agg.readRate;
+      case 'response': return agg.responseRate;
+      case 'conversion': return agg.conversionRate;
+      case 'failed': return agg.failedRate;
+      case 'optout': return agg.optoutRate;
+      default: return null;
+    }
+  }
+
+  function metricValue(key, agg){
+    switch(key){
+      case 'campaigns': return {value:String(agg.waves), sub:agg.waves+' campaign wave'+(agg.waves===1?'':'s')+' · '+agg.projects+' active project'+(agg.projects===1?'':'s')};
+      case 'messages':  return {value:compactNumber(agg.blast), sub:fmtInt(agg.blast)+' messages blasted'};
+      case 'delivery':  return {value:agg.deliveryRate.toFixed(1)+'%', sub:fmtInt(agg.deliv)+' delivered'};
+      case 'read':      return {value:agg.readRate.toFixed(1)+'%', sub:fmtInt(agg.read)+' messages read'};
+      case 'response':  return {value:agg.responseRate.toFixed(2)+'%', sub:fmtInt(agg.responded)+' recipients responded'};
+      case 'conversion':return {value:agg.conversionRate.toFixed(2)+'%', sub:fmtInt(agg.converted)+' desired actions completed'};
+      case 'failed':    return {value:fmtInt(agg.failed), sub:agg.failedRate.toFixed(1)+'% of total blast volume'};
+      case 'optout':    return {value:agg.optoutRate.toFixed(2)+'%', sub:fmtInt(agg.optout)+' recipients opted out'};
+    }
+  }
+
+  function sparkSvg(values, color){
+    if (!values || values.length<2) return '';
+    var w=88,h=28;
+    var vmin=Math.min.apply(null,values), vmax=Math.max.apply(null,values);
+    var rng=(vmax-vmin)||1, n=values.length;
+    var pts=values.map(function(v,i){
+      var x=i/(n-1)*(w-4)+2;
+      var y=h-3-(v-vmin)/rng*(h-6);
+      return [x,y];
+    });
+    var poly=pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ');
+    var last=pts[pts.length-1];
+    return '<svg viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'" class="spark">'+
+      '<polyline points="'+poly+'" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/>'+
+      '<circle cx="'+last[0].toFixed(1)+'" cy="'+last[1].toFixed(1)+'" r="2.6" fill="'+color+'"/></svg>';
+  }
+
+  function sparkFor(key, rows){
+    if (state.month !== 'All') return null;
+    return MONTHS_JS.map(function(m){
+      var subset = rows.filter(function(r){ return r.m===m; });
+      var a = aggregate(subset);
+      var r = metricRate(key, a);
+      if (r !== null) return r;
+      if (key==='campaigns') return a.waves;
+      if (key==='messages') return a.blast;
+      if (key==='failed') return a.failed;
+      return 0;
+    });
+  }
+
+  function filterRows(){
+    return RAW.filter(function(r){
+      return (state.project==='All'||r.p===state.project) &&
+             (state.month==='All'||r.m===state.month) &&
+             (state.day==='All'||r.d===state.day);
+    });
+  }
+
+  function isDefault(){ return state.project==='All' && state.month==='All' && state.day==='All'; }
+
+  function render(){
+    var rows = filterRows();
+    var agg = aggregate(rows);
+    var noData = rows.length===0;
+    var def = isDefault();
+    var sparkRows = RAW.filter(function(r){
+      return (state.project==='All'||r.p===state.project) && (state.day==='All'||r.d===state.day);
+    });
+
+    METRIC_KEYS.forEach(function(key){
+      var mv = noData ? {value:'—', sub:'No data for this filter'} : metricValue(key, agg);
+      document.getElementById('kpi-'+key+'-value').textContent = mv.value;
+      document.getElementById('kpi-'+key+'-sub').textContent = mv.sub;
+
+      var statusEl = document.getElementById('kpi-'+key+'-status');
+      var deltaEl = document.getElementById('kpi-'+key+'-delta');
+      var sparkEl = document.getElementById('kpi-'+key+'-spark');
+
+      var statusKey;
+      if (noData) statusKey = 'warning';
+      else if (key==='campaigns' || key==='messages') statusKey = 'good';
+      else statusKey = statusFor(key, metricRate(key, agg));
+
+      statusEl.style.setProperty('--dot', STATUS_DOT[statusKey]);
+      statusEl.innerHTML = '<i></i>';
+      statusEl.appendChild(document.createTextNode(noData ? 'No Data' : STATUS_TXT[statusKey]));
+
+      if (noData) {
+        deltaEl.className = 'kpi-delta delta-neutral';
+        deltaEl.innerHTML = '<span class="kpi-vs">Adjust filters to see data</span>';
+      } else if (def) {
+        var base = BASELINE_META.filter(function(b){return b.key===key;})[0];
+        deltaEl.className = 'kpi-delta ' + base.deltaCls;
+        deltaEl.innerHTML = base.deltaStr + ' <span class="kpi-vs">vs prior period</span>';
+      } else if (key==='campaigns' || key==='messages' || key==='failed') {
+        var baseVal = key==='campaigns'?BASELINE.waves:(key==='messages'?BASELINE.blast:BASELINE.failed);
+        var curVal = key==='campaigns'?agg.waves:(key==='messages'?agg.blast:agg.failed);
+        var share = baseVal? (curVal/baseVal*100):0;
+        deltaEl.className = 'kpi-delta delta-neutral';
+        deltaEl.innerHTML = share.toFixed(1)+'% <span class="kpi-vs">of portfolio total</span>';
+      } else {
+        var curRate = metricRate(key, agg);
+        var baseRate = metricRate(key, BASELINE);
+        var diff = curRate - baseRate;
+        var dir = diff>=0?'up':'down';
+        var good = dir===GOOD_DIR[key];
+        var arrow = dir==='up'?'↑':'↓';
+        deltaEl.className = 'kpi-delta ' + (good?'delta-good':'delta-bad');
+        deltaEl.innerHTML = arrow+' '+Math.abs(diff).toFixed(2)+'pp <span class="kpi-vs">vs portfolio avg</span>';
+      }
+
+      var sv = noData ? null : sparkFor(key, sparkRows);
+      var sparkColor = SPARK_COLOR[noData?'warning':statusKey];
+      sparkEl.innerHTML = sv ? sparkSvg(sv, sparkColor) : '';
+    });
+
+    var summaryEl = document.getElementById('filter-summary');
+    if (noData) {
+      summaryEl.textContent = 'No campaign-days match this filter combination.';
+    } else if (def) {
+      summaryEl.textContent = 'Showing all ' + agg.waves + ' campaign waves · ' + fmtInt(agg.blast) + ' messages';
+    } else {
+      summaryEl.textContent = 'Showing ' + agg.rows.toLocaleString('en-US') + ' campaign-day record' + (agg.rows===1?'':'s') +
+        ' · ' + fmtInt(agg.blast) + ' messages · ' + agg.waves + ' campaign wave' + (agg.waves===1?'':'s');
+    }
+  }
+
+  var selProject = document.getElementById('filter-project');
+  var selMonth = document.getElementById('filter-month');
+  var selDay = document.getElementById('filter-day');
+  var btnReset = document.getElementById('filter-reset');
+
+  function onFilterChange(){
+    state.project = selProject.value;
+    state.month = selMonth.value;
+    state.day = selDay.value;
+    render();
+  }
+  selProject.addEventListener('change', onFilterChange);
+  selMonth.addEventListener('change', onFilterChange);
+  selDay.addEventListener('change', onFilterChange);
+  btnReset.addEventListener('click', function(){
+    selProject.value='All'; selMonth.value='All'; selDay.value='All';
+    onFilterChange();
+  });
+
+  render();
+})();
+</script>
