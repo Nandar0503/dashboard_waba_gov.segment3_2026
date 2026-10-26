@@ -392,9 +392,9 @@
       </div>
     </div>
     <div class="header-meta">
-      <div class="meta-chip"><span class="mc-label">Reporting Period</span><span class="mc-value">01 Jan – 25 Aug 2026</span></div>
-      <div class="meta-chip"><span class="mc-label">Total Campaigns</span><span class="mc-value">31 waves</span></div>
-      <div class="meta-chip"><span class="mc-label">Last Data Update</span><span class="mc-value">25 Aug 2026, 18:40 WIB</span></div>
+      <div class="meta-chip"><span class="mc-label">Reporting Period</span><span class="mc-value">01 Jan – 30 Sep 2026</span></div>
+      <div class="meta-chip"><span class="mc-label">Total Campaigns</span><span class="mc-value">37 waves</span></div>
+      <div class="meta-chip"><span class="mc-label">Last Data Update</span><span class="mc-value">26 Oct 2026, 15:40 WIB</span></div>
       <span class="filter-chip"><span class="fc-dot"></span>Channel: WhatsApp Business API</span>
       <button type="button" class="theme-toggle" id="theme-toggle">🌙 Dark Mode</button>
     </div>
@@ -424,7 +424,8 @@
 <option value="MAY">May</option>
 <option value="JUN">June</option>
 <option value="JUL">July</option>
-<option value="AUG">August (MTD)</option>
+<option value="AUG">August (est. status)</option>
+<option value="SEP">September (est. status)</option>
       </select>
     </div>
     <div class="filter-field">
@@ -441,13 +442,13 @@
       </select>
     </div>
     <button type="button" class="filter-reset" id="filter-reset">Reset Filters</button>
-    <div class="filter-summary" id="filter-summary">Showing all 31 campaign waves · 232,738 messages</div>
+    <div class="filter-summary" id="filter-summary">Showing all 37 campaign waves · 277,790 messages</div>
   </section>
 
   <!-- ============ KPI GRID ============ -->
   <div class="kpi-section-head">
     <p class="card-eyebrow" style="margin:0;">Overall Performance · Live</p>
-    <span class="kpi-section-note">Main KPI cards react instantly to the filters above — charts and tables below always show the full reporting period for context.</span>
+    <span class="kpi-section-note">Main KPI cards react instantly to the filters above — charts and tables below always show the full reporting period for context. Volumes follow the traffic Excel; August – September delivery/read/failure split is estimated from each project's Jan–Jul ratios (shown dashed).</span>
   </div>
   <section class="kpi-grid">
     
@@ -456,11 +457,11 @@
           <span class="kpi-label">TOTAL CAMPAIGNS</span>
           <span class="status-chip" id="kpi-campaigns-status" style="--dot:var(--good)"><i></i>Healthy</span>
         </div>
-        <div class="kpi-value" id="kpi-campaigns-value">31</div>
+        <div class="kpi-value" id="kpi-campaigns-value">37</div>
         <div class="kpi-sub" id="kpi-campaigns-sub">campaign waves · 5 active projects</div>
         <div class="kpi-bottom">
-          <span class="kpi-delta delta-good" id="kpi-campaigns-delta">↑ 14.8% <span class="kpi-vs" id="kpi-campaigns-vs">vs prior period</span></span>
-          <span id="kpi-campaigns-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,21.3 14.0,15.8 26.0,25.0 38.0,10.3 50.0,3.0 62.0,12.2 74.0,6.7 86.0,3.0" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="3.0" r="2.6" fill="#1baf7a"/></svg></span>
+          <span class="kpi-delta delta-bad" id="kpi-campaigns-delta">↓ 20.0% <span class="kpi-vs" id="kpi-campaigns-vs">Q3 vs Q2</span></span>
+          <span id="kpi-campaigns-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,25.0 12.5,14.0 23.0,25.0 33.5,3.0 44.0,3.0 54.5,3.0 65.0,3.0 75.5,14.0 86.0,25.0" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#1baf7a"/></svg></span>
         </div>
       </div>
 
@@ -469,11 +470,11 @@
           <span class="kpi-label">TOTAL MESSAGES</span>
           <span class="status-chip" id="kpi-messages-status" style="--dot:var(--good)"><i></i>Healthy</span>
         </div>
-        <div class="kpi-value" id="kpi-messages-value">232.7K</div>
-        <div class="kpi-sub" id="kpi-messages-sub">232,738 messages blasted</div>
+        <div class="kpi-value" id="kpi-messages-value">277.8K</div>
+        <div class="kpi-sub" id="kpi-messages-sub">277,790 messages blasted</div>
         <div class="kpi-bottom">
-          <span class="kpi-delta delta-good" id="kpi-messages-delta">↑ 6.1% <span class="kpi-vs" id="kpi-messages-vs">vs prior period</span></span>
-          <span id="kpi-messages-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,16.2 14.0,22.2 26.0,18.1 38.0,9.0 50.0,3.0 62.0,14.5 74.0,12.9 86.0,25.0" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#1baf7a"/></svg></span>
+          <span class="kpi-delta delta-bad" id="kpi-messages-delta">↓ 33.7% <span class="kpi-vs" id="kpi-messages-vs">Q3 vs Q2</span></span>
+          <span id="kpi-messages-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,16.0 12.5,24.2 23.0,25.0 33.5,7.3 44.0,3.0 54.5,6.2 65.0,6.1 75.5,17.8 86.0,16.7" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="16.7" r="2.6" fill="#1baf7a"/></svg></span>
         </div>
       </div>
 
@@ -482,24 +483,24 @@
           <span class="kpi-label">DELIVERY RATE</span>
           <span class="status-chip" id="kpi-delivery-status" style="--dot:var(--good)"><i></i>Healthy</span>
         </div>
-        <div class="kpi-value" id="kpi-delivery-value">73.8%</div>
-        <div class="kpi-sub" id="kpi-delivery-sub">171,720 delivered</div>
+        <div class="kpi-value" id="kpi-delivery-value">76.2%</div>
+        <div class="kpi-sub" id="kpi-delivery-sub">211,621 delivered</div>
         <div class="kpi-bottom">
-          <span class="kpi-delta delta-good" id="kpi-delivery-delta">↑ 1.2pp <span class="kpi-vs" id="kpi-delivery-vs">vs prior period</span></span>
-          <span id="kpi-delivery-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,3.0 14.0,4.8 26.0,25.0 38.0,13.2 50.0,17.4 62.0,5.9 74.0,8.3 86.0,10.1" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="10.1" r="2.6" fill="#1baf7a"/></svg></span>
+          <span class="kpi-delta delta-good" id="kpi-delivery-delta">↑ 18.7pp <span class="kpi-vs" id="kpi-delivery-vs">Q3 vs Q2</span></span>
+          <span id="kpi-delivery-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,3.0 12.5,5.1 23.0,3.7 33.5,15.8 44.0,15.3 54.5,25.0 65.0,9.4 75.5,5.4 86.0,4.9" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="4.9" r="2.6" fill="#1baf7a"/></svg></span>
         </div>
       </div>
 
       <div class="kpi-card" id="kpi-read">
         <div class="kpi-top">
           <span class="kpi-label">READ RATE</span>
-          <span class="status-chip" id="kpi-read-status" style="--dot:var(--warning)"><i></i>Attention</span>
+          <span class="status-chip" id="kpi-read-status" style="--dot:var(--good)"><i></i>Healthy</span>
         </div>
-        <div class="kpi-value" id="kpi-read-value">67.7%</div>
-        <div class="kpi-sub" id="kpi-read-sub">116,196 messages read</div>
+        <div class="kpi-value" id="kpi-read-value">67.2%</div>
+        <div class="kpi-sub" id="kpi-read-sub">142,309 messages read</div>
         <div class="kpi-bottom">
-          <span class="kpi-delta delta-bad" id="kpi-read-delta">↓ 2.2pp <span class="kpi-vs" id="kpi-read-vs">vs prior period</span></span>
-          <span id="kpi-read-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,4.2 14.0,9.1 26.0,6.1 38.0,3.0 50.0,4.2 62.0,5.8 74.0,5.9 86.0,25.0" fill="none" stroke="#eda100" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#eda100"/></svg></span>
+          <span class="kpi-delta delta-bad" id="kpi-read-delta">↓ 5.6pp <span class="kpi-vs" id="kpi-read-vs">Q3 vs Q2</span></span>
+          <span id="kpi-read-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,8.8 12.5,25.0 23.0,15.7 33.5,3.0 44.0,10.6 54.5,15.7 65.0,12.4 75.5,16.0 86.0,18.5" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="18.5" r="2.6" fill="#1baf7a"/></svg></span>
         </div>
       </div>
 
@@ -508,11 +509,11 @@
           <span class="kpi-label">RESPONSE RATE</span>
           <span class="status-chip" id="kpi-response-status" style="--dot:var(--good)"><i></i>Healthy</span>
         </div>
-        <div class="kpi-value" id="kpi-response-value">7.48%</div>
-        <div class="kpi-sub" id="kpi-response-sub">12,850 recipients responded</div>
+        <div class="kpi-value" id="kpi-response-value">7.22%</div>
+        <div class="kpi-sub" id="kpi-response-sub">15,283 recipients responded</div>
         <div class="kpi-bottom">
-          <span class="kpi-delta delta-good" id="kpi-response-delta">↑ 0.9pp <span class="kpi-vs" id="kpi-response-vs">vs prior period</span></span>
-          <span id="kpi-response-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,4.2 14.0,9.1 26.0,6.1 38.0,3.0 50.0,4.2 62.0,5.8 74.0,5.9 86.0,25.0" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#1baf7a"/></svg></span>
+          <span class="kpi-delta delta-bad" id="kpi-response-delta">↓ 1.7pp <span class="kpi-vs" id="kpi-response-vs">Q3 vs Q2</span></span>
+          <span id="kpi-response-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,6.2 12.5,24.4 23.0,20.0 33.5,3.0 44.0,11.4 54.5,25.0 65.0,21.8 75.5,21.2 86.0,24.1" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="24.1" r="2.6" fill="#1baf7a"/></svg></span>
         </div>
       </div>
 
@@ -521,24 +522,24 @@
           <span class="kpi-label">CONVERSION RATE</span>
           <span class="status-chip" id="kpi-conversion-status" style="--dot:var(--good)"><i></i>Healthy</span>
         </div>
-        <div class="kpi-value" id="kpi-conversion-value">2.77%</div>
-        <div class="kpi-sub" id="kpi-conversion-sub">4,755 desired actions completed</div>
+        <div class="kpi-value" id="kpi-conversion-value">2.67%</div>
+        <div class="kpi-sub" id="kpi-conversion-sub">5,655 desired actions completed</div>
         <div class="kpi-bottom">
-          <span class="kpi-delta delta-good" id="kpi-conversion-delta">↑ 0.3pp <span class="kpi-vs" id="kpi-conversion-vs">vs prior period</span></span>
-          <span id="kpi-conversion-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,4.2 14.0,9.1 26.0,6.0 38.0,3.0 50.0,4.2 62.0,5.8 74.0,5.9 86.0,25.0" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#1baf7a"/></svg></span>
+          <span class="kpi-delta delta-bad" id="kpi-conversion-delta">↓ 0.6pp <span class="kpi-vs" id="kpi-conversion-vs">Q3 vs Q2</span></span>
+          <span id="kpi-conversion-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,6.3 12.5,24.5 23.0,20.0 33.5,3.0 44.0,11.4 54.5,25.0 65.0,21.8 75.5,21.1 86.0,24.1" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="24.1" r="2.6" fill="#1baf7a"/></svg></span>
         </div>
       </div>
 
       <div class="kpi-card" id="kpi-failed">
         <div class="kpi-top">
           <span class="kpi-label">FAILED / REJECTED</span>
-          <span class="status-chip" id="kpi-failed-status" style="--dot:var(--critical)"><i></i>Critical</span>
+          <span class="status-chip" id="kpi-failed-status" style="--dot:var(--warning)"><i></i>Attention</span>
         </div>
-        <div class="kpi-value" id="kpi-failed-value">56,357</div>
-        <div class="kpi-sub" id="kpi-failed-sub">24.2% of total blast volume</div>
+        <div class="kpi-value" id="kpi-failed-value">62,439</div>
+        <div class="kpi-sub" id="kpi-failed-sub">22.5% of total blast volume</div>
         <div class="kpi-bottom">
-          <span class="kpi-delta delta-bad" id="kpi-failed-delta">↑ 4.8% <span class="kpi-vs" id="kpi-failed-vs">vs prior period</span></span>
-          <span id="kpi-failed-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,20.4 14.0,22.9 26.0,13.4 38.0,19.2 50.0,3.0 62.0,20.4 74.0,20.1 86.0,25.0" fill="none" stroke="#d03b3b" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="25.0" r="2.6" fill="#d03b3b"/></svg></span>
+          <span class="kpi-delta delta-good" id="kpi-failed-delta">↓ 66.2% <span class="kpi-vs" id="kpi-failed-vs">Q3 vs Q2</span></span>
+          <span id="kpi-failed-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,21.0 12.5,23.6 23.0,25.0 33.5,10.4 44.0,19.4 54.5,3.0 65.0,18.5 75.5,23.6 86.0,21.9" fill="none" stroke="#eda100" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="21.9" r="2.6" fill="#eda100"/></svg></span>
         </div>
       </div>
 
@@ -548,10 +549,10 @@
           <span class="status-chip" id="kpi-optout-status" style="--dot:var(--good)"><i></i>Healthy</span>
         </div>
         <div class="kpi-value" id="kpi-optout-value">0.05%</div>
-        <div class="kpi-sub" id="kpi-optout-sub">82 recipients opted out</div>
+        <div class="kpi-sub" id="kpi-optout-sub">98 recipients opted out</div>
         <div class="kpi-bottom">
-          <span class="kpi-delta delta-good" id="kpi-optout-delta">↓ 0.0pp <span class="kpi-vs" id="kpi-optout-vs">vs prior period</span></span>
-          <span id="kpi-optout-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,3.0 14.0,11.8 26.0,7.4 38.0,20.6 50.0,16.2 62.0,25.0 74.0,20.6 86.0,20.6" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="20.6" r="2.6" fill="#1baf7a"/></svg></span>
+          <span class="kpi-delta delta-bad" id="kpi-optout-delta">↑ 0.03pp <span class="kpi-vs" id="kpi-optout-vs">Q3 vs Q2</span></span>
+          <span id="kpi-optout-spark"><svg viewBox="0 0 88 28" width="88" height="28" class="spark"><polyline points="2.0,21.5 12.5,11.0 23.0,25.0 33.5,18.8 44.0,19.9 54.5,12.6 65.0,3.0 75.5,21.8 86.0,12.7" fill="none" stroke="#1baf7a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/><circle cx="86.0" cy="12.7" r="2.6" fill="#1baf7a"/></svg></span>
         </div>
       </div>
   </section>
@@ -563,7 +564,7 @@
         <div>
           <p class="card-eyebrow">Overall Performance</p>
           <h2 class="card-title">WhatsApp Campaign Performance Trend</h2>
-          <p class="card-desc">Monthly volumes, January – August 2026 (August shown to-date, dashed)</p>
+          <p class="card-desc">Monthly volumes, January – September 2026 (delivered/read for August – September estimated, dashed)</p>
         </div>
       </div>
       <div class="chart-surface">
@@ -572,106 +573,110 @@
           <span class="legend-key"><span class="lk-line" style="background:#eb6834"></span>Delivered</span>
           <span class="legend-key"><span class="lk-line" style="background:#1baf7a"></span>Read</span>
         </div>
-        <svg class="trend-chart" viewBox="0 0 900 300" width="100%" height="300" preserveAspectRatio="xMidYMid meet" role="img">
+        <svg class="trend-chart" viewBox="0 0 945 300" width="100%" height="300" preserveAspectRatio="xMidYMid meet" role="img">
 <line x1="46" y1="266.0" x2="880" y2="266.0" class="gridline"/>
 <text x="36" y="270.0" class="axis-label" text-anchor="end">0K</text>
 <line x1="46" y1="203.5" x2="880" y2="203.5" class="gridline"/>
-<text x="36" y="207.5" class="axis-label" text-anchor="end">17K</text>
+<text x="36" y="207.5" class="axis-label" text-anchor="end">15K</text>
 <line x1="46" y1="141.0" x2="880" y2="141.0" class="gridline"/>
-<text x="36" y="145.0" class="axis-label" text-anchor="end">35K</text>
+<text x="36" y="145.0" class="axis-label" text-anchor="end">30K</text>
 <line x1="46" y1="78.5" x2="880" y2="78.5" class="gridline"/>
-<text x="36" y="82.5" class="axis-label" text-anchor="end">52K</text>
+<text x="36" y="82.5" class="axis-label" text-anchor="end">45K</text>
 <line x1="46" y1="16.0" x2="880" y2="16.0" class="gridline"/>
-<text x="36" y="20.0" class="axis-label" text-anchor="end">70K</text>
+<text x="36" y="20.0" class="axis-label" text-anchor="end">60K</text>
 <text x="46.0" y="288" class="axis-label" text-anchor="middle">JAN</text>
-<text x="165.1" y="288" class="axis-label" text-anchor="middle">FEB</text>
-<text x="284.3" y="288" class="axis-label" text-anchor="middle">MAR</text>
-<text x="403.4" y="288" class="axis-label" text-anchor="middle">APR</text>
-<text x="522.6" y="288" class="axis-label" text-anchor="middle">MAY</text>
-<text x="641.7" y="288" class="axis-label" text-anchor="middle">JUN</text>
-<text x="760.9" y="288" class="axis-label" text-anchor="middle">JUL</text>
-<text x="880.0" y="288" class="axis-label" text-anchor="middle">AUG</text>
-<polyline points="46.0,172.6 165.1,229.9 284.3,190.5 403.4,103.5 522.6,46.3 641.7,156.3 760.9,141.3" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="s-MessagesSent"/>
-<polyline points="760.9,141.3 880.0,256.5" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
-<circle cx="46.0" cy="172.6" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="January" data-value="26,160"/>
-<circle cx="165.1" cy="229.9" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="February" data-value="10,116"/>
-<circle cx="284.3" cy="190.5" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="March" data-value="21,143"/>
-<circle cx="403.4" cy="103.5" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="April" data-value="45,511"/>
-<circle cx="522.6" cy="46.3" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="May" data-value="61,529"/>
-<circle cx="641.7" cy="156.3" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="June" data-value="30,716"/>
-<circle cx="760.9" cy="141.3" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="July" data-value="34,916"/>
-<circle cx="880.0" cy="256.5" r="5.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Messages Sent" data-month="August (MTD)" data-value="2,647"/>
-<polyline points="46.0,180.4 165.1,234.2 284.3,229.3 403.4,149.6 522.6,126.3 641.7,171.6 760.9,164.7" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="s-Delivered"/>
-<polyline points="760.9,164.7 880.0,258.6" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
-<circle cx="46.0" cy="180.4" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="January" data-value="23,967"/>
-<circle cx="165.1" cy="234.2" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="February" data-value="8,913"/>
-<circle cx="284.3" cy="229.3" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="March" data-value="10,288"/>
-<circle cx="403.4" cy="149.6" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="April" data-value="32,598"/>
-<circle cx="522.6" cy="126.3" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="May" data-value="39,110"/>
-<circle cx="641.7" cy="171.6" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="June" data-value="26,427"/>
-<circle cx="760.9" cy="164.7" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="July" data-value="28,358"/>
-<circle cx="880.0" cy="258.6" r="5.5" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Delivered" data-month="August (MTD)" data-value="2,059"/>
-<polyline points="46.0,205.3 165.1,248.7 284.3,242.3 403.4,178.8 522.6,167.3 641.7,204.4 760.9,200.2" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="s-Read"/>
-<polyline points="760.9,200.2 880.0,266.0" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
-<circle cx="46.0" cy="205.3" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="January" data-value="16,984"/>
-<circle cx="165.1" cy="248.7" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="February" data-value="4,841"/>
-<circle cx="284.3" cy="242.3" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="March" data-value="6,639"/>
-<circle cx="403.4" cy="178.8" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="April" data-value="24,427"/>
-<circle cx="522.6" cy="167.3" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="May" data-value="27,644"/>
-<circle cx="641.7" cy="204.4" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="June" data-value="17,250"/>
-<circle cx="760.9" cy="200.2" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="July" data-value="18,411"/>
-<circle cx="880.0" cy="266.0" r="5.5" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Read" data-month="August (MTD)" data-value="0"/>
-<text x="888.0" y="260.5" class="end-label" fill="#2a78d6">2,647</text>
-<line x1="883.0" y1="258.6" x2="886.0" y2="270.5" stroke="#eb6834" stroke-width="1" opacity="0.5"/>
-<text x="888.0" y="274.5" class="end-label" fill="#eb6834">2,059</text>
-<line x1="883.0" y1="266.0" x2="886.0" y2="284.5" stroke="#1baf7a" stroke-width="1" opacity="0.5"/>
-<text x="888.0" y="288.5" class="end-label" fill="#1baf7a">0</text>
+<text x="150.2" y="288" class="axis-label" text-anchor="middle">FEB</text>
+<text x="254.5" y="288" class="axis-label" text-anchor="middle">MAR</text>
+<text x="358.8" y="288" class="axis-label" text-anchor="middle">APR</text>
+<text x="463.0" y="288" class="axis-label" text-anchor="middle">MAY</text>
+<text x="567.2" y="288" class="axis-label" text-anchor="middle">JUN</text>
+<text x="671.5" y="288" class="axis-label" text-anchor="middle">JUL</text>
+<text x="775.8" y="288" class="axis-label" text-anchor="middle">AUG</text>
+<text x="880.0" y="288" class="axis-label" text-anchor="middle">SEP</text>
+<polyline points="46.0,157.0 150.2,223.8 254.5,230.8 358.8,86.1 463.0,50.7 567.2,77.2 671.5,76.3 775.8,172.2 880.0,162.5" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="s-MessagesSent"/>
+<circle cx="46.0" cy="157.0" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="January" data-value="26,160"/>
+<circle cx="150.2" cy="223.8" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="February" data-value="10,116"/>
+<circle cx="254.5" cy="230.8" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="March" data-value="8,452"/>
+<circle cx="358.8" cy="86.1" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="April" data-value="43,186"/>
+<circle cx="463.0" cy="50.7" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="May" data-value="51,664"/>
+<circle cx="567.2" cy="77.2" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="June" data-value="45,320"/>
+<circle cx="671.5" cy="76.3" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="July" data-value="45,527"/>
+<circle cx="775.8" cy="172.2" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="August" data-value="22,523"/>
+<circle cx="880.0" cy="162.5" r="3.4" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Messages Sent" data-month="September" data-value="24,842"/>
+<polyline points="46.0,166.1 150.2,228.9 254.5,234.1 358.8,139.1 463.0,112.2 567.2,161.3 671.5,112.2" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="s-Delivered"/>
+<polyline points="671.5,112.2 775.8,183.8 880.0,174.4" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="166.1" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="January" data-value="23,967"/>
+<circle cx="150.2" cy="228.9" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="February" data-value="8,913"/>
+<circle cx="254.5" cy="234.1" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="March" data-value="7,646"/>
+<circle cx="358.8" cy="139.1" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="April" data-value="30,462"/>
+<circle cx="463.0" cy="112.2" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="May" data-value="36,901"/>
+<circle cx="567.2" cy="161.3" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="June" data-value="25,117"/>
+<circle cx="671.5" cy="112.2" r="3.4" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Delivered" data-month="July" data-value="36,907"/>
+<circle cx="775.8" cy="183.8" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Delivered" data-month="August (est. status)" data-value="19,728"/>
+<circle cx="880.0" cy="174.4" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Delivered" data-month="September (est. status)" data-value="21,980"/>
+<polyline points="46.0,195.2 150.2,245.8 254.5,245.7 358.8,168.6 463.0,159.9 567.2,199.2 671.5,162.7" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="s-Read"/>
+<polyline points="671.5,162.7 775.8,213.8 880.0,210.2" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="195.2" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="January" data-value="16,984"/>
+<circle cx="150.2" cy="245.8" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="February" data-value="4,841"/>
+<circle cx="254.5" cy="245.7" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="March" data-value="4,875"/>
+<circle cx="358.8" cy="168.6" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="April" data-value="23,387"/>
+<circle cx="463.0" cy="159.9" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="May" data-value="25,463"/>
+<circle cx="567.2" cy="199.2" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="June" data-value="16,038"/>
+<circle cx="671.5" cy="162.7" r="3.4" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Read" data-month="July" data-value="24,788"/>
+<circle cx="775.8" cy="213.8" r="5" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Read" data-month="August (est. status)" data-value="12,529"/>
+<circle cx="880.0" cy="210.2" r="5" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Read" data-month="September (est. status)" data-value="13,404"/>
+<text x="888.0" y="166.5" class="end-label" fill="#2a78d6">24,842</text>
+<line x1="883.0" y1="174.4" x2="886.0" y2="176.5" stroke="#eb6834" stroke-width="1" opacity="0.5"/>
+<text x="888.0" y="180.5" class="end-label" fill="#eb6834">21,980</text>
+<text x="888.0" y="214.2" class="end-label" fill="#1baf7a">13,404</text>
 </svg>
         <p class="trend-subtitle">Response &amp; Conversion Outcome Trend (own scale)</p>
         <div class="legend-row-inline">
           <span class="legend-key"><span class="lk-line" style="background:#eda100"></span>Responded</span>
           <span class="legend-key"><span class="lk-line" style="background:#e87ba4"></span>Converted</span>
         </div>
-        <svg class="trend-chart" viewBox="0 0 900 190" width="100%" height="190" preserveAspectRatio="xMidYMid meet" role="img">
+        <svg class="trend-chart" viewBox="0 0 945 190" width="100%" height="190" preserveAspectRatio="xMidYMid meet" role="img">
 <line x1="46" y1="156.0" x2="880" y2="156.0" class="gridline"/>
 <text x="36" y="160.0" class="axis-label" text-anchor="end">0</text>
 <line x1="46" y1="86.0" x2="880" y2="86.0" class="gridline"/>
-<text x="36" y="90.0" class="axis-label" text-anchor="end">1,750</text>
+<text x="36" y="90.0" class="axis-label" text-anchor="end">2,000</text>
 <line x1="46" y1="16.0" x2="880" y2="16.0" class="gridline"/>
-<text x="36" y="20.0" class="axis-label" text-anchor="end">3,500</text>
+<text x="36" y="20.0" class="axis-label" text-anchor="end">4,000</text>
 <text x="46.0" y="178" class="axis-label" text-anchor="middle">JAN</text>
-<text x="165.1" y="178" class="axis-label" text-anchor="middle">FEB</text>
-<text x="284.3" y="178" class="axis-label" text-anchor="middle">MAR</text>
-<text x="403.4" y="178" class="axis-label" text-anchor="middle">APR</text>
-<text x="522.6" y="178" class="axis-label" text-anchor="middle">MAY</text>
-<text x="641.7" y="178" class="axis-label" text-anchor="middle">JUN</text>
-<text x="760.9" y="178" class="axis-label" text-anchor="middle">JUL</text>
-<text x="880.0" y="178" class="axis-label" text-anchor="middle">AUG</text>
-<path d="M46.0,156.0 L46.0,80.9 165.1,134.6 284.3,126.6 403.4,48.0 522.6,33.7 641.7,79.7 760.9,74.6 L760.9,156.0 Z" fill="#eda100" opacity="0.10"/>
-<polyline points="46.0,80.9 165.1,134.6 284.3,126.6 403.4,48.0 522.6,33.7 641.7,79.7 760.9,74.6" fill="none" stroke="#eda100" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-<polyline points="760.9,74.6 880.0,156.0" fill="none" stroke="#eda100" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
-<circle cx="46.0" cy="80.9" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="January" data-value="1,878"/>
-<circle cx="165.1" cy="134.6" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="February" data-value="535"/>
-<circle cx="284.3" cy="126.6" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="March" data-value="734"/>
-<circle cx="403.4" cy="48.0" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="April" data-value="2,701"/>
-<circle cx="522.6" cy="33.7" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="May" data-value="3,057"/>
-<circle cx="641.7" cy="79.7" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="June" data-value="1,908"/>
-<circle cx="760.9" cy="74.6" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="July" data-value="2,036"/>
-<circle cx="880.0" cy="156.0" r="5.5" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Responded" data-month="August (MTD)" data-value="0"/>
-<path d="M46.0,156.0 L46.0,128.2 165.1,148.1 284.3,145.1 403.4,116.0 522.6,110.8 641.7,127.8 760.9,125.9 L760.9,156.0 Z" fill="#e87ba4" opacity="0.10"/>
-<polyline points="46.0,128.2 165.1,148.1 284.3,145.1 403.4,116.0 522.6,110.8 641.7,127.8 760.9,125.9" fill="none" stroke="#e87ba4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-<polyline points="760.9,125.9 880.0,156.0" fill="none" stroke="#e87ba4" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
-<circle cx="46.0" cy="128.2" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="January" data-value="695"/>
-<circle cx="165.1" cy="148.1" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="February" data-value="198"/>
-<circle cx="284.3" cy="145.1" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="March" data-value="272"/>
-<circle cx="403.4" cy="116.0" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="April" data-value="999"/>
-<circle cx="522.6" cy="110.8" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="May" data-value="1,131"/>
-<circle cx="641.7" cy="127.8" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="June" data-value="706"/>
-<circle cx="760.9" cy="125.9" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="July" data-value="753"/>
-<circle cx="880.0" cy="156.0" r="5.5" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Converted" data-month="August (MTD)" data-value="0"/>
-<text x="888.0" y="160.0" class="end-label" fill="#eda100">0</text>
-<line x1="883.0" y1="156.0" x2="886.0" y2="170.0" stroke="#e87ba4" stroke-width="1" opacity="0.5"/>
-<text x="888.0" y="174.0" class="end-label" fill="#e87ba4">0</text>
+<text x="150.2" y="178" class="axis-label" text-anchor="middle">FEB</text>
+<text x="254.5" y="178" class="axis-label" text-anchor="middle">MAR</text>
+<text x="358.8" y="178" class="axis-label" text-anchor="middle">APR</text>
+<text x="463.0" y="178" class="axis-label" text-anchor="middle">MAY</text>
+<text x="567.2" y="178" class="axis-label" text-anchor="middle">JUN</text>
+<text x="671.5" y="178" class="axis-label" text-anchor="middle">JUL</text>
+<text x="775.8" y="178" class="axis-label" text-anchor="middle">AUG</text>
+<text x="880.0" y="178" class="axis-label" text-anchor="middle">SEP</text>
+<path d="M46.0,156.0 L46.0,81.5 150.2,137.8 254.5,138.4 358.8,55.5 463.0,52.5 567.2,105.6 671.5,75.0 L671.5,156.0 Z" fill="#eda100" opacity="0.10"/>
+<polyline points="46.0,81.5 150.2,137.8 254.5,138.4 358.8,55.5 463.0,52.5 567.2,105.6 671.5,75.0" fill="none" stroke="#eda100" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="671.5,75.0 775.8,112.0 880.0,110.7" fill="none" stroke="#eda100" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="81.5" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="January" data-value="2,128"/>
+<circle cx="150.2" cy="137.8" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="February" data-value="520"/>
+<circle cx="254.5" cy="138.4" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="March" data-value="502"/>
+<circle cx="358.8" cy="55.5" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="April" data-value="2,870"/>
+<circle cx="463.0" cy="52.5" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="May" data-value="2,957"/>
+<circle cx="567.2" cy="105.6" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="June" data-value="1,440"/>
+<circle cx="671.5" cy="75.0" r="3.2" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Responded" data-month="July" data-value="2,314"/>
+<circle cx="775.8" cy="112.0" r="5" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Responded" data-month="August (est. status)" data-value="1,258"/>
+<circle cx="880.0" cy="110.7" r="5" fill="#eda100" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Responded" data-month="September (est. status)" data-value="1,293"/>
+<path d="M46.0,156.0 L46.0,128.5 150.2,149.3 254.5,149.5 358.8,118.8 463.0,117.7 567.2,137.3 671.5,126.0 L671.5,156.0 Z" fill="#e87ba4" opacity="0.10"/>
+<polyline points="46.0,128.5 150.2,149.3 254.5,149.5 358.8,118.8 463.0,117.7 567.2,137.3 671.5,126.0" fill="none" stroke="#e87ba4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="671.5,126.0 775.8,139.7 880.0,139.2" fill="none" stroke="#e87ba4" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="128.5" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="January" data-value="787"/>
+<circle cx="150.2" cy="149.3" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="February" data-value="192"/>
+<circle cx="254.5" cy="149.5" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="March" data-value="186"/>
+<circle cx="358.8" cy="118.8" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="April" data-value="1,062"/>
+<circle cx="463.0" cy="117.7" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="May" data-value="1,094"/>
+<circle cx="567.2" cy="137.3" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="June" data-value="533"/>
+<circle cx="671.5" cy="126.0" r="3.2" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Converted" data-month="July" data-value="856"/>
+<circle cx="775.8" cy="139.7" r="5" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Converted" data-month="August (est. status)" data-value="466"/>
+<circle cx="880.0" cy="139.2" r="5" fill="#e87ba4" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Converted" data-month="September (est. status)" data-value="479"/>
+<text x="888.0" y="114.7" class="end-label" fill="#eda100">1,293</text>
+<text x="888.0" y="143.2" class="end-label" fill="#e87ba4">479</text>
 </svg>
       </div>
     </div>
@@ -679,18 +684,18 @@
       <div>
         <p class="card-eyebrow">Executive Insight</p>
         <h2 class="card-title">What the trend is telling us</h2>
-        <p class="insight-text" style="margin-top:12px;">Delivery performance remains stable at 73.8% (+1.2pp vs. prior period), while response and conversion quality strengthened to 7.48% and 2.77% — up 0.9pp and 0.3pp respectively — even as total message volume grew 6.1% to 232,738. The rise in failed deliveries is concentrated in a single account (WABA ARS UNIVERSITY) and does not reflect portfolio-wide risk.</p>
+        <p class="insight-text" style="margin-top:12px;">Across 277,790 messages blasted from January to September, portfolio delivery sits at 76.2% (↑ 18.7pp Q3 vs Q2), with read rate at 67.2%, response at 7.22% and conversion at 2.67%. Message volume moved ↓ 33.7% Q3 vs Q2, with the largest swing from WABA ARS UNIVERSITY (−42,311 messages). Failures remain concentrated in WABA ARS UNIVERSITY (50% of all failed messages), so the fix is account-level rather than platform-wide.</p>
         <ul class="insight-signals">
-          <li><strong>Delivery health</strong> — stable, up 1.2pp against the prior period</li>
-          <li><strong>Engagement quality</strong> — improving faster than raw volume</li>
-          <li><strong>Concentration risk</strong> — 1 of 5 accounts drives most of the failure increase</li>
+          <li><strong>Delivery health</strong> — 76.2% portfolio, ↑ 18.7pp Q3 vs Q2</li>
+          <li><strong>Volume</strong> — 92,892 messages in Jul–Sep vs 140,170 in Apr–Jun</li>
+          <li><strong>Concentration risk</strong> — 1 of 5 accounts drives 50% of failures</li>
           <li><strong>Next move</strong> — a targeted account-level fix, not a platform-wide one</li>
         </ul>
       </div>
       <div class="insight-stats">
-        <div class="insight-stat"><div class="is-val">+6.1%</div><div class="is-lbl">Message volume growth</div></div>
-        <div class="insight-stat"><div class="is-val">+0.9pp</div><div class="is-lbl">Response rate gain</div></div>
-        <div class="insight-stat"><div class="is-val">+0.3pp</div><div class="is-lbl">Conversion rate gain</div></div>
+        <div class="insight-stat"><div class="is-val">−33.7%</div><div class="is-lbl">Message volume, Q3 vs Q2</div></div>
+        <div class="insight-stat"><div class="is-val">7.22%</div><div class="is-lbl">Portfolio response rate</div></div>
+        <div class="insight-stat"><div class="is-val">2.67%</div><div class="is-lbl">Portfolio conversion rate</div></div>
       </div>
     </div>
   </section>
@@ -701,50 +706,50 @@
       <div>
         <p class="card-eyebrow">Delivery Health</p>
         <h2 class="card-title">Delivery Funnel — Target Audience to Conversion</h2>
-        <p class="card-desc">232,738 targeted → 174,322 sent → 171,720 delivered → 116,196 read → 12,850 responded → 4,755 converted</p>
+        <p class="card-desc">277,790 targeted → 215,351 sent → 211,621 delivered → 142,309 read → 15,283 responded → 5,655 converted</p>
       </div>
     </div>
     <div class="funnel-wrap">
       <div class="funnel-svg-wrap chart-surface"><svg class="funnel-chart" viewBox="0 0 980 384" width="100%" height="384" preserveAspectRatio="xMidYMid meet" role="img">
-<g class="funnel-row hover-dot" data-label="Target Audience" data-value="232,738" data-pct="100.0">
+<g class="funnel-row hover-dot" data-label="Target Audience" data-value="277,790" data-pct="100.0">
 <rect x="110.0" y="5.0" width="760.0" height="54" rx="8" fill="#86b6ef"/>
 <text x="490.0" y="26.0" text-anchor="middle" class="funnel-label">Target Audience</text>
-<text x="490.0" y="48.0" text-anchor="middle" class="funnel-value">232,738 <tspan class="funnel-pct">(100.0%)</tspan></text>
+<text x="490.0" y="48.0" text-anchor="middle" class="funnel-value">277,790 <tspan class="funnel-pct">(100.0%)</tspan></text>
 </g>
-<g class="funnel-row hover-dot" data-label="Messages Sent" data-value="174,322" data-pct="74.9">
-<rect x="187.8" y="69.0" width="604.4" height="54" rx="8" fill="#5598e7"/>
+<g class="funnel-row hover-dot" data-label="Messages Sent" data-value="215,351" data-pct="77.5">
+<rect x="176.1" y="69.0" width="627.9" height="54" rx="8" fill="#5598e7"/>
 <text x="490.0" y="90.0" text-anchor="middle" class="funnel-label">Messages Sent</text>
-<text x="490.0" y="112.0" text-anchor="middle" class="funnel-value">174,322 <tspan class="funnel-pct">(74.9%)</tspan></text>
+<text x="490.0" y="112.0" text-anchor="middle" class="funnel-value">215,351 <tspan class="funnel-pct">(77.5%)</tspan></text>
 </g>
-<text x="810.2" y="100.0" class="funnel-drop">▼ 25.1% drop-off</text>
-<g class="funnel-row hover-dot" data-label="Delivered" data-value="171,720" data-pct="73.8">
-<rect x="191.3" y="133.0" width="597.5" height="54" rx="8" fill="#2a78d6"/>
+<text x="821.9" y="100.0" class="funnel-drop">▼ 22.5% drop-off</text>
+<g class="funnel-row hover-dot" data-label="Delivered" data-value="211,621" data-pct="76.2">
+<rect x="180.1" y="133.0" width="619.7" height="54" rx="8" fill="#2a78d6"/>
 <text x="490.0" y="154.0" text-anchor="middle" class="funnel-label">Delivered</text>
-<text x="490.0" y="176.0" text-anchor="middle" class="funnel-value">171,720 <tspan class="funnel-pct">(73.8%)</tspan></text>
+<text x="490.0" y="176.0" text-anchor="middle" class="funnel-value">211,621 <tspan class="funnel-pct">(76.2%)</tspan></text>
 </g>
-<text x="806.7" y="164.0" class="funnel-drop">▼ 1.5% drop-off</text>
-<g class="funnel-row hover-dot" data-label="Read" data-value="116,196" data-pct="49.9">
-<rect x="265.2" y="197.0" width="449.5" height="54" rx="8" fill="#1c5cab"/>
+<text x="817.9" y="164.0" class="funnel-drop">▼ 1.7% drop-off</text>
+<g class="funnel-row hover-dot" data-label="Read" data-value="142,309" data-pct="51.2">
+<rect x="259.9" y="197.0" width="460.2" height="54" rx="8" fill="#1c5cab"/>
 <text x="490.0" y="218.0" text-anchor="middle" class="funnel-label">Read</text>
-<text x="490.0" y="240.0" text-anchor="middle" class="funnel-value">116,196 <tspan class="funnel-pct">(49.9%)</tspan></text>
+<text x="490.0" y="240.0" text-anchor="middle" class="funnel-value">142,309 <tspan class="funnel-pct">(51.2%)</tspan></text>
 </g>
-<text x="732.8" y="228.0" class="funnel-drop">▼ 32.3% drop-off</text>
-<g class="funnel-row hover-dot" data-label="Responded" data-value="12,850" data-pct="5.5">
-<rect x="402.9" y="261.0" width="174.2" height="54" rx="8" fill="#184f95"/>
+<text x="738.1" y="228.0" class="funnel-drop">▼ 32.8% drop-off</text>
+<g class="funnel-row hover-dot" data-label="Responded" data-value="15,283" data-pct="5.5">
+<rect x="414.0" y="261.0" width="152.0" height="54" rx="8" fill="#184f95"/>
 <text x="490.0" y="282.0" text-anchor="middle" class="funnel-label">Responded</text>
-<text x="490.0" y="304.0" text-anchor="middle" class="funnel-value">12,850 <tspan class="funnel-pct">(5.5%)</tspan></text>
+<text x="490.0" y="304.0" text-anchor="middle" class="funnel-value">15,283 <tspan class="funnel-pct">(5.5%)</tspan></text>
 </g>
-<text x="595.1" y="292.0" class="funnel-drop biggest">▼ 88.9% drop-off — largest</text>
-<g class="funnel-row hover-dot" data-label="Converted" data-value="4,755" data-pct="2.0">
-<rect x="413.7" y="325.0" width="152.7" height="54" rx="8" fill="#0d366b"/>
+<text x="584.0" y="292.0" class="funnel-drop biggest">▼ 89.3% drop-off — largest</text>
+<g class="funnel-row hover-dot" data-label="Converted" data-value="5,655" data-pct="2.0">
+<rect x="414.0" y="325.0" width="152.0" height="54" rx="8" fill="#0d366b"/>
 <text x="490.0" y="346.0" text-anchor="middle" class="funnel-label">Converted</text>
-<text x="490.0" y="368.0" text-anchor="middle" class="funnel-value">4,755 <tspan class="funnel-pct">(2.0%)</tspan></text>
+<text x="490.0" y="368.0" text-anchor="middle" class="funnel-value">5,655 <tspan class="funnel-pct">(2.0%)</tspan></text>
 </g>
-<text x="584.3" y="356.0" class="funnel-drop">▼ 63.0% drop-off</text>
+<text x="584.0" y="356.0" class="funnel-drop">▼ 63.0% drop-off</text>
 </svg></div>
       <div class="funnel-callout">
         <h4>Largest drop-off</h4>
-        <div class="fc-big">88.9%</div>
+        <div class="fc-big">89.3%</div>
         <p><strong>Read → Responded</strong><br/>The gap between reading a message and taking action is the single biggest opportunity — most recipients open messages but few respond.</p>
       </div>
     </div>
@@ -756,83 +761,85 @@
       <div>
         <p class="card-eyebrow">Delivery Health</p>
         <h2 class="card-title">WhatsApp Delivery Health Monitor</h2>
-        <p class="card-desc">Status across delivery outcomes, 232,738 total blast volume</p>
+        <p class="card-desc">Status across delivery outcomes, 277,790 total blast volume</p>
       </div>
     </div>
     <div class="health-grid">
       
         <div class="health-item">
           <div class="health-top"><span class="status-chip" style="--dot:var(--good)"><i></i>Healthy</span></div>
-          <div class="health-value">171,720</div>
+          <div class="health-value">211,621</div>
           <div class="health-label">Delivered</div>
-          <div class="health-pct">73.79% of blast volume</div>
+          <div class="health-pct">76.18% of blast volume</div>
         </div>
 
         <div class="health-item">
           <div class="health-top"><span class="status-chip" style="--dot:var(--critical)"><i></i>Critical</span></div>
-          <div class="health-value">30,912</div>
+          <div class="health-value">34,244</div>
           <div class="health-label">Undelivered</div>
-          <div class="health-pct">13.28% of blast volume</div>
+          <div class="health-pct">12.33% of blast volume</div>
         </div>
 
         <div class="health-item">
           <div class="health-top"><span class="status-chip" style="--dot:var(--warning)"><i></i>Attention</span></div>
-          <div class="health-value">9,914</div>
+          <div class="health-value">10,983</div>
           <div class="health-label">Rejected</div>
-          <div class="health-pct">4.26% of blast volume</div>
+          <div class="health-pct">3.95% of blast volume</div>
         </div>
 
         <div class="health-item">
           <div class="health-top"><span class="status-chip" style="--dot:var(--warning)"><i></i>Attention</span></div>
-          <div class="health-value">9,797</div>
+          <div class="health-value">10,853</div>
           <div class="health-label">Invalid Number</div>
-          <div class="health-pct">4.21% of blast volume</div>
+          <div class="health-pct">3.91% of blast volume</div>
         </div>
 
         <div class="health-item">
           <div class="health-top"><span class="status-chip" style="--dot:var(--warning)"><i></i>Attention</span></div>
-          <div class="health-value">3,920</div>
+          <div class="health-value">4,343</div>
           <div class="health-label">Blocked</div>
-          <div class="health-pct">1.68% of blast volume</div>
+          <div class="health-pct">1.56% of blast volume</div>
         </div>
 
         <div class="health-item">
           <div class="health-top"><span class="status-chip" style="--dot:var(--good)"><i></i>Healthy</span></div>
-          <div class="health-value">1,732</div>
+          <div class="health-value">1,918</div>
           <div class="health-label">Failed (Other)</div>
-          <div class="health-pct">0.74% of blast volume</div>
+          <div class="health-pct">0.69% of blast volume</div>
         </div>
 
         <div class="health-item">
           <div class="health-top"><span class="status-chip" style="--dot:var(--good)"><i></i>Healthy</span></div>
-          <div class="health-value">82</div>
+          <div class="health-value">98</div>
           <div class="health-label">Opt-Out</div>
           <div class="health-pct">0.04% of blast volume</div>
         </div>
     </div>
-    <p class="trend-subtitle">Failed Message Trend (monthly, actual)</p>
+    <p class="trend-subtitle">Failed Message Trend (monthly, Aug–Sep estimated)</p>
     <div class="chart-surface"><svg class="trend-chart" viewBox="0 0 900 145" width="100%" height="145" preserveAspectRatio="xMidYMid meet" role="img">
 <line x1="46" y1="119.0" x2="880" y2="119.0" class="gridline"/>
 <text x="46.0" y="137" class="axis-label" text-anchor="middle">JAN</text>
-<text x="165.1" y="137" class="axis-label" text-anchor="middle">FEB</text>
-<text x="284.3" y="137" class="axis-label" text-anchor="middle">MAR</text>
-<text x="403.4" y="137" class="axis-label" text-anchor="middle">APR</text>
-<text x="522.6" y="137" class="axis-label" text-anchor="middle">MAY</text>
-<text x="641.7" y="137" class="axis-label" text-anchor="middle">JUN</text>
-<text x="760.9" y="137" class="axis-label" text-anchor="middle">JUL</text>
-<text x="880.0" y="137" class="axis-label" text-anchor="middle">AUG</text>
-<path d="M46.0,119.0 L46.0,99.1 165.1,108.3 284.3,72.0 403.4,94.2 522.6,32.0 641.7,98.9 760.9,97.8 L760.9,119.0 Z" fill="#d03b3b" opacity="0.08"/>
-<polyline points="46.0,99.1 165.1,108.3 284.3,72.0 403.4,94.2 522.6,32.0 641.7,98.9 760.9,97.8" fill="none" stroke="#d03b3b" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-<polyline points="760.9,97.8 880.0,116.6" fill="none" stroke="#d03b3b" stroke-width="2.5" stroke-dasharray="2,4" opacity="0.65"/>
-<circle cx="46.0" cy="99.1" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="January" data-value="4,819"/>
-<circle cx="165.1" cy="108.3" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="February" data-value="2,575"/>
-<circle cx="284.3" cy="72.0" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="March" data-value="11,374"/>
-<circle cx="403.4" cy="94.2" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="April" data-value="6,003"/>
-<circle cx="522.6" cy="32.0" r="5" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="May" data-value="21,022"/>
-<text x="522.6" y="20.0" text-anchor="middle" class="end-label" fill="#d03b3b">21,022 peak</text>
-<circle cx="641.7" cy="98.9" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="June" data-value="4,849"/>
-<circle cx="760.9" cy="97.8" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="July" data-value="5,127"/>
-<circle cx="880.0" cy="116.6" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="August (MTD)" data-value="588"/>
+<text x="150.2" y="137" class="axis-label" text-anchor="middle">FEB</text>
+<text x="254.5" y="137" class="axis-label" text-anchor="middle">MAR</text>
+<text x="358.8" y="137" class="axis-label" text-anchor="middle">APR</text>
+<text x="463.0" y="137" class="axis-label" text-anchor="middle">MAY</text>
+<text x="567.2" y="137" class="axis-label" text-anchor="middle">JUN</text>
+<text x="671.5" y="137" class="axis-label" text-anchor="middle">JUL</text>
+<text x="775.8" y="137" class="axis-label" text-anchor="middle">AUG</text>
+<text x="880.0" y="137" class="axis-label" text-anchor="middle">SEP</text>
+<path d="M46.0,119.0 L46.0,98.4 150.2,108.0 254.5,113.1 358.8,60.0 463.0,92.8 567.2,32.9 671.5,89.3 L671.5,119.0 Z" fill="#d03b3b" opacity="0.08"/>
+<polyline points="46.0,98.4 150.2,108.0 254.5,113.1 358.8,60.0 463.0,92.8 567.2,32.9 671.5,89.3" fill="none" stroke="#d03b3b" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="671.5,89.3 775.8,108.1 880.0,101.6" fill="none" stroke="#d03b3b" stroke-width="2.5" stroke-dasharray="2,4" opacity="0.65"/>
+<circle cx="46.0" cy="98.4" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="January" data-value="4,819"/>
+<circle cx="150.2" cy="108.0" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="February" data-value="2,575"/>
+<circle cx="254.5" cy="113.1" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="March" data-value="1,376"/>
+<circle cx="358.8" cy="60.0" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="April" data-value="13,814"/>
+<circle cx="463.0" cy="92.8" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="May" data-value="6,133"/>
+<circle cx="567.2" cy="32.9" r="5" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="June" data-value="20,154"/>
+<text x="567.2" y="20.9" text-anchor="middle" class="end-label" fill="#d03b3b">20,154 peak</text>
+<circle cx="671.5" cy="89.3" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="July" data-value="6,959"/>
+<circle cx="775.8" cy="108.1" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="August (est.)" data-value="2,545"/>
+<circle cx="880.0" cy="101.6" r="3.2" fill="#d03b3b" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Failed Messages" data-month="September (est.)" data-value="4,064"/>
 </svg></div>
   </section>
 
@@ -857,43 +864,43 @@
         <tr>
           <td class="rank-cell"><span class="rank-badge">🥇</span></td>
           <td class="name-cell"><span class="proj-name">WABA UNNES</span><span class="proj-seg">Higher Education</span></td>
-          <td class="num-cell">49,458</td>
+          <td class="num-cell">51,260</td>
           <td class="num-cell"><span class="mini-bar" style="--w:88.9%; --c:#eb6834"></span>88.9%</td>
           <td class="num-cell"><span class="mini-bar" style="--w:83.9%; --c:#1baf7a"></span>83.9%</td>
           <td class="num-cell">12.53%</td>
           <td class="num-cell strong-cell">4.64%</td>
-          <td class="roi-cell">Rp 70.5M revenue</td>
+          <td class="roi-cell">Rp 73.0M revenue</td>
           <td><span class="status-pill good">Excellent</span></td>
         </tr>
 
         <tr>
           <td class="rank-cell"><span class="rank-badge">🥈</span></td>
           <td class="name-cell"><span class="proj-name">WABA FK UNDIP</span><span class="proj-seg">Higher Education</span></td>
-          <td class="num-cell">21,651</td>
+          <td class="num-cell">28,124</td>
           <td class="num-cell"><span class="mini-bar" style="--w:75.6%; --c:#eb6834"></span>75.6%</td>
           <td class="num-cell"><span class="mini-bar" style="--w:71.5%; --c:#1baf7a"></span>71.5%</td>
           <td class="num-cell">8.31%</td>
-          <td class="num-cell strong-cell">3.07%</td>
-          <td class="roi-cell">Rp 12.4M revenue</td>
+          <td class="num-cell strong-cell">3.08%</td>
+          <td class="roi-cell">Rp 16.1M revenue</td>
           <td><span class="status-pill good">Strong</span></td>
         </tr>
 
         <tr>
           <td class="rank-cell"><span class="rank-badge">🥉</span></td>
           <td class="name-cell"><span class="proj-name">WABA TAPERA</span><span class="proj-seg">Government Housing Fund</span></td>
-          <td class="num-cell">52,035</td>
-          <td class="num-cell"><span class="mini-bar" style="--w:89.9%; --c:#eb6834"></span>89.9%</td>
-          <td class="num-cell"><span class="mini-bar" style="--w:56.9%; --c:#1baf7a"></span>56.9%</td>
-          <td class="num-cell">5.66%</td>
-          <td class="num-cell strong-cell">2.10%</td>
-          <td class="roi-cell">Rp 19.4M revenue</td>
+          <td class="num-cell">63,303</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:90.6%; --c:#eb6834"></span>90.6%</td>
+          <td class="num-cell"><span class="mini-bar" style="--w:59.5%; --c:#1baf7a"></span>59.5%</td>
+          <td class="num-cell">5.92%</td>
+          <td class="num-cell strong-cell">2.19%</td>
+          <td class="roi-cell">Rp 24.8M revenue</td>
           <td><span class="status-pill neutral">Stable</span></td>
         </tr>
 
         <tr>
           <td class="rank-cell"><span class="rank-num">4</span></td>
           <td class="name-cell"><span class="proj-name">WABA LPSK</span><span class="proj-seg">Witness & Victim Protection</span></td>
-          <td class="num-cell">46,729</td>
+          <td class="num-cell">72,238</td>
           <td class="num-cell"><span class="mini-bar" style="--w:89.6%; --c:#eb6834"></span>89.6%</td>
           <td class="num-cell"><span class="mini-bar" style="--w:60.2%; --c:#1baf7a"></span>60.2%</td>
           <td class="num-cell">5.33%</td>
@@ -925,47 +932,47 @@
         <div>
           <p class="card-eyebrow">What Works</p>
           <h2 class="card-title">Campaign Distribution by Category</h2>
-          <p class="card-desc">Share of 232,738 total messages by content type</p>
+          <p class="card-desc">Share of 277,790 total messages by content type</p>
         </div>
       </div>
       <div class="chart-surface"><svg class="category-chart" viewBox="0 0 560 294" width="100%" height="294" preserveAspectRatio="xMidYMid meet" role="img">
-<g class="hover-dot" data-label="Informational" data-value="65,167 msgs" data-pct="28">
+<g class="hover-dot" data-label="Informational" data-value="77,781 msgs" data-pct="28">
 <text x="0" y="12.0" class="cat-label">Informational</text>
 <rect x="0" y="19.0" width="306" height="10" rx="5" fill="#eef1f5"/>
 <rect x="0" y="19.0" width="306.0" height="10" rx="5" fill="#2a78d6"/>
 <text x="320" y="28.0" class="cat-pct">28%</text>
 </g>
-<g class="hover-dot" data-label="Reminder" data-value="51,202 msgs" data-pct="22">
+<g class="hover-dot" data-label="Reminder" data-value="61,114 msgs" data-pct="22">
 <text x="0" y="54.0" class="cat-label">Reminder</text>
 <rect x="0" y="61.0" width="306" height="10" rx="5" fill="#eef1f5"/>
 <rect x="0" y="61.0" width="240.4" height="10" rx="5" fill="#eb6834"/>
 <text x="320" y="70.0" class="cat-pct">22%</text>
 </g>
-<g class="hover-dot" data-label="Transactional" data-value="41,893 msgs" data-pct="18">
+<g class="hover-dot" data-label="Transactional" data-value="50,002 msgs" data-pct="18">
 <text x="0" y="96.0" class="cat-label">Transactional</text>
 <rect x="0" y="103.0" width="306" height="10" rx="5" fill="#eef1f5"/>
 <rect x="0" y="103.0" width="196.7" height="10" rx="5" fill="#1baf7a"/>
 <text x="320" y="112.0" class="cat-pct">18%</text>
 </g>
-<g class="hover-dot" data-label="Service Notification" data-value="34,911 msgs" data-pct="15">
+<g class="hover-dot" data-label="Service Notification" data-value="41,668 msgs" data-pct="15">
 <text x="0" y="138.0" class="cat-label">Service Notification</text>
 <rect x="0" y="145.0" width="306" height="10" rx="5" fill="#eef1f5"/>
 <rect x="0" y="145.0" width="163.9" height="10" rx="5" fill="#eda100"/>
 <text x="320" y="154.0" class="cat-pct">15%</text>
 </g>
-<g class="hover-dot" data-label="Promotional" data-value="23,274 msgs" data-pct="10">
+<g class="hover-dot" data-label="Promotional" data-value="27,779 msgs" data-pct="10">
 <text x="0" y="180.0" class="cat-label">Promotional</text>
 <rect x="0" y="187.0" width="306" height="10" rx="5" fill="#eef1f5"/>
 <rect x="0" y="187.0" width="109.3" height="10" rx="5" fill="#e87ba4"/>
 <text x="320" y="196.0" class="cat-pct">10%</text>
 </g>
-<g class="hover-dot" data-label="Public Service" data-value="11,637 msgs" data-pct="5">
+<g class="hover-dot" data-label="Public Service" data-value="13,890 msgs" data-pct="5">
 <text x="0" y="222.0" class="cat-label">Public Service</text>
 <rect x="0" y="229.0" width="306" height="10" rx="5" fill="#eef1f5"/>
 <rect x="0" y="229.0" width="54.6" height="10" rx="5" fill="#008300"/>
 <text x="320" y="238.0" class="cat-pct">5%</text>
 </g>
-<g class="hover-dot" data-label="Emergency / Critical Information" data-value="4,655 msgs" data-pct="2">
+<g class="hover-dot" data-label="Emergency / Critical Information" data-value="5,556 msgs" data-pct="2">
 <text x="0" y="264.0" class="cat-label">Emergency / Critical Information</text>
 <rect x="0" y="271.0" width="306" height="10" rx="5" fill="#eef1f5"/>
 <rect x="0" y="271.0" width="21.9" height="10" rx="5" fill="#4a3aa7"/>
@@ -987,54 +994,56 @@
         </div>
       </div>
       <div class="eng-grid">
-        <div class="eng-tile"><div class="eng-value">68,400</div><div class="eng-label">Active Recipients</div><div class="eng-sub">Contacted at least once this period</div></div>
-<div class="eng-tile"><div class="eng-value">52,300</div><div class="eng-label">Unique Readers</div><div class="eng-sub">76.5% of active recipients</div></div>
-<div class="eng-tile"><div class="eng-value">9,600</div><div class="eng-label">Unique Responders</div><div class="eng-sub">18.4% of unique readers</div></div>
-<div class="eng-tile"><div class="eng-value">3,150</div><div class="eng-label">Repeat Responders</div><div class="eng-sub">32.8% responded 2+ times</div></div>
-<div class="eng-tile"><div class="eng-value">41,900</div><div class="eng-label">New Customers Engaged</div><div class="eng-sub">First contact this period</div></div>
-<div class="eng-tile"><div class="eng-value">26,500</div><div class="eng-label">Returning Customers</div><div class="eng-sub">Engaged in prior periods too</div></div>
+        <div class="eng-tile"><div class="eng-value">81,600</div><div class="eng-label">Active Recipients</div><div class="eng-sub">Contacted at least once this period</div></div>
+<div class="eng-tile"><div class="eng-value">64,100</div><div class="eng-label">Unique Readers</div><div class="eng-sub">78.6% of active recipients</div></div>
+<div class="eng-tile"><div class="eng-value">11,400</div><div class="eng-label">Unique Responders</div><div class="eng-sub">17.8% of unique readers</div></div>
+<div class="eng-tile"><div class="eng-value">3,700</div><div class="eng-label">Repeat Responders</div><div class="eng-sub">32.5% responded 2+ times</div></div>
+<div class="eng-tile"><div class="eng-value">50,000</div><div class="eng-label">New Customers Engaged</div><div class="eng-sub">First contact this period</div></div>
+<div class="eng-tile"><div class="eng-value">31,600</div><div class="eng-label">Returning Customers</div><div class="eng-sub">Engaged in prior periods too</div></div>
       </div>
       <p class="trend-subtitle">Unique Reader &amp; Responder Trend</p>
-      <div class="chart-surface"><svg class="trend-chart" viewBox="0 0 900 220" width="100%" height="220" preserveAspectRatio="xMidYMid meet" role="img">
+      <div class="chart-surface"><svg class="trend-chart" viewBox="0 0 945 220" width="100%" height="220" preserveAspectRatio="xMidYMid meet" role="img">
 <line x1="46" y1="186.0" x2="880" y2="186.0" class="gridline"/>
 <text x="36" y="190.0" class="axis-label" text-anchor="end">0</text>
 <line x1="46" y1="101.0" x2="880" y2="101.0" class="gridline"/>
-<text x="36" y="105.0" class="axis-label" text-anchor="end">6,250</text>
+<text x="36" y="105.0" class="axis-label" text-anchor="end">6,000</text>
 <line x1="46" y1="16.0" x2="880" y2="16.0" class="gridline"/>
-<text x="36" y="20.0" class="axis-label" text-anchor="end">12,500</text>
+<text x="36" y="20.0" class="axis-label" text-anchor="end">12,000</text>
 <text x="46.0" y="208" class="axis-label" text-anchor="middle">JAN</text>
-<text x="165.1" y="208" class="axis-label" text-anchor="middle">FEB</text>
-<text x="284.3" y="208" class="axis-label" text-anchor="middle">MAR</text>
-<text x="403.4" y="208" class="axis-label" text-anchor="middle">APR</text>
-<text x="522.6" y="208" class="axis-label" text-anchor="middle">MAY</text>
-<text x="641.7" y="208" class="axis-label" text-anchor="middle">JUN</text>
-<text x="760.9" y="208" class="axis-label" text-anchor="middle">JUL</text>
-<text x="880.0" y="208" class="axis-label" text-anchor="middle">AUG</text>
-<path d="M46.0,186.0 L46.0,83.2 165.1,156.7 284.3,145.8 403.4,38.2 522.6,18.7 641.7,81.6 760.9,74.6 L760.9,186.0 Z" fill="#2a78d6" opacity="0.08"/>
-<polyline points="46.0,83.2 165.1,156.7 284.3,145.8 403.4,38.2 522.6,18.7 641.7,81.6 760.9,74.6" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-<polyline points="760.9,74.6 880.0,186.0" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-dasharray="2,4" opacity="0.65"/>
-<circle cx="46.0" cy="83.2" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="January" data-value="7,558"/>
-<circle cx="165.1" cy="156.7" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="February" data-value="2,154"/>
-<circle cx="284.3" cy="145.8" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="March" data-value="2,954"/>
-<circle cx="403.4" cy="38.2" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="April" data-value="10,870"/>
-<circle cx="522.6" cy="18.7" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="May" data-value="12,302"/>
-<circle cx="641.7" cy="81.6" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="June" data-value="7,676"/>
-<circle cx="760.9" cy="74.6" r="3.2" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="July" data-value="8,193"/>
-<circle cx="880.0" cy="186.0" r="5" fill="#2a78d6" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Readers" data-month="August (MTD)" data-value="0"/>
-<path d="M46.0,186.0 L46.0,167.6 165.1,180.8 284.3,178.8 403.4,159.5 522.6,156.1 641.7,167.3 760.9,166.1 L760.9,186.0 Z" fill="#1baf7a" opacity="0.08"/>
-<polyline points="46.0,167.6 165.1,180.8 284.3,178.8 403.4,159.5 522.6,156.1 641.7,167.3 760.9,166.1" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-<polyline points="760.9,166.1 880.0,186.0" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-dasharray="2,4" opacity="0.65"/>
-<circle cx="46.0" cy="167.6" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="January" data-value="1,352"/>
-<circle cx="165.1" cy="180.8" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="February" data-value="385"/>
-<circle cx="284.3" cy="178.8" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="March" data-value="528"/>
-<circle cx="403.4" cy="159.5" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="April" data-value="1,945"/>
-<circle cx="522.6" cy="156.1" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="May" data-value="2,201"/>
-<circle cx="641.7" cy="167.3" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="June" data-value="1,374"/>
-<circle cx="760.9" cy="166.1" r="3.2" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="July" data-value="1,466"/>
-<circle cx="880.0" cy="186.0" r="5" fill="#1baf7a" stroke="#fff" stroke-width="2" class="hover-dot" data-label="Unique Responders" data-month="August (MTD)" data-value="0"/>
-<text x="888.0" y="190.0" class="end-label" fill="#2a78d6">0</text>
-<line x1="883.0" y1="186.0" x2="886.0" y2="200.0" stroke="#1baf7a" stroke-width="1" opacity="0.5"/>
-<text x="888.0" y="204.0" class="end-label" fill="#1baf7a">0</text>
+<text x="150.2" y="208" class="axis-label" text-anchor="middle">FEB</text>
+<text x="254.5" y="208" class="axis-label" text-anchor="middle">MAR</text>
+<text x="358.8" y="208" class="axis-label" text-anchor="middle">APR</text>
+<text x="463.0" y="208" class="axis-label" text-anchor="middle">MAY</text>
+<text x="567.2" y="208" class="axis-label" text-anchor="middle">JUN</text>
+<text x="671.5" y="208" class="axis-label" text-anchor="middle">JUL</text>
+<text x="775.8" y="208" class="axis-label" text-anchor="middle">AUG</text>
+<text x="880.0" y="208" class="axis-label" text-anchor="middle">SEP</text>
+<path d="M46.0,186.0 L46.0,78.9 150.2,155.5 254.5,155.3 358.8,38.6 463.0,25.5 567.2,84.9 671.5,29.7 L671.5,186.0 Z" fill="#2a78d6" opacity="0.08"/>
+<polyline points="46.0,78.9 150.2,155.5 254.5,155.3 358.8,38.6 463.0,25.5 567.2,84.9 671.5,29.7" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="671.5,29.7 775.8,107.0 880.0,101.5" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="78.9" r="3.2" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Readers" data-month="January" data-value="7,558"/>
+<circle cx="150.2" cy="155.5" r="3.2" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Readers" data-month="February" data-value="2,154"/>
+<circle cx="254.5" cy="155.3" r="3.2" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Readers" data-month="March" data-value="2,169"/>
+<circle cx="358.8" cy="38.6" r="3.2" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Readers" data-month="April" data-value="10,407"/>
+<circle cx="463.0" cy="25.5" r="3.2" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Readers" data-month="May" data-value="11,331"/>
+<circle cx="567.2" cy="84.9" r="3.2" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Readers" data-month="June" data-value="7,137"/>
+<circle cx="671.5" cy="29.7" r="3.2" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Readers" data-month="July" data-value="11,031"/>
+<circle cx="775.8" cy="107.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Unique Readers" data-month="August (est. status)" data-value="5,575"/>
+<circle cx="880.0" cy="101.5" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Unique Readers" data-month="September (est. status)" data-value="5,965"/>
+<path d="M46.0,186.0 L46.0,164.3 150.2,180.7 254.5,180.9 358.8,156.7 463.0,155.8 567.2,171.3 671.5,162.4 L671.5,186.0 Z" fill="#1baf7a" opacity="0.08"/>
+<polyline points="46.0,164.3 150.2,180.7 254.5,180.9 358.8,156.7 463.0,155.8 567.2,171.3 671.5,162.4" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="671.5,162.4 775.8,173.2 880.0,172.8" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round" opacity="0.65"/>
+<circle cx="46.0" cy="164.3" r="3.2" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Responders" data-month="January" data-value="1,532"/>
+<circle cx="150.2" cy="180.7" r="3.2" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Responders" data-month="February" data-value="374"/>
+<circle cx="254.5" cy="180.9" r="3.2" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Responders" data-month="March" data-value="361"/>
+<circle cx="358.8" cy="156.7" r="3.2" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Responders" data-month="April" data-value="2,066"/>
+<circle cx="463.0" cy="155.8" r="3.2" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Responders" data-month="May" data-value="2,129"/>
+<circle cx="567.2" cy="171.3" r="3.2" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Responders" data-month="June" data-value="1,037"/>
+<circle cx="671.5" cy="162.4" r="3.2" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="1" class="hover-dot" data-label="Unique Responders" data-month="July" data-value="1,666"/>
+<circle cx="775.8" cy="173.2" r="5" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Unique Responders" data-month="August (est. status)" data-value="906"/>
+<circle cx="880.0" cy="172.8" r="5" fill="#1baf7a" stroke="#ffffff" stroke-width="2" opacity="0.6" class="hover-dot" data-label="Unique Responders" data-month="September (est. status)" data-value="931"/>
+<text x="888.0" y="105.5" class="end-label" fill="#2a78d6">5,965</text>
+<text x="888.0" y="176.8" class="end-label" fill="#1baf7a">931</text>
 </svg></div>
     </div>
   </section>
@@ -1213,39 +1222,39 @@
         </div>
       </div>
       <div class="chart-surface"><svg class="matrix-chart" viewBox="0 0 640 460" width="100%" height="460" preserveAspectRatio="xMidYMid meet" role="img">
-<rect x="56" y="56" width="236.3" height="194.3" fill="#fab219" opacity="0.08"/>
-<rect x="292.3" y="56" width="291.7" height="194.3" fill="#0ca30c" opacity="0.08"/>
-<rect x="56" y="250.3" width="236.3" height="153.7" fill="#d03b3b" opacity="0.08"/>
-<rect x="292.3" y="250.3" width="291.7" height="153.7" fill="#ec835a" opacity="0.08"/>
+<rect x="56" y="56" width="218.8" height="210.9" fill="#fab219" opacity="0.08"/>
+<rect x="274.8" y="56" width="309.2" height="210.9" fill="#0ca30c" opacity="0.08"/>
+<rect x="56" y="266.9" width="218.8" height="137.1" fill="#d03b3b" opacity="0.08"/>
+<rect x="274.8" y="266.9" width="309.2" height="137.1" fill="#ec835a" opacity="0.08"/>
 <text x="64" y="74" class="quad-label">HIGH ENGAGEMENT / LOW CONVERSION</text>
 <text x="576" y="74" text-anchor="end" class="quad-label">HIGH ENGAGEMENT / HIGH CONVERSION</text>
 <text x="64" y="396" class="quad-label">LOW ENGAGEMENT / LOW CONVERSION</text>
 <text x="576" y="396" text-anchor="end" class="quad-label">LOW ENGAGEMENT / HIGH CONVERSION</text>
-<line x1="292.3" y1="56" x2="292.3" y2="404" class="avg-line"/>
-<line x1="56" y1="250.3" x2="584" y2="250.3" class="avg-line"/>
-<text x="292.3" y="422" text-anchor="middle" class="axis-label">avg conv 2.77%</text>
-<text x="580.0" y="242.3" text-anchor="end" class="axis-label">avg read 67.7%</text>
+<line x1="274.8" y1="56" x2="274.8" y2="404" class="avg-line"/>
+<line x1="56" y1="266.9" x2="584" y2="266.9" class="avg-line"/>
+<text x="274.8" y="422" text-anchor="middle" class="axis-label">avg conv 2.67%</text>
+<text x="580.0" y="258.9" text-anchor="end" class="axis-label">avg read 67.2%</text>
 <text x="320.0" y="446" text-anchor="middle" class="axis-title">Conversion Rate →</text>
 <text x="16" y="230.0" text-anchor="middle" class="axis-title" transform="rotate(-90 16 230.0)">Read Rate →</text>
-<g class="hover-dot" data-label="WABA UNNES" data-value="Read 83.9% · Conv 4.64%" data-pct="49,458 msgs">
-<circle cx="516.8" cy="109.1" r="18.7" fill="#2a78d6" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
-<text x="516.8" y="82.4" text-anchor="middle" class="matrix-label">UNNES</text>
+<g class="hover-dot" data-label="WABA UNNES" data-value="Read 83.9% · Conv 4.64%" data-pct="51,260 msgs">
+<circle cx="511.6" cy="111.9" r="19.4" fill="#2a78d6" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
+<text x="511.6" y="84.4" text-anchor="middle" class="matrix-label">UNNES</text>
 </g>
-<g class="hover-dot" data-label="WABA FK UNDIP" data-value="Read 71.5% · Conv 3.07%" data-pct="21,651 msgs">
-<circle cx="328.4" cy="217.0" r="12.7" fill="#1baf7a" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
-<text x="328.4" y="196.3" text-anchor="middle" class="matrix-label">FK UNDIP</text>
+<g class="hover-dot" data-label="WABA FK UNDIP" data-value="Read 71.5% · Conv 3.08%" data-pct="28,124 msgs">
+<circle cx="323.6" cy="227.0" r="14.4" fill="#1baf7a" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
+<text x="323.6" y="204.6" text-anchor="middle" class="matrix-label">FK UNDIP</text>
 </g>
-<g class="hover-dot" data-label="WABA TAPERA" data-value="Read 56.9% · Conv 2.10%" data-pct="52,035 msgs">
-<circle cx="212.0" cy="344.0" r="19.2" fill="#eda100" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
-<text x="212.0" y="379.2" text-anchor="middle" class="matrix-label">TAPERA</text>
+<g class="hover-dot" data-label="WABA TAPERA" data-value="Read 59.5% · Conv 2.19%" data-pct="63,303 msgs">
+<circle cx="216.7" cy="338.8" r="21.6" fill="#eda100" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
+<text x="216.7" y="376.4" text-anchor="middle" class="matrix-label">TAPERA</text>
 </g>
-<g class="hover-dot" data-label="WABA LPSK" data-value="Read 60.2% · Conv 1.97%" data-pct="46,729 msgs">
-<circle cx="196.4" cy="315.3" r="18.1" fill="#4a3aa7" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
-<text x="170.3" y="319.3" text-anchor="end" class="matrix-label">LPSK</text>
+<g class="hover-dot" data-label="WABA LPSK" data-value="Read 60.2% · Conv 1.97%" data-pct="72,238 msgs">
+<circle cx="190.3" cy="332.4" r="23.1" fill="#4a3aa7" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
+<text x="161.2" y="336.4" text-anchor="end" class="matrix-label">LPSK</text>
 </g>
 <g class="hover-dot" data-label="WABA ARS UNIVERSITY" data-value="Read 69.4% · Conv 1.56%" data-pct="62,865 msgs">
-<circle cx="147.2" cy="235.2" r="21.5" fill="#e34948" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
-<text x="147.2" y="205.7" text-anchor="middle" class="matrix-label">ARS UNIVERSITY</text>
+<circle cx="140.5" cy="247.1" r="21.5" fill="#e34948" opacity="0.85" stroke="#ffffff" stroke-width="2.5"/>
+<text x="140.5" y="217.6" text-anchor="middle" class="matrix-label">ARS UNIVERSITY</text>
 </g>
 </svg></div>
     </div>
@@ -1261,27 +1270,27 @@
         
         <div class="alert-row critical">
           <span class="alert-icon">🔴</span>
-          <div><div class="alert-title">Undelivered messages elevated</div><div class="alert-body">Undelivered volume reached 13.3% of blast (30,912 messages), concentrated in WABA ARS UNIVERSITY.</div></div>
+          <div><div class="alert-title">Undelivered messages elevated</div><div class="alert-body">Undelivered volume reached 12.3% of blast (34,244 messages); WABA ARS UNIVERSITY accounts for 50% of all failures.</div></div>
         </div>
 
         <div class="alert-row critical">
           <span class="alert-icon">🔴</span>
-          <div><div class="alert-title">WABA ARS UNIVERSITY failure rate critical</div><div class="alert-body">49.4% failure rate — nearly double the portfolio average of 24.2%. Number-list audit recommended before next cycle.</div></div>
+          <div><div class="alert-title">WABA ARS UNIVERSITY failure rate critical</div><div class="alert-body">49.4% failure rate vs. the portfolio average of 22.5%. Number-list audit recommended before next cycle.</div></div>
         </div>
 
         <div class="alert-row warning">
           <span class="alert-icon">🟠</span>
-          <div><div class="alert-title">Read rate trails in WABA TAPERA</div><div class="alert-body">56.9% read rate is 10.8pp below the portfolio average of 67.7%.</div></div>
+          <div><div class="alert-title">Read rate trails in WABA TAPERA</div><div class="alert-body">59.5% read rate is 7.7pp below the portfolio average of 67.2%.</div></div>
         </div>
 
         <div class="alert-row warning">
           <span class="alert-icon">🟠</span>
-          <div><div class="alert-title">Response rate below benchmark</div><div class="alert-body">WABA ARS UNIVERSITY and WABA LPSK trail the portfolio response benchmark of 7.48%.</div></div>
+          <div><div class="alert-title">Response rate below benchmark</div><div class="alert-body">WABA TAPERA, WABA LPSK and WABA ARS UNIVERSITY trail the portfolio response benchmark of 7.22%.</div></div>
         </div>
 
-        <div class="alert-row good">
-          <span class="alert-icon">🟢</span>
-          <div><div class="alert-title">Delivery health & opt-out remain strong</div><div class="alert-body">Portfolio delivery rate up +1.2pp to 73.8%; opt-out rate excellent at 0.05%.</div></div>
+        <div class="alert-row warning">
+          <span class="alert-icon">🟠</span>
+          <div><div class="alert-title">Data check: duplicate monthly volume</div><div class="alert-body">WABA LPSK and WABA TAPERA both report exactly 11,035 messages in September — please verify the source sheet.</div></div>
         </div>
       </div>
     </div>
@@ -1301,19 +1310,19 @@
         <div class="reco-card-item">
           <div class="reco-num">01</div>
           <div class="reco-title">Cleanse the WABA ARS UNIVERSITY number list</div>
-          <div class="reco-body">Failure rate sits at 49.4%, nearly double the portfolio average — audit and revalidate recipient numbers before the next blast cycle.</div>
+          <div class="reco-body">Failure rate sits at 49.4% versus a 22.5% portfolio average — audit and revalidate recipient numbers before the next blast cycle.</div>
         </div>
 
         <div class="reco-card-item">
           <div class="reco-num">02</div>
           <div class="reco-title">Shift blast timing to the proven window</div>
-          <div class="reco-body">Monday & Friday, 09:00–11:00 and 13:00–16:00 show the highest sustained read performance across eight months of data.</div>
+          <div class="reco-body">Monday & Friday, 09:00–11:00 and 13:00–16:00 show the highest sustained read performance across 9 months of data.</div>
         </div>
 
         <div class="reco-card-item">
           <div class="reco-num">03</div>
           <div class="reco-title">Diagnose low read rate in WABA TAPERA</div>
-          <div class="reco-body">At 56.9% read rate versus a 67.7% portfolio average, review message content, sender reputation, and send cadence.</div>
+          <div class="reco-body">At 59.5% read rate versus a 67.2% portfolio average, review message content, sender reputation, and send cadence.</div>
         </div>
 
         <div class="reco-card-item">
@@ -1331,8 +1340,8 @@
   </section>
 
   <footer class="footer">
-    <span>Source: Performance_WABA_GOV_S3.xlsx · Government &amp; Energy Segment 3</span>
-    <span>Generated 25 Aug 2026, 18:40 WIB · Confidential — Internal Executive Use Only</span>
+    <span>Source: TRAFFIC WHATSAPP PROJECT GOV SEGMENT 3 1.xlsx (monthly volume) + Performance_WABA_GOV_S3.xlsx (delivery detail) · Government &amp; Energy Segment 3</span>
+    <span>Generated 26 Oct 2026, 15:40 WIB · Confidential — Internal Executive Use Only</span>
   </footer>
 
 </div>
@@ -1382,11 +1391,13 @@
   });
 
   // ================= Interactive filters -> Main KPI cards =================
-  var RAW = [{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":42,"sent":32,"deliv":42,"read":25,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":45,"sent":40,"deliv":45,"read":33,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":88,"sent":84,"deliv":88,"read":68,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":106,"sent":96,"deliv":106,"read":87,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":83,"sent":72,"deliv":83,"read":58,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":353,"sent":236,"deliv":353,"read":168,"failed":117,"optout":2},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":71,"sent":61,"deliv":71,"read":52,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":604,"sent":435,"deliv":604,"read":365,"failed":169,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":133,"sent":111,"deliv":133,"read":85,"failed":22,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":83,"sent":75,"deliv":83,"read":64,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":81,"sent":71,"deliv":81,"read":58,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":221,"sent":156,"deliv":221,"read":116,"failed":65,"optout":1},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":5156,"sent":3850,"deliv":5156,"read":3088,"failed":1306,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":16,"sent":16,"deliv":16,"read":13,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":122,"sent":110,"deliv":122,"read":91,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":71,"sent":63,"deliv":71,"read":48,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":114,"sent":86,"deliv":114,"read":66,"failed":28,"optout":1},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":91,"sent":75,"deliv":91,"read":66,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":7,"sent":6,"deliv":7,"read":6,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":5759,"sent":4196,"deliv":5759,"read":2837,"failed":1563,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Tuesday","blast":1,"sent":1,"deliv":0,"read":0,"failed":0,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Thursday","blast":7,"sent":5,"deliv":5,"read":3,"failed":2,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Friday","blast":10249,"sent":9450,"deliv":9351,"read":8386,"failed":799,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Monday","blast":357,"sent":0,"deliv":0,"read":0,"failed":357,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Tuesday","blast":334,"sent":315,"deliv":158,"read":178,"failed":19,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Thursday","blast":504,"sent":469,"deliv":142,"read":201,"failed":35,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Friday","blast":290,"sent":259,"deliv":111,"read":142,"failed":31,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Monday","blast":504,"sent":410,"deliv":396,"read":302,"failed":94,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Tuesday","blast":334,"sent":280,"deliv":279,"read":190,"failed":54,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Friday","blast":334,"sent":281,"deliv":279,"read":188,"failed":53,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Tuesday","blast":3,"sent":3,"deliv":3,"read":3,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Wednesday","blast":7,"sent":6,"deliv":7,"read":1,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Thursday","blast":5013,"sent":3731,"deliv":5013,"read":2002,"failed":1282,"optout":5},{"p":"WABA TAPERA","m":"FEB","d":"Friday","blast":2,"sent":2,"deliv":2,"read":2,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Monday","blast":5,"sent":4,"deliv":5,"read":3,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Tuesday","blast":1,"sent":1,"deliv":1,"read":1,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Wednesday","blast":571,"sent":480,"deliv":571,"read":394,"failed":91,"optout":1},{"p":"WABA TAPERA","m":"FEB","d":"Thursday","blast":32,"sent":27,"deliv":32,"read":21,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Friday","blast":197,"sent":169,"deliv":197,"read":137,"failed":28,"optout":0},{"p":"WABA UNNES","m":"FEB","d":"Monday","blast":1,"sent":1,"deliv":0,"read":0,"failed":0,"optout":0},{"p":"WABA UNNES","m":"FEB","d":"Tuesday","blast":11,"sent":5,"deliv":0,"read":0,"failed":6,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Thursday","blast":548,"sent":460,"deliv":457,"read":338,"failed":88,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Friday","blast":504,"sent":415,"deliv":410,"read":307,"failed":89,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Tuesday","blast":504,"sent":404,"deliv":400,"read":297,"failed":100,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Wednesday","blast":504,"sent":396,"deliv":391,"read":288,"failed":108,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Thursday","blast":504,"sent":400,"deliv":396,"read":291,"failed":104,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Wednesday","blast":504,"sent":411,"deliv":406,"read":304,"failed":93,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Thursday","blast":916,"sent":381,"deliv":379,"read":288,"failed":535,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Friday","blast":285,"sent":241,"deliv":239,"read":161,"failed":44,"optout":0},{"p":"WABA LPSK","m":"FEB","d":"Friday","blast":4,"sent":4,"deliv":4,"read":3,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":900,"sent":540,"deliv":900,"read":437,"failed":360,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":88,"sent":81,"deliv":88,"read":62,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Wednesday","blast":275,"sent":226,"deliv":275,"read":177,"failed":49,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Thursday","blast":123,"sent":117,"deliv":123,"read":99,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Friday","blast":75,"sent":67,"deliv":75,"read":51,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":83,"sent":71,"deliv":83,"read":51,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":98,"sent":93,"deliv":98,"read":21,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Wednesday","blast":77,"sent":68,"deliv":77,"read":13,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Thursday","blast":3,"sent":2,"deliv":3,"read":1,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Friday","blast":169,"sent":159,"deliv":169,"read":57,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":73,"sent":66,"deliv":73,"read":54,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":8,"sent":8,"deliv":8,"read":7,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Wednesday","blast":17,"sent":16,"deliv":17,"read":16,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Thursday","blast":140,"sent":121,"deliv":140,"read":99,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Friday","blast":61,"sent":56,"deliv":61,"read":43,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":50,"sent":47,"deliv":50,"read":40,"failed":3,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":445,"sent":344,"deliv":445,"read":272,"failed":101,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Tuesday","blast":334,"sent":275,"deliv":274,"read":181,"failed":59,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Wednesday","blast":789,"sent":649,"deliv":643,"read":462,"failed":140,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Tuesday","blast":334,"sent":279,"deliv":277,"read":186,"failed":55,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Wednesday","blast":458,"sent":386,"deliv":383,"read":292,"failed":72,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Friday","blast":504,"sent":422,"deliv":417,"read":309,"failed":82,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Friday","blast":529,"sent":461,"deliv":456,"read":344,"failed":68,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Monday","blast":7,"sent":1,"deliv":1,"read":1,"failed":6,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Tuesday","blast":285,"sent":244,"deliv":243,"read":161,"failed":41,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAR","d":"Sunday","blast":3,"sent":3,"deliv":3,"read":1,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAR","d":"Monday","blast":14,"sent":14,"deliv":13,"read":8,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAR","d":"Tuesday","blast":12674,"sent":2676,"deliv":2626,"read":1755,"failed":9998,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Thursday","blast":454,"sent":405,"deliv":404,"read":253,"failed":49,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Tuesday","blast":454,"sent":395,"deliv":393,"read":245,"failed":59,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Thursday","blast":508,"sent":477,"deliv":474,"read":303,"failed":31,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Saturday","blast":94,"sent":87,"deliv":85,"read":60,"failed":7,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Sunday","blast":1016,"sent":912,"deliv":910,"read":577,"failed":104,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Monday","blast":1,"sent":1,"deliv":1,"read":1,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":59,"sent":57,"deliv":59,"read":42,"failed":2,"optout":1},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":66,"sent":61,"deliv":66,"read":50,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":87,"sent":78,"deliv":87,"read":62,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":147,"sent":138,"deliv":147,"read":104,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":100,"sent":93,"deliv":100,"read":81,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":120,"sent":115,"deliv":120,"read":78,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Friday","blast":80,"sent":72,"deliv":80,"read":56,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":108,"sent":94,"deliv":108,"read":64,"failed":14,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":314,"sent":240,"deliv":314,"read":163,"failed":74,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":455,"sent":354,"deliv":455,"read":266,"failed":101,"optout":1},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":29,"sent":29,"deliv":29,"read":26,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Friday","blast":31,"sent":26,"deliv":31,"read":22,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":198,"sent":182,"deliv":198,"read":148,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":79,"sent":74,"deliv":79,"read":64,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":129,"sent":121,"deliv":129,"read":99,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":221,"sent":202,"deliv":221,"read":164,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Friday","blast":3236,"sent":2224,"deliv":3236,"read":1563,"failed":1012,"optout":7},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":21,"sent":19,"deliv":21,"read":16,"failed":2,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":3,"sent":2,"deliv":3,"read":2,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":245,"sent":212,"deliv":245,"read":165,"failed":33,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":84,"sent":72,"deliv":84,"read":60,"failed":12,"optout":0},{"p":"WABA UNNES","m":"APR","d":"Friday","blast":11850,"sent":10668,"deliv":10591,"read":10591,"failed":1182,"optout":0},{"p":"WABA UNNES","m":"APR","d":"Saturday","blast":2459,"sent":2220,"deliv":2205,"read":2205,"failed":239,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Thursday","blast":334,"sent":281,"deliv":280,"read":185,"failed":53,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Saturday","blast":334,"sent":278,"deliv":278,"read":182,"failed":56,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Thursday","blast":334,"sent":278,"deliv":277,"read":182,"failed":56,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Tuesday","blast":225,"sent":0,"deliv":0,"read":0,"failed":225,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Saturday","blast":15,"sent":7,"deliv":7,"read":5,"failed":8,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Tuesday","blast":529,"sent":462,"deliv":459,"read":341,"failed":67,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Thursday","blast":529,"sent":460,"deliv":454,"read":342,"failed":69,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Thursday","blast":5774,"sent":3808,"deliv":3761,"read":2146,"failed":1966,"optout":5},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Thursday","blast":1233,"sent":1036,"deliv":957,"read":592,"failed":197,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Friday","blast":3221,"sent":3199,"deliv":55,"read":29,"failed":22,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Saturday","blast":2271,"sent":2270,"deliv":3,"read":20,"failed":1,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Sunday","blast":2517,"sent":2516,"deliv":2,"read":17,"failed":1,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Wednesday","blast":405,"sent":386,"deliv":383,"read":247,"failed":19,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":508,"sent":478,"deliv":475,"read":296,"failed":30,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":810,"sent":777,"deliv":770,"read":472,"failed":33,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Friday","blast":956,"sent":899,"deliv":852,"read":264,"failed":57,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Tuesday","blast":459,"sent":434,"deliv":410,"read":132,"failed":25,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Wednesday","blast":911,"sent":842,"deliv":839,"read":536,"failed":69,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":405,"sent":388,"deliv":386,"read":245,"failed":17,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Friday","blast":398,"sent":370,"deliv":369,"read":215,"failed":28,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":505,"sent":476,"deliv":475,"read":298,"failed":29,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Friday","blast":405,"sent":387,"deliv":385,"read":246,"failed":18,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Tuesday","blast":999,"sent":875,"deliv":870,"read":554,"failed":124,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Wednesday","blast":810,"sent":774,"deliv":771,"read":492,"failed":36,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":503,"sent":474,"deliv":472,"read":298,"failed":29,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":69,"sent":61,"deliv":59,"read":43,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":135,"sent":116,"deliv":114,"read":89,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Wednesday","blast":89,"sent":81,"deliv":81,"read":66,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Thursday","blast":41,"sent":37,"deliv":37,"read":26,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Friday","blast":170,"sent":157,"deliv":156,"read":122,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":80,"sent":74,"deliv":72,"read":50,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":475,"sent":380,"deliv":316,"read":248,"failed":95,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Wednesday","blast":362,"sent":271,"deliv":262,"read":198,"failed":91,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":4015,"sent":3609,"deliv":3404,"read":2647,"failed":406,"optout":2},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":69,"sent":63,"deliv":62,"read":51,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Wednesday","blast":128,"sent":115,"deliv":111,"read":86,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Thursday","blast":100,"sent":88,"deliv":85,"read":69,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Friday","blast":290,"sent":215,"deliv":203,"read":161,"failed":75,"optout":2},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":114,"sent":101,"deliv":100,"read":90,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":81,"sent":74,"deliv":68,"read":62,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Friday","blast":99,"sent":93,"deliv":91,"read":74,"failed":6,"optout":0},{"p":"WABA UNNES","m":"MAY","d":"Saturday","blast":217,"sent":5,"deliv":5,"read":2,"failed":212,"optout":0},{"p":"WABA UNNES","m":"MAY","d":"Sunday","blast":492,"sent":239,"deliv":239,"read":195,"failed":253,"optout":0},{"p":"WABA UNNES","m":"MAY","d":"Monday","blast":17357,"sent":15902,"deliv":15705,"read":11265,"failed":1455,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Tuesday","blast":214,"sent":30,"deliv":30,"read":25,"failed":184,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Thursday","blast":528,"sent":466,"deliv":462,"read":349,"failed":62,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Friday","blast":528,"sent":456,"deliv":453,"read":338,"failed":72,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Monday","blast":528,"sent":463,"deliv":459,"read":347,"failed":65,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Wednesday","blast":297,"sent":259,"deliv":258,"read":178,"failed":38,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Thursday","blast":297,"sent":258,"deliv":257,"read":172,"failed":39,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Monday","blast":2,"sent":2,"deliv":2,"read":0,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Monday","blast":12698,"sent":5136,"deliv":4399,"read":3537,"failed":7562,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Tuesday","blast":6674,"sent":0,"deliv":0,"read":0,"failed":6674,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Wednesday","blast":5509,"sent":2669,"deliv":2588,"read":1448,"failed":2840,"optout":2},{"p":"WABA LPSK","m":"MAY","d":"Friday","blast":503,"sent":474,"deliv":472,"read":300,"failed":29,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Saturday","blast":405,"sent":386,"deliv":385,"read":247,"failed":19,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Sunday","blast":150,"sent":139,"deliv":138,"read":91,"failed":11,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Monday","blast":858,"sent":800,"deliv":798,"read":514,"failed":58,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":452,"sent":425,"deliv":424,"read":269,"failed":27,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Friday","blast":452,"sent":415,"deliv":414,"read":263,"failed":37,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Tuesday","blast":905,"sent":856,"deliv":854,"read":542,"failed":49,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":957,"sent":901,"deliv":895,"read":567,"failed":56,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Monday","blast":407,"sent":389,"deliv":387,"read":244,"failed":18,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":407,"sent":390,"deliv":388,"read":240,"failed":17,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Monday","blast":1452,"sent":1369,"deliv":1357,"read":852,"failed":83,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Tuesday","blast":1002,"sent":944,"deliv":938,"read":589,"failed":58,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":462,"sent":226,"deliv":224,"read":134,"failed":236,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Thursday","blast":455,"sent":429,"deliv":421,"read":265,"failed":26,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Friday","blast":496,"sent":472,"deliv":468,"read":294,"failed":24,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Saturday","blast":508,"sent":472,"deliv":469,"read":295,"failed":36,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":85,"sent":77,"deliv":85,"read":62,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":817,"sent":573,"deliv":817,"read":415,"failed":244,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":154,"sent":129,"deliv":154,"read":105,"failed":25,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":843,"sent":605,"deliv":843,"read":424,"failed":238,"optout":2},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":2310,"sent":1453,"deliv":2310,"read":1065,"failed":857,"optout":8},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":103,"sent":89,"deliv":103,"read":65,"failed":14,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":146,"sent":127,"deliv":146,"read":94,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":90,"sent":82,"deliv":90,"read":65,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":69,"sent":62,"deliv":69,"read":47,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":311,"sent":213,"deliv":311,"read":149,"failed":98,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":455,"sent":301,"deliv":455,"read":210,"failed":154,"optout":3},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":57,"sent":49,"deliv":57,"read":32,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":106,"sent":102,"deliv":106,"read":79,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":178,"sent":134,"deliv":128,"read":105,"failed":44,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":115,"sent":103,"deliv":103,"read":82,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":108,"sent":78,"deliv":78,"read":63,"failed":30,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":80,"sent":72,"deliv":72,"read":53,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":78,"sent":67,"deliv":65,"read":52,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":69,"sent":64,"deliv":62,"read":52,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":131,"sent":96,"deliv":95,"read":84,"failed":35,"optout":0},{"p":"WABA UNNES","m":"JUN","d":"Friday","blast":460,"sent":283,"deliv":283,"read":216,"failed":177,"optout":0},{"p":"WABA UNNES","m":"JUN","d":"Monday","blast":1743,"sent":1600,"deliv":1586,"read":1238,"failed":143,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Wednesday","blast":528,"sent":465,"deliv":460,"read":342,"failed":63,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Thursday","blast":528,"sent":458,"deliv":455,"read":334,"failed":70,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Monday","blast":334,"sent":281,"deliv":279,"read":170,"failed":53,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Friday","blast":862,"sent":809,"deliv":253,"read":39,"failed":53,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Friday","blast":334,"sent":264,"deliv":252,"read":155,"failed":70,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Wednesday","blast":334,"sent":282,"deliv":281,"read":173,"failed":52,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"JUN","d":"Friday","blast":5,"sent":5,"deliv":0,"read":0,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"JUN","d":"Wednesday","blast":5614,"sent":4101,"deliv":4006,"read":2922,"failed":1513,"optout":8},{"p":"WABA ARS UNIVERSITY","m":"JUN","d":"Thursday","blast":4658,"sent":4400,"deliv":4291,"read":3275,"failed":258,"optout":11},{"p":"WABA LPSK","m":"JUN","d":"Tuesday","blast":407,"sent":390,"deliv":388,"read":244,"failed":17,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Wednesday","blast":957,"sent":901,"deliv":895,"read":552,"failed":56,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Saturday","blast":289,"sent":277,"deliv":276,"read":163,"failed":12,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Monday","blast":503,"sent":475,"deliv":471,"read":294,"failed":28,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Wednesday","blast":746,"sent":717,"deliv":658,"read":427,"failed":29,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Thursday","blast":458,"sent":441,"deliv":388,"read":266,"failed":17,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Friday","blast":458,"sent":438,"deliv":364,"read":261,"failed":20,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Thursday","blast":511,"sent":484,"deliv":474,"read":294,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Friday","blast":748,"sent":713,"deliv":662,"read":426,"failed":35,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Monday","blast":1305,"sent":1218,"deliv":1182,"read":730,"failed":87,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Tuesday","blast":912,"sent":759,"deliv":754,"read":461,"failed":153,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Wednesday","blast":292,"sent":279,"deliv":278,"read":162,"failed":13,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Thursday","blast":416,"sent":397,"deliv":395,"read":240,"failed":19,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Friday","blast":511,"sent":481,"deliv":478,"read":287,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Tuesday","blast":498,"sent":473,"deliv":469,"read":276,"failed":25,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":65,"sent":58,"deliv":57,"read":49,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":1506,"sent":954,"deliv":921,"read":700,"failed":552,"optout":4},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":287,"sent":225,"deliv":221,"read":190,"failed":62,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":45,"sent":39,"deliv":38,"read":31,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":351,"sent":265,"deliv":201,"read":192,"failed":86,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":616,"sent":392,"deliv":369,"read":310,"failed":224,"optout":2},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":130,"sent":120,"deliv":118,"read":102,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":139,"sent":127,"deliv":125,"read":107,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":1089,"sent":653,"deliv":611,"read":437,"failed":436,"optout":6},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":294,"sent":247,"deliv":239,"read":192,"failed":47,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":685,"sent":466,"deliv":436,"read":342,"failed":219,"optout":3},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":73,"sent":65,"deliv":53,"read":32,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":91,"sent":80,"deliv":80,"read":67,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":92,"sent":88,"deliv":83,"read":68,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":106,"sent":92,"deliv":92,"read":71,"failed":14,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":60,"sent":47,"deliv":46,"read":36,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":1037,"sent":642,"deliv":609,"read":379,"failed":395,"optout":5},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":84,"sent":76,"deliv":76,"read":64,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":345,"sent":49,"deliv":47,"read":40,"failed":296,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":339,"sent":233,"deliv":223,"read":181,"failed":106,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":122,"sent":106,"deliv":106,"read":88,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":187,"sent":141,"deliv":140,"read":105,"failed":46,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":1449,"sent":935,"deliv":893,"read":702,"failed":514,"optout":0},{"p":"WABA UNNES","m":"JUL","d":"Monday","blast":15,"sent":15,"deliv":15,"read":8,"failed":0,"optout":0},{"p":"WABA UNNES","m":"JUL","d":"Thursday","blast":4239,"sent":4017,"deliv":3998,"read":2790,"failed":222,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":285,"sent":245,"deliv":242,"read":159,"failed":40,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Tuesday","blast":528,"sent":456,"deliv":453,"read":343,"failed":72,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Thursday","blast":84,"sent":74,"deliv":74,"read":47,"failed":10,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Friday","blast":619,"sent":511,"deliv":509,"read":338,"failed":108,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":285,"sent":242,"deliv":240,"read":158,"failed":43,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Tuesday","blast":84,"sent":73,"deliv":73,"read":47,"failed":11,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Wednesday","blast":334,"sent":279,"deliv":278,"read":183,"failed":55,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Thursday","blast":285,"sent":236,"deliv":235,"read":153,"failed":49,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":334,"sent":278,"deliv":276,"read":176,"failed":56,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Wednesday","blast":528,"sent":461,"deliv":457,"read":329,"failed":67,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Friday","blast":528,"sent":457,"deliv":453,"read":318,"failed":71,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":334,"sent":280,"deliv":279,"read":183,"failed":54,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":505,"sent":475,"deliv":472,"read":292,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Thursday","blast":505,"sent":460,"deliv":456,"read":282,"failed":45,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":1017,"sent":957,"deliv":950,"read":587,"failed":60,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Monday","blast":494,"sent":487,"deliv":139,"read":149,"failed":7,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":65,"sent":59,"deliv":57,"read":39,"failed":6,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":408,"sent":390,"deliv":388,"read":235,"failed":18,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Tuesday","blast":914,"sent":866,"deliv":861,"read":521,"failed":48,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":505,"sent":475,"deliv":471,"read":285,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Monday","blast":459,"sent":432,"deliv":429,"read":253,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Tuesday","blast":691,"sent":651,"deliv":645,"read":379,"failed":40,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":1024,"sent":964,"deliv":958,"read":563,"failed":60,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Thursday","blast":1483,"sent":1386,"deliv":1376,"read":809,"failed":97,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":1839,"sent":1689,"deliv":1676,"read":977,"failed":150,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Saturday","blast":460,"sent":433,"deliv":430,"read":244,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Sunday","blast":514,"sent":484,"deliv":480,"read":267,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Monday","blast":1933,"sent":1819,"deliv":1798,"read":1099,"failed":114,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Tuesday","blast":460,"sent":433,"deliv":429,"read":246,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":1445,"sent":1287,"deliv":1074,"read":433,"failed":158,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Thursday","blast":513,"sent":478,"deliv":365,"read":123,"failed":35,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":2008,"sent":1840,"deliv":1538,"read":911,"failed":168,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Monday","blast":162,"sent":0,"deliv":140,"read":0,"failed":22,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Tuesday","blast":111,"sent":0,"deliv":95,"read":0,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Wednesday","blast":181,"sent":0,"deliv":144,"read":0,"failed":37,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Thursday","blast":54,"sent":0,"deliv":43,"read":0,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Friday","blast":78,"sent":0,"deliv":74,"read":0,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Monday","blast":120,"sent":0,"deliv":98,"read":0,"failed":22,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Tuesday","blast":242,"sent":0,"deliv":205,"read":0,"failed":37,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Wednesday","blast":154,"sent":0,"deliv":145,"read":0,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Thursday","blast":530,"sent":0,"deliv":348,"read":0,"failed":182,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Friday","blast":80,"sent":0,"deliv":77,"read":0,"failed":3,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Tuesday","blast":54,"sent":0,"deliv":49,"read":0,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Wednesday","blast":140,"sent":0,"deliv":116,"read":0,"failed":24,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Thursday","blast":64,"sent":0,"deliv":55,"read":0,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Friday","blast":49,"sent":0,"deliv":44,"read":0,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Monday","blast":554,"sent":0,"deliv":355,"read":0,"failed":199,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"Tuesday","blast":74,"sent":0,"deliv":71,"read":0,"failed":3,"optout":0}];
-  var RESP_RATIO = 0.11058900478501842;
+  var RAW = [{"p":"WABA UNNES","m":"JAN","d":"Tuesday","blast":1,"sent":1,"deliv":0,"read":0,"failed":0,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Thursday","blast":7,"sent":5,"deliv":5,"read":3,"failed":2,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Friday","blast":10249,"sent":9450,"deliv":9351,"read":8386,"failed":799,"optout":0},{"p":"WABA UNNES","m":"JAN","d":"Monday","blast":357,"sent":0,"deliv":0,"read":0,"failed":357,"optout":0},{"p":"WABA UNNES","m":"FEB","d":"Monday","blast":1,"sent":1,"deliv":0,"read":0,"failed":0,"optout":0},{"p":"WABA UNNES","m":"FEB","d":"Tuesday","blast":11,"sent":5,"deliv":0,"read":0,"failed":6,"optout":0},{"p":"WABA UNNES","m":"APR","d":"Friday","blast":11850,"sent":10668,"deliv":10591,"read":10591,"failed":1182,"optout":0},{"p":"WABA UNNES","m":"APR","d":"Saturday","blast":2459,"sent":2220,"deliv":2205,"read":2205,"failed":239,"optout":0},{"p":"WABA UNNES","m":"MAY","d":"Saturday","blast":217,"sent":5,"deliv":5,"read":2,"failed":212,"optout":0},{"p":"WABA UNNES","m":"MAY","d":"Sunday","blast":492,"sent":239,"deliv":239,"read":195,"failed":253,"optout":0},{"p":"WABA UNNES","m":"MAY","d":"Monday","blast":17357,"sent":15902,"deliv":15705,"read":11265,"failed":1455,"optout":0},{"p":"WABA UNNES","m":"JUN","d":"Friday","blast":460,"sent":283,"deliv":283,"read":216,"failed":177,"optout":0},{"p":"WABA UNNES","m":"JUN","d":"Monday","blast":1743,"sent":1600,"deliv":1586,"read":1238,"failed":143,"optout":0},{"p":"WABA UNNES","m":"JUL","d":"Monday","blast":15,"sent":15,"deliv":15,"read":8,"failed":0,"optout":0},{"p":"WABA UNNES","m":"JUL","d":"Thursday","blast":4239,"sent":4017,"deliv":3998,"read":2790,"failed":222,"optout":0},{"p":"WABA UNNES","m":"AUG","d":"","blast":1802,"sent":1618,"deliv":1603,"read":1345,"failed":184,"optout":0,"est":1},{"p":"WABA FK UNDIP","m":"JAN","d":"Tuesday","blast":334,"sent":315,"deliv":158,"read":178,"failed":19,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Thursday","blast":504,"sent":469,"deliv":142,"read":201,"failed":35,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Friday","blast":290,"sent":259,"deliv":111,"read":142,"failed":31,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Monday","blast":504,"sent":410,"deliv":396,"read":302,"failed":94,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Tuesday","blast":334,"sent":280,"deliv":279,"read":190,"failed":54,"optout":0},{"p":"WABA FK UNDIP","m":"JAN","d":"Friday","blast":334,"sent":281,"deliv":279,"read":188,"failed":53,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Thursday","blast":548,"sent":460,"deliv":457,"read":338,"failed":88,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Friday","blast":504,"sent":415,"deliv":410,"read":307,"failed":89,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Tuesday","blast":504,"sent":404,"deliv":400,"read":297,"failed":100,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Wednesday","blast":504,"sent":396,"deliv":391,"read":288,"failed":108,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Thursday","blast":504,"sent":400,"deliv":396,"read":291,"failed":104,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Wednesday","blast":504,"sent":411,"deliv":406,"read":304,"failed":93,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Thursday","blast":916,"sent":381,"deliv":379,"read":288,"failed":535,"optout":0},{"p":"WABA FK UNDIP","m":"FEB","d":"Friday","blast":285,"sent":241,"deliv":239,"read":161,"failed":44,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Tuesday","blast":334,"sent":275,"deliv":274,"read":181,"failed":59,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Wednesday","blast":789,"sent":649,"deliv":643,"read":462,"failed":140,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Tuesday","blast":334,"sent":279,"deliv":277,"read":186,"failed":55,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Wednesday","blast":458,"sent":386,"deliv":383,"read":292,"failed":72,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Friday","blast":504,"sent":422,"deliv":417,"read":309,"failed":82,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Friday","blast":529,"sent":461,"deliv":456,"read":344,"failed":68,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Monday","blast":7,"sent":1,"deliv":1,"read":1,"failed":6,"optout":0},{"p":"WABA FK UNDIP","m":"MAR","d":"Tuesday","blast":285,"sent":244,"deliv":243,"read":161,"failed":41,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Thursday","blast":334,"sent":281,"deliv":280,"read":185,"failed":53,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Saturday","blast":334,"sent":278,"deliv":278,"read":182,"failed":56,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Thursday","blast":334,"sent":278,"deliv":277,"read":182,"failed":56,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Tuesday","blast":225,"sent":0,"deliv":0,"read":0,"failed":225,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Saturday","blast":15,"sent":7,"deliv":7,"read":5,"failed":8,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Tuesday","blast":529,"sent":462,"deliv":459,"read":341,"failed":67,"optout":0},{"p":"WABA FK UNDIP","m":"APR","d":"Thursday","blast":529,"sent":460,"deliv":454,"read":342,"failed":69,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Tuesday","blast":214,"sent":30,"deliv":30,"read":25,"failed":184,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Thursday","blast":528,"sent":466,"deliv":462,"read":349,"failed":62,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Friday","blast":528,"sent":456,"deliv":453,"read":338,"failed":72,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Monday","blast":528,"sent":463,"deliv":459,"read":347,"failed":65,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Wednesday","blast":297,"sent":259,"deliv":258,"read":178,"failed":38,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Thursday","blast":297,"sent":258,"deliv":257,"read":172,"failed":39,"optout":0},{"p":"WABA FK UNDIP","m":"MAY","d":"Monday","blast":2,"sent":2,"deliv":2,"read":0,"failed":0,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Wednesday","blast":528,"sent":465,"deliv":460,"read":342,"failed":63,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Thursday","blast":528,"sent":458,"deliv":455,"read":334,"failed":70,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Monday","blast":334,"sent":281,"deliv":279,"read":170,"failed":53,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Friday","blast":862,"sent":809,"deliv":253,"read":39,"failed":53,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Friday","blast":334,"sent":264,"deliv":252,"read":155,"failed":70,"optout":0},{"p":"WABA FK UNDIP","m":"JUN","d":"Wednesday","blast":334,"sent":282,"deliv":281,"read":173,"failed":52,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":285,"sent":245,"deliv":242,"read":159,"failed":40,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Tuesday","blast":528,"sent":456,"deliv":453,"read":343,"failed":72,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Thursday","blast":84,"sent":74,"deliv":74,"read":47,"failed":10,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Friday","blast":619,"sent":511,"deliv":509,"read":338,"failed":108,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":285,"sent":242,"deliv":240,"read":158,"failed":43,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Tuesday","blast":84,"sent":73,"deliv":73,"read":47,"failed":11,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Wednesday","blast":334,"sent":279,"deliv":278,"read":183,"failed":55,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Thursday","blast":285,"sent":236,"deliv":235,"read":153,"failed":49,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":334,"sent":278,"deliv":276,"read":176,"failed":56,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Wednesday","blast":528,"sent":461,"deliv":457,"read":329,"failed":67,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Friday","blast":528,"sent":457,"deliv":453,"read":318,"failed":71,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"Monday","blast":334,"sent":280,"deliv":279,"read":183,"failed":54,"optout":0},{"p":"WABA FK UNDIP","m":"JUL","d":"","blast":334,"sent":273,"deliv":252,"read":180,"failed":61,"optout":0,"est":1},{"p":"WABA FK UNDIP","m":"AUG","d":"","blast":3367,"sent":2751,"deliv":2544,"read":1820,"failed":616,"optout":0,"est":1},{"p":"WABA FK UNDIP","m":"SEP","d":"","blast":2772,"sent":2265,"deliv":2095,"read":1499,"failed":507,"optout":0,"est":1},{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":42,"sent":32,"deliv":42,"read":25,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":45,"sent":40,"deliv":45,"read":33,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":88,"sent":84,"deliv":88,"read":68,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":106,"sent":96,"deliv":106,"read":87,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":83,"sent":72,"deliv":83,"read":58,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":353,"sent":236,"deliv":353,"read":168,"failed":117,"optout":2},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":71,"sent":61,"deliv":71,"read":52,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":604,"sent":435,"deliv":604,"read":365,"failed":169,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":133,"sent":111,"deliv":133,"read":85,"failed":22,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":83,"sent":75,"deliv":83,"read":64,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":81,"sent":71,"deliv":81,"read":58,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":221,"sent":156,"deliv":221,"read":116,"failed":65,"optout":1},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":5156,"sent":3850,"deliv":5156,"read":3088,"failed":1306,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":16,"sent":16,"deliv":16,"read":13,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":122,"sent":110,"deliv":122,"read":91,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Monday","blast":71,"sent":63,"deliv":71,"read":48,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Tuesday","blast":114,"sent":86,"deliv":114,"read":66,"failed":28,"optout":1},{"p":"WABA TAPERA","m":"JAN","d":"Wednesday","blast":91,"sent":75,"deliv":91,"read":66,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Thursday","blast":7,"sent":6,"deliv":7,"read":6,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"JAN","d":"Friday","blast":5759,"sent":4196,"deliv":5759,"read":2837,"failed":1563,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Tuesday","blast":3,"sent":3,"deliv":3,"read":3,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Wednesday","blast":7,"sent":6,"deliv":7,"read":1,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Thursday","blast":5013,"sent":3731,"deliv":5013,"read":2002,"failed":1282,"optout":5},{"p":"WABA TAPERA","m":"FEB","d":"Friday","blast":2,"sent":2,"deliv":2,"read":2,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Monday","blast":5,"sent":4,"deliv":5,"read":3,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Tuesday","blast":1,"sent":1,"deliv":1,"read":1,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Wednesday","blast":571,"sent":480,"deliv":571,"read":394,"failed":91,"optout":1},{"p":"WABA TAPERA","m":"FEB","d":"Thursday","blast":32,"sent":27,"deliv":32,"read":21,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"FEB","d":"Friday","blast":197,"sent":169,"deliv":197,"read":137,"failed":28,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":900,"sent":540,"deliv":900,"read":437,"failed":360,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":88,"sent":81,"deliv":88,"read":62,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Wednesday","blast":275,"sent":226,"deliv":275,"read":177,"failed":49,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Thursday","blast":123,"sent":117,"deliv":123,"read":99,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Friday","blast":75,"sent":67,"deliv":75,"read":51,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":83,"sent":71,"deliv":83,"read":51,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":98,"sent":93,"deliv":98,"read":21,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Wednesday","blast":77,"sent":68,"deliv":77,"read":13,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Thursday","blast":3,"sent":2,"deliv":3,"read":1,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Friday","blast":169,"sent":159,"deliv":169,"read":57,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":73,"sent":66,"deliv":73,"read":54,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":8,"sent":8,"deliv":8,"read":7,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Wednesday","blast":17,"sent":16,"deliv":17,"read":16,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Thursday","blast":140,"sent":121,"deliv":140,"read":99,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Friday","blast":61,"sent":56,"deliv":61,"read":43,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Monday","blast":50,"sent":47,"deliv":50,"read":40,"failed":3,"optout":0},{"p":"WABA TAPERA","m":"MAR","d":"Tuesday","blast":445,"sent":344,"deliv":445,"read":272,"failed":101,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":59,"sent":57,"deliv":59,"read":42,"failed":2,"optout":1},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":66,"sent":61,"deliv":66,"read":50,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":87,"sent":78,"deliv":87,"read":62,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":147,"sent":138,"deliv":147,"read":104,"failed":9,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":100,"sent":93,"deliv":100,"read":81,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":120,"sent":115,"deliv":120,"read":78,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Friday","blast":80,"sent":72,"deliv":80,"read":56,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":108,"sent":94,"deliv":108,"read":64,"failed":14,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":314,"sent":240,"deliv":314,"read":163,"failed":74,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":455,"sent":354,"deliv":455,"read":266,"failed":101,"optout":1},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":29,"sent":29,"deliv":29,"read":26,"failed":0,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Friday","blast":31,"sent":26,"deliv":31,"read":22,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":198,"sent":182,"deliv":198,"read":148,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":79,"sent":74,"deliv":79,"read":64,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":129,"sent":121,"deliv":129,"read":99,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":221,"sent":202,"deliv":221,"read":164,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Friday","blast":3236,"sent":2224,"deliv":3236,"read":1563,"failed":1012,"optout":7},{"p":"WABA TAPERA","m":"APR","d":"Monday","blast":21,"sent":19,"deliv":21,"read":16,"failed":2,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Tuesday","blast":3,"sent":2,"deliv":3,"read":2,"failed":1,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Wednesday","blast":245,"sent":212,"deliv":245,"read":165,"failed":33,"optout":0},{"p":"WABA TAPERA","m":"APR","d":"Thursday","blast":84,"sent":72,"deliv":84,"read":60,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":69,"sent":61,"deliv":59,"read":43,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":135,"sent":116,"deliv":114,"read":89,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Wednesday","blast":89,"sent":81,"deliv":81,"read":66,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Thursday","blast":41,"sent":37,"deliv":37,"read":26,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Friday","blast":170,"sent":157,"deliv":156,"read":122,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":80,"sent":74,"deliv":72,"read":50,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":475,"sent":380,"deliv":316,"read":248,"failed":95,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Wednesday","blast":362,"sent":271,"deliv":262,"read":198,"failed":91,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":4015,"sent":3609,"deliv":3404,"read":2647,"failed":406,"optout":2},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":69,"sent":63,"deliv":62,"read":51,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Wednesday","blast":128,"sent":115,"deliv":111,"read":86,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Thursday","blast":100,"sent":88,"deliv":85,"read":69,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Friday","blast":290,"sent":215,"deliv":203,"read":161,"failed":75,"optout":2},{"p":"WABA TAPERA","m":"MAY","d":"Monday","blast":114,"sent":101,"deliv":100,"read":90,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Tuesday","blast":81,"sent":74,"deliv":68,"read":62,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"MAY","d":"Friday","blast":99,"sent":93,"deliv":91,"read":74,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":85,"sent":77,"deliv":85,"read":62,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":817,"sent":573,"deliv":817,"read":415,"failed":244,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":154,"sent":129,"deliv":154,"read":105,"failed":25,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":843,"sent":605,"deliv":843,"read":424,"failed":238,"optout":2},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":2310,"sent":1453,"deliv":2310,"read":1065,"failed":857,"optout":8},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":103,"sent":89,"deliv":103,"read":65,"failed":14,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":146,"sent":127,"deliv":146,"read":94,"failed":19,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":90,"sent":82,"deliv":90,"read":65,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":69,"sent":62,"deliv":69,"read":47,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":311,"sent":213,"deliv":311,"read":149,"failed":98,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":455,"sent":301,"deliv":455,"read":210,"failed":154,"optout":3},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":57,"sent":49,"deliv":57,"read":32,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":106,"sent":102,"deliv":106,"read":79,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":178,"sent":134,"deliv":128,"read":105,"failed":44,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":115,"sent":103,"deliv":103,"read":82,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Wednesday","blast":108,"sent":78,"deliv":78,"read":63,"failed":30,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Thursday","blast":80,"sent":72,"deliv":72,"read":53,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Friday","blast":78,"sent":67,"deliv":65,"read":52,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Monday","blast":69,"sent":64,"deliv":62,"read":52,"failed":5,"optout":0},{"p":"WABA TAPERA","m":"JUN","d":"Tuesday","blast":131,"sent":96,"deliv":95,"read":84,"failed":35,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":65,"sent":58,"deliv":57,"read":49,"failed":7,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":1506,"sent":954,"deliv":921,"read":700,"failed":552,"optout":4},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":287,"sent":225,"deliv":221,"read":190,"failed":62,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":45,"sent":39,"deliv":38,"read":31,"failed":6,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":351,"sent":265,"deliv":201,"read":192,"failed":86,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":616,"sent":392,"deliv":369,"read":310,"failed":224,"optout":2},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":130,"sent":120,"deliv":118,"read":102,"failed":10,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":139,"sent":127,"deliv":125,"read":107,"failed":12,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":1089,"sent":653,"deliv":611,"read":437,"failed":436,"optout":6},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":294,"sent":247,"deliv":239,"read":192,"failed":47,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":685,"sent":466,"deliv":436,"read":342,"failed":219,"optout":3},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":73,"sent":65,"deliv":53,"read":32,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":91,"sent":80,"deliv":80,"read":67,"failed":11,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":92,"sent":88,"deliv":83,"read":68,"failed":4,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":106,"sent":92,"deliv":92,"read":71,"failed":14,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":60,"sent":47,"deliv":46,"read":36,"failed":13,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":1037,"sent":642,"deliv":609,"read":379,"failed":395,"optout":5},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":84,"sent":76,"deliv":76,"read":64,"failed":8,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Monday","blast":345,"sent":49,"deliv":47,"read":40,"failed":296,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Tuesday","blast":339,"sent":233,"deliv":223,"read":181,"failed":106,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Wednesday","blast":122,"sent":106,"deliv":106,"read":88,"failed":16,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Thursday","blast":187,"sent":141,"deliv":140,"read":105,"failed":46,"optout":0},{"p":"WABA TAPERA","m":"JUL","d":"Friday","blast":1449,"sent":935,"deliv":893,"read":702,"failed":514,"optout":0},{"p":"WABA TAPERA","m":"AUG","d":"","blast":2880,"sent":2155,"deliv":2608,"read":1552,"failed":725,"optout":3,"est":1},{"p":"WABA TAPERA","m":"SEP","d":"","blast":11035,"sent":8256,"deliv":9994,"read":5949,"failed":2779,"optout":13,"est":1},{"p":"WABA LPSK","m":"FEB","d":"Friday","blast":4,"sent":4,"deliv":4,"read":3,"failed":0,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Thursday","blast":454,"sent":405,"deliv":404,"read":253,"failed":49,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Tuesday","blast":454,"sent":395,"deliv":393,"read":245,"failed":59,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Thursday","blast":508,"sent":477,"deliv":474,"read":303,"failed":31,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Saturday","blast":94,"sent":87,"deliv":85,"read":60,"failed":7,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Sunday","blast":1016,"sent":912,"deliv":910,"read":577,"failed":104,"optout":0},{"p":"WABA LPSK","m":"MAR","d":"Monday","blast":1,"sent":1,"deliv":1,"read":1,"failed":0,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Wednesday","blast":405,"sent":386,"deliv":383,"read":247,"failed":19,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":508,"sent":478,"deliv":475,"read":296,"failed":30,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":810,"sent":777,"deliv":770,"read":472,"failed":33,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Friday","blast":956,"sent":899,"deliv":852,"read":264,"failed":57,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Tuesday","blast":459,"sent":434,"deliv":410,"read":132,"failed":25,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Wednesday","blast":911,"sent":842,"deliv":839,"read":536,"failed":69,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":405,"sent":388,"deliv":386,"read":245,"failed":17,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Friday","blast":398,"sent":370,"deliv":369,"read":215,"failed":28,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":505,"sent":476,"deliv":475,"read":298,"failed":29,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Friday","blast":405,"sent":387,"deliv":385,"read":246,"failed":18,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Tuesday","blast":999,"sent":875,"deliv":870,"read":554,"failed":124,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Wednesday","blast":810,"sent":774,"deliv":771,"read":492,"failed":36,"optout":0},{"p":"WABA LPSK","m":"APR","d":"Thursday","blast":503,"sent":474,"deliv":472,"read":298,"failed":29,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Friday","blast":503,"sent":474,"deliv":472,"read":300,"failed":29,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Saturday","blast":405,"sent":386,"deliv":385,"read":247,"failed":19,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Sunday","blast":150,"sent":139,"deliv":138,"read":91,"failed":11,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Monday","blast":858,"sent":800,"deliv":798,"read":514,"failed":58,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":452,"sent":425,"deliv":424,"read":269,"failed":27,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Friday","blast":452,"sent":415,"deliv":414,"read":263,"failed":37,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Tuesday","blast":905,"sent":856,"deliv":854,"read":542,"failed":49,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":957,"sent":901,"deliv":895,"read":567,"failed":56,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Monday","blast":407,"sent":389,"deliv":387,"read":244,"failed":18,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":407,"sent":390,"deliv":388,"read":240,"failed":17,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Monday","blast":1452,"sent":1369,"deliv":1357,"read":852,"failed":83,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Tuesday","blast":1002,"sent":944,"deliv":938,"read":589,"failed":58,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Wednesday","blast":462,"sent":226,"deliv":224,"read":134,"failed":236,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Thursday","blast":455,"sent":429,"deliv":421,"read":265,"failed":26,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Friday","blast":496,"sent":472,"deliv":468,"read":294,"failed":24,"optout":0},{"p":"WABA LPSK","m":"MAY","d":"Saturday","blast":508,"sent":472,"deliv":469,"read":295,"failed":36,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Tuesday","blast":407,"sent":390,"deliv":388,"read":244,"failed":17,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Wednesday","blast":957,"sent":901,"deliv":895,"read":552,"failed":56,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Saturday","blast":289,"sent":277,"deliv":276,"read":163,"failed":12,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Monday","blast":503,"sent":475,"deliv":471,"read":294,"failed":28,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Wednesday","blast":746,"sent":717,"deliv":658,"read":427,"failed":29,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Thursday","blast":458,"sent":441,"deliv":388,"read":266,"failed":17,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Friday","blast":458,"sent":438,"deliv":364,"read":261,"failed":20,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Thursday","blast":511,"sent":484,"deliv":474,"read":294,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Friday","blast":748,"sent":713,"deliv":662,"read":426,"failed":35,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Monday","blast":1305,"sent":1218,"deliv":1182,"read":730,"failed":87,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Tuesday","blast":912,"sent":759,"deliv":754,"read":461,"failed":153,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Wednesday","blast":292,"sent":279,"deliv":278,"read":162,"failed":13,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Thursday","blast":416,"sent":397,"deliv":395,"read":240,"failed":19,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Friday","blast":511,"sent":481,"deliv":478,"read":287,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUN","d":"Tuesday","blast":498,"sent":473,"deliv":469,"read":276,"failed":25,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":505,"sent":475,"deliv":472,"read":292,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Thursday","blast":505,"sent":460,"deliv":456,"read":282,"failed":45,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":1017,"sent":957,"deliv":950,"read":587,"failed":60,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Monday","blast":494,"sent":487,"deliv":139,"read":149,"failed":7,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":65,"sent":59,"deliv":57,"read":39,"failed":6,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":408,"sent":390,"deliv":388,"read":235,"failed":18,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Tuesday","blast":914,"sent":866,"deliv":861,"read":521,"failed":48,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":505,"sent":475,"deliv":471,"read":285,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Monday","blast":459,"sent":432,"deliv":429,"read":253,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Tuesday","blast":691,"sent":651,"deliv":645,"read":379,"failed":40,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":1024,"sent":964,"deliv":958,"read":563,"failed":60,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Thursday","blast":1483,"sent":1386,"deliv":1376,"read":809,"failed":97,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":1839,"sent":1689,"deliv":1676,"read":977,"failed":150,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Saturday","blast":460,"sent":433,"deliv":430,"read":244,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Sunday","blast":514,"sent":484,"deliv":480,"read":267,"failed":30,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Monday","blast":1933,"sent":1819,"deliv":1798,"read":1099,"failed":114,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Tuesday","blast":460,"sent":433,"deliv":429,"read":246,"failed":27,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Wednesday","blast":1445,"sent":1287,"deliv":1074,"read":433,"failed":158,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Thursday","blast":513,"sent":478,"deliv":365,"read":123,"failed":35,"optout":0},{"p":"WABA LPSK","m":"JUL","d":"Friday","blast":2008,"sent":1840,"deliv":1538,"read":911,"failed":168,"optout":0},{"p":"WABA LPSK","m":"AUG","d":"","blast":14474,"sent":13454,"deliv":12973,"read":7812,"failed":1020,"optout":0,"est":1},{"p":"WABA LPSK","m":"SEP","d":"","blast":11035,"sent":10257,"deliv":9891,"read":5956,"failed":778,"optout":0,"est":1},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Sunday","blast":3,"sent":3,"deliv":3,"read":1,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Monday","blast":14,"sent":14,"deliv":13,"read":8,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"APR","d":"Tuesday","blast":12674,"sent":2676,"deliv":2626,"read":1755,"failed":9998,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Thursday","blast":5774,"sent":3808,"deliv":3761,"read":2146,"failed":1966,"optout":5},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Thursday","blast":1233,"sent":1036,"deliv":957,"read":592,"failed":197,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Friday","blast":3221,"sent":3199,"deliv":55,"read":29,"failed":22,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Saturday","blast":2271,"sent":2270,"deliv":3,"read":20,"failed":1,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"MAY","d":"Sunday","blast":2517,"sent":2516,"deliv":2,"read":17,"failed":1,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"JUN","d":"Monday","blast":12698,"sent":5136,"deliv":4399,"read":3537,"failed":7562,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"JUN","d":"Tuesday","blast":6674,"sent":0,"deliv":0,"read":0,"failed":6674,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"JUN","d":"Wednesday","blast":5509,"sent":2669,"deliv":2588,"read":1448,"failed":2840,"optout":2},{"p":"WABA ARS UNIVERSITY","m":"JUL","d":"Friday","blast":5,"sent":5,"deliv":0,"read":0,"failed":0,"optout":0},{"p":"WABA ARS UNIVERSITY","m":"JUL","d":"Wednesday","blast":5614,"sent":4101,"deliv":4006,"read":2922,"failed":1513,"optout":8},{"p":"WABA ARS UNIVERSITY","m":"JUL","d":"Thursday","blast":4658,"sent":4400,"deliv":4291,"read":3275,"failed":258,"optout":11}];
+  var RESP_K = {"WABA UNNES": 0.14934445768772348, "WABA FK UNDIP": 0.11622377622377623, "WABA TAPERA": 0.09947275922671353, "WABA LPSK": 0.08853820598006644, "WABA ARS UNIVERSITY": 0.06080691642651296};
   var CONV_RATIO = 0.3700389105058366;
-  var BASELINE_META = [{"key": "campaigns", "deltaCls": "delta-good", "deltaStr": "\u2191 14.8%", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "messages", "deltaCls": "delta-good", "deltaStr": "\u2191 6.1%", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "delivery", "deltaCls": "delta-good", "deltaStr": "\u2191 1.2pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "read", "deltaCls": "delta-bad", "deltaStr": "\u2193 2.2pp", "statusDot": "var(--warning)", "statusTxt": "Attention", "sparkColor": "#eda100"}, {"key": "response", "deltaCls": "delta-good", "deltaStr": "\u2191 0.9pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "conversion", "deltaCls": "delta-good", "deltaStr": "\u2191 0.3pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "failed", "deltaCls": "delta-bad", "deltaStr": "\u2191 4.8%", "statusDot": "var(--critical)", "statusTxt": "Critical", "sparkColor": "#d03b3b"}, {"key": "optout", "deltaCls": "delta-good", "deltaStr": "\u2193 0.0pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}];
-  var MONTHS_JS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG"];
+  var PERIOD_LABEL = "Q3 vs Q2";
+  var BASELINE_META = [{"key": "campaigns", "deltaCls": "delta-bad", "deltaStr": "\u2193 20.0%", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "messages", "deltaCls": "delta-bad", "deltaStr": "\u2193 33.7%", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "delivery", "deltaCls": "delta-good", "deltaStr": "\u2191 18.7pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "read", "deltaCls": "delta-bad", "deltaStr": "\u2193 5.6pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "response", "deltaCls": "delta-bad", "deltaStr": "\u2193 1.7pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "conversion", "deltaCls": "delta-bad", "deltaStr": "\u2193 0.6pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}, {"key": "failed", "deltaCls": "delta-good", "deltaStr": "\u2193 66.2%", "statusDot": "var(--warning)", "statusTxt": "Attention", "sparkColor": "#eda100"}, {"key": "optout", "deltaCls": "delta-bad", "deltaStr": "\u2191 0.03pp", "statusDot": "var(--good)", "statusTxt": "Healthy", "sparkColor": "#1baf7a"}];
+  var MONTHS_JS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP"];
+  var ESTM = ["AUG", "SEP"]; var ESTM_TXT = "Aug\u2013Sep";
   var METRIC_KEYS = ['campaigns','messages','delivery','read','response','conversion','failed','optout'];
   var STATUS_DOT = {good:'var(--good)', warning:'var(--warning)', critical:'var(--critical)'};
   var STATUS_TXT = {good:'Healthy', warning:'Attention', critical:'Critical'};
@@ -1400,8 +1411,9 @@
   function aggregate(rows){
     var blast=sum(rows,'blast'), sent=sum(rows,'sent'), deliv=sum(rows,'deliv'),
         read=sum(rows,'read'), failed=sum(rows,'failed'), optout=sum(rows,'optout');
-    var responded = Math.round(read*RESP_RATIO);
-    var converted = Math.round(responded*CONV_RATIO);
+    var respRaw = 0; for (var i=0;i<rows.length;i++) respRaw += rows[i].read*(RESP_K[rows[i].p]||0);
+    var responded = Math.round(respRaw);
+    var converted = Math.round(respRaw*CONV_RATIO);
     var waveSet = {}, projSet = {};
     rows.forEach(function(r){ waveSet[r.p+'|'+r.m]=1; projSet[r.p]=1; });
     return {
@@ -1537,7 +1549,7 @@
       } else if (def) {
         var base = BASELINE_META.filter(function(b){return b.key===key;})[0];
         deltaEl.className = 'kpi-delta ' + base.deltaCls;
-        deltaEl.innerHTML = base.deltaStr + ' <span class="kpi-vs">vs prior period</span>';
+        deltaEl.innerHTML = base.deltaStr + ' <span class="kpi-vs">' + PERIOD_LABEL + '</span>';
       } else if (key==='campaigns' || key==='messages' || key==='failed') {
         var baseVal = key==='campaigns'?BASELINE.waves:(key==='messages'?BASELINE.blast:BASELINE.failed);
         var curVal = key==='campaigns'?agg.waves:(key==='messages'?agg.blast:agg.failed);
@@ -1566,8 +1578,11 @@
     } else if (def) {
       summaryEl.textContent = 'Showing all ' + agg.waves + ' campaign waves · ' + fmtInt(agg.blast) + ' messages';
     } else {
+      var hasEst = rows.some(function(r){ return r.est; });
       summaryEl.textContent = 'Showing ' + agg.rows.toLocaleString('en-US') + ' campaign-day record' + (agg.rows===1?'':'s') +
-        ' · ' + fmtInt(agg.blast) + ' messages · ' + agg.waves + ' campaign wave' + (agg.waves===1?'':'s');
+        ' · ' + fmtInt(agg.blast) + ' messages · ' + agg.waves + ' campaign wave' + (agg.waves===1?'':'s') +
+        (hasEst ? ' · includes estimated status split' : '') +
+        (state.day!=='All' && ESTM.length ? ' · ' + ESTM_TXT + ' volume has no day-level detail' : '');
     }
   }
 
